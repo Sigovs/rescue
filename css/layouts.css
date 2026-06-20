@@ -1,0 +1,137 @@
+/* ============================================================
+   SPORTS CAR RESCUE — LAYOUT TEMPLATES
+   ------------------------------------------------------------
+   Reusable section skeletons. Every page is assembled from these —
+   do not invent new layout patterns in sections.
+
+   All templates build on:  .section (vertical rhythm) + .container
+   + .grid (grid.css). Content stays grid-aligned; collage imagery is
+   layered on top with absolute/transform positioning (components.css).
+
+   TEMPLATES
+     .section                 base vertical rhythm
+     .section--dark           espresso bg, light ink
+     .tmpl-hero               asymmetric hero (content + collage stage)
+     .tmpl-split              content one side / image the other
+       .tmpl-split--reverse   flip the order (image left / content right)
+     .tmpl-editorial          long-form story column, off-axis
+     .tmpl-collection         archival card grid (the "Rescues" wall)
+     .tmpl-cta                full-bleed call to action
+     .tmpl-contact            two-column contact / inquiry
+   ============================================================ */
+
+/* ---------- BASE SECTION ---------- */
+.section { padding-block: var(--section-y); position: relative; }
+.section--dark {
+  background-color: var(--paper-dark);
+  color: var(--ink-on-dark);
+}
+.section--paper-raised { background-color: var(--paper-raised); }
+.section__head { margin-bottom: var(--space-7); max-width: 60ch; }
+
+/* ============================================================
+   HERO  — content block + collage stage, intentionally off-centre
+   12-col: content spans 1–6, collage stage spans 6–12 (overlapping).
+   ============================================================ */
+.tmpl-hero {
+  /* stays on the spacing scale: 96 (--space-9) → 128 (--space-10) */
+  padding-block: clamp(6rem, 4.5rem + 6vw, 8rem);
+  overflow: clip;            /* keep stray collage edges tidy */
+}
+.tmpl-hero .grid { align-items: center; }
+.tmpl-hero__content {
+  grid-column: 1 / span 6;
+  grid-row: 1;               /* share row 1 with the stage (they overlap) */
+  position: relative;
+  z-index: var(--z-raised);
+}
+.tmpl-hero__stage {
+  grid-column: 6 / span 7;   /* deliberately overlaps content column */
+  grid-row: 1;
+  position: relative;
+  min-height: 32rem;
+}
+/* The stage hosts absolutely-positioned collage layers. */
+.tmpl-hero__stage > .polaroid,
+.tmpl-hero__stage > .document,
+.tmpl-hero__stage > .tag,
+.tmpl-hero__stage > .speedo,
+.tmpl-hero__stage > .badge { position: absolute; }
+
+@media (max-width: 1024px) {
+  /* stack: content row 1, stage drops to its own row below (no overlap) */
+  .tmpl-hero__content { grid-column: 1 / span 8; grid-row: 1; }
+  .tmpl-hero__stage   { grid-column: 1 / span 8; grid-row: auto; min-height: 24rem; margin-top: var(--space-7); }
+}
+@media (max-width: 640px) {
+  .tmpl-hero__content, .tmpl-hero__stage { grid-column: 1 / -1; }
+  .tmpl-hero__stage   { grid-row: auto; }
+}
+
+/* ============================================================
+   SPLIT  — Content Left / Image Right  (and reverse)
+   ============================================================ */
+.tmpl-split .grid { align-items: center; gap: var(--space-8); }
+.tmpl-split__content { grid-column: 1 / span 5; }
+.tmpl-split__media   { grid-column: 7 / span 6; position: relative; }
+
+.tmpl-split--reverse .tmpl-split__content { grid-column: 8 / span 5; order: 2; }
+.tmpl-split--reverse .tmpl-split__media   { grid-column: 1 / span 6; order: 1; }
+
+@media (max-width: 1024px) {
+  .tmpl-split__content,
+  .tmpl-split--reverse .tmpl-split__content { grid-column: 1 / span 8; order: 1; }
+  .tmpl-split__media,
+  .tmpl-split--reverse .tmpl-split__media   { grid-column: 1 / span 8; order: 2; }
+}
+
+/* ============================================================
+   EDITORIAL  — long-form story, narrow measure, off to one side
+   ============================================================ */
+.tmpl-editorial__col {
+  grid-column: 3 / span 7;       /* indented from the left margin */
+  max-width: var(--content-max);
+}
+.tmpl-editorial__col > * + * { margin-top: var(--space-5); }
+.tmpl-editorial__aside {        /* margin notes / pull quotes */
+  grid-column: 10 / span 3;
+  font-family: var(--font-script);
+  color: var(--accent);
+}
+@media (max-width: 1024px) {
+  .tmpl-editorial__col   { grid-column: 1 / span 8; }
+  .tmpl-editorial__aside { grid-column: 1 / span 8; }
+}
+
+/* ============================================================
+   COLLECTION  — archival "wall" of rescues
+   Not a uniform SaaS card grid: rows breathe, items can tilt.
+   ============================================================ */
+.tmpl-collection .grid { gap: var(--space-7) var(--grid-gutter); }
+.tmpl-collection__item { grid-column: span 4; }          /* 3-up desktop */
+.tmpl-collection__item:nth-child(3n+2) { margin-top: var(--space-6); } /* stagger */
+@media (max-width: 1024px) {
+  .tmpl-collection__item { grid-column: span 4; }         /* 2-up on 8col */
+  .tmpl-collection__item:nth-child(3n+2) { margin-top: 0; }
+}
+@media (max-width: 640px) {
+  .tmpl-collection__item { grid-column: 1 / -1; }         /* stack */
+}
+
+/* ============================================================
+   CTA  — full-bleed call to action (dark, centred-ish but editorial)
+   ============================================================ */
+.tmpl-cta { text-align: left; }
+.tmpl-cta__inner { grid-column: 2 / span 8; }
+.tmpl-cta__actions { margin-top: var(--space-6); display: flex; gap: var(--space-4); flex-wrap: wrap; }
+@media (max-width: 1024px) { .tmpl-cta__inner { grid-column: 1 / span 8; } }
+
+/* ============================================================
+   CONTACT  — inquiry copy + form/details, two columns
+   ============================================================ */
+.tmpl-contact__intro { grid-column: 1 / span 5; }
+.tmpl-contact__panel { grid-column: 7 / span 6; }
+@media (max-width: 1024px) {
+  .tmpl-contact__intro { grid-column: 1 / span 8; }
+  .tmpl-contact__panel { grid-column: 1 / span 8; margin-top: var(--space-6); }
+}

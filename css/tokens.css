@@ -1,0 +1,212 @@
+/* ============================================================
+   CARS RESCUE — DESIGN TOKENS  (single source of truth)
+   ------------------------------------------------------------
+   Art direction: "Barn-find / vintage classic rescue".
+   Sepia, aged paper, taped polaroids, typewriter documents,
+   handwritten captions, brass gauges, rust patina.
+
+   RULE FOR DEVELOPERS:
+   - Never hard-code a color, font, space or shadow in a section.
+   - Always reference a token from this file.
+   - Change the brand here -> the whole site follows.
+   ============================================================ */
+
+:root {
+  /* ---------- 1. COLOR — PAPER / SURFACES ---------- */
+  --c-paper-0:   #FBF6EA;   /* lightest highlight paper        */
+  --c-paper-1:   #F3EAD6;   /* default page background         */
+  --c-paper-2:   #E7D9BC;   /* raised paper / cards            */
+  --c-paper-3:   #D6C2A0;   /* kraft / dividers                */
+  --c-paper-4:   #C2AC86;   /* deep kraft / borders            */
+
+  /* ---------- 2. COLOR — INK / DARK SURFACES ---------- */
+  --c-espresso:  #1E160E;   /* darkest — dark sections bg      */
+  --c-coffee:    #33271A;   /* dark surface / footer           */
+  --c-bark:      #4A3826;   /* secondary dark                  */
+  --c-ink:       #3D2E1E;   /* body text on paper              */
+  --c-ink-soft:  #6B5640;   /* muted body / captions           */
+  --c-stone:     #5D544B;   /* warm taupe — muted neutral panels/borders */
+
+  /* ---------- 3. COLOR — BRAND ACCENTS ---------- */
+  --c-rust:        #A8472A; /* PRIMARY — CTA, links, accents   */
+  --c-rust-deep:   #82331C; /* hover / pressed                 */
+  --c-rust-tint:   #C9663F; /* light accent                    */
+  --c-brass:       #B68A3C; /* SECONDARY — gauges, gold detail */
+  --c-brass-light: #D8B25A; /* brass highlight                 */
+  --c-sage:        #6E715D; /* muted olive-green — patina / barn foliage */
+
+  /* ---------- 4. SEMANTIC ALIASES (use these in components) - */
+  /* Canonical names required by the design system. Components must
+     reference ONLY these (or the type/space tokens) — never raw palette. */
+  --paper:          var(--c-paper-1);   /* default page surface         */
+  --paper-light:    var(--c-paper-0);   /* highlight paper / cards-hi    */
+  --paper-raised:   var(--c-paper-2);   /* raised paper / cards          */
+  --paper-dark:     var(--c-espresso);  /* dark sections / footer bg     */
+  --ink:            var(--c-ink);        /* body text on paper            */
+  --ink-soft:       var(--c-ink-soft);   /* muted text / captions         */
+  --ink-on-dark:    var(--c-paper-1);    /* text on dark surfaces         */
+  --accent:         var(--c-rust);       /* primary accent — CTA, links   */
+  --accent-hover:   var(--c-rust-deep);  /* hover / pressed               */
+  --accent-2:       var(--c-brass);      /* secondary — brass detail      */
+  --accent-3:       var(--c-sage);       /* tertiary — olive patina detail */
+  --surface-stone:  var(--c-stone);      /* muted taupe panel / dark-soft */
+  --border:         var(--c-paper-4);    /* kraft hairline / dividers     */
+  --shadow:         var(--c-espresso);   /* base color for warm shadows   */
+
+  /* Back-compat aliases (older markup) — keep mapping to the canon. */
+  --bg-page:        var(--paper);
+  --bg-surface:     var(--paper-raised);
+  --bg-dark:        var(--paper-dark);
+  --text-primary:   var(--ink);
+  --text-muted:     var(--ink-soft);
+  --text-on-dark:   var(--ink-on-dark);
+  --hairline:       color-mix(in srgb, var(--ink) 16%, transparent);
+
+  /* ---------- 5. TYPOGRAPHY — FONT FAMILIES ---------- */
+  /* display : condensed garage-signage headlines (uppercase)   */
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  /* script  : handwritten polaroid captions / accents          */
+  --font-script:  "Shadows Into Light Two", "Caveat", "Segoe Script", cursive;
+  /* doc     : typewriter — labels, eyebrows, certificate text   */
+  --font-doc:     "Special Elite", "Courier New", monospace;
+  /* body    : old-style serif — readable paragraphs             */
+  --font-body:    "Spectral", Georgia, "Times New Roman", serif;
+
+  /* ---------- 6. TYPE SCALE (fluid, clamp-based) ----------
+     ONE strict descending ladder. Desktop (max) sizes, in px:
+       display-xl 96 · display-lg 76 · display-md 60
+       h1 52 · h2 40 · h3 30 · h4 24
+       lead 22 · body-lg 19 · body 18 · body-sm 15
+       caption 13 · eyebrow 12
+     Each step is clearly smaller than the one above — no overlap.
+     (display-* tokens live in section 15; kept consistent with these.) */
+  --fs-h1:      clamp(2.00rem, 1.30rem + 3.0vw, 3.25rem);  /* 32 → 52 */
+  --fs-h2:      clamp(1.70rem, 1.25rem + 1.9vw, 2.50rem);  /* 27 → 40 */
+  --fs-h3:      clamp(1.40rem, 1.15rem + 1.0vw, 1.875rem); /* 22 → 30 */
+  --fs-h4:      clamp(1.20rem, 1.08rem + 0.5vw, 1.50rem);  /* 19 → 24 */
+  --fs-lead:    clamp(1.15rem, 1.05rem + 0.4vw, 1.375rem); /* 18 → 22 */
+  --fs-body:    clamp(1.00rem, 0.96rem + 0.3vw, 1.125rem); /* 16 → 18 */
+  --fs-body-sm: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem); /* 14 → 15 */
+  --fs-eyebrow: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);  /* 11 → 12 */
+  --fs-script:  clamp(1.50rem, 1.15rem + 1.8vw, 2.75rem);  /* 24 → 44 */
+
+  /* ---------- 7. TYPE — WEIGHTS / TRACKING / LEADING ---------- */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+  --tracking-tight:  -0.01em;
+  --tracking-wide:    0.04em;
+  --tracking-eyebrow: 0.28em;   /* uppercase typewriter eyebrows */
+  --leading-tight: 1.04;
+  --leading-snug:  1.25;
+  --leading-body:  1.65;
+
+  /* ---------- 8. SPACING SCALE (8px base) ---------- */
+  --space-1:  0.25rem;   /*  4 */
+  --space-2:  0.5rem;    /*  8 */
+  --space-3:  0.75rem;   /* 12 */
+  --space-4:  1rem;      /* 16 */
+  --space-5:  1.5rem;    /* 24 */
+  --space-6:  2rem;      /* 32 */
+  --space-7:  3rem;      /* 48 */
+  --space-8:  4rem;      /* 64 */
+  --space-9:  6rem;      /* 96 */
+  --space-10: 8rem;      /* 128 */
+  /* vertical rhythm for full sections — stays on the spacing scale:
+     min 64 (--space-8) … max 128 (--space-10). Never off-scale.     */
+  --section-y: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* ---------- 9. LAYOUT ---------- */
+  --container-max: 1240px;
+  --content-max:   68ch;     /* readable paragraph measure        */
+  --gutter:        clamp(1rem, 0.5rem + 3vw, 2.5rem);
+  --header-h:      clamp(64px, 5vw, 76px);   /* fixed nav height — hero fits below */
+
+  /* ---------- 10. RADII (vintage = nearly sharp) ---------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* ---------- 11. SHADOWS (warm, never pure black) ---------- */
+  --shadow-soft:
+    0 1px 2px color-mix(in srgb, var(--c-espresso) 10%, transparent),
+    0 8px 24px color-mix(in srgb, var(--c-espresso) 12%, transparent);
+  --shadow-raise:
+    0 4px 10px color-mix(in srgb, var(--c-espresso) 14%, transparent),
+    0 18px 48px color-mix(in srgb, var(--c-espresso) 22%, transparent);
+  /* polaroid: soft contact shadow + warm ambient                */
+  --shadow-photo:
+    0 2px 4px color-mix(in srgb, var(--c-espresso) 22%, transparent),
+    0 16px 36px color-mix(in srgb, var(--c-espresso) 30%, transparent);
+  --shadow-inset-hi: inset 0 1px 0 color-mix(in srgb, #fff 40%, transparent);
+
+  /* ---------- 12. MOTION ---------- */
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);   /* spring-ish   */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:   220ms;
+  --dur-base:   420ms;
+  --dur-slow:   720ms;
+
+  /* ---------- 13. TILTS (taped-polaroid randomization) ---------- */
+  --tilt-a: -3deg;
+  --tilt-b:  2.5deg;
+  --tilt-c: -1.5deg;
+
+  /* ---------- 14. Z-INDEX SCALE (systemic only) ---------- */
+  --z-base:    1;
+  --z-raised:  10;
+  --z-nav:     100;
+  --z-overlay: 1000;
+  --z-grain:   2000;   /* fixed film-grain pseudo-element        */
+
+  /* ---------- 15. NAMED TYPE STEPS (documented ramp) ----------
+     Every text style in the system maps to one of these. Sections
+     must NOT invent sizes — use a .type class from typography.css.
+     size = clamp(min, fluid, max) | see typography.css for full spec */
+  --fs-display-xl: clamp(2.75rem, 1.40rem + 6.0vw, 6.00rem);  /* 44 → 96 */
+  --fs-display-lg: clamp(2.40rem, 1.45rem + 4.2vw, 4.75rem);  /* 38 → 76 */
+  --fs-display-md: clamp(2.10rem, 1.50rem + 2.6vw, 3.75rem);  /* 34 → 60 */
+  /* h1..h4 + lead + body + body-sm + eyebrow + script defined in section 6 */
+  --fs-body-lg:    clamp(1.0625rem, 1.02rem + 0.25vw, 1.1875rem); /* 17 → 19 */
+  --fs-caption:    clamp(0.78rem, 0.76rem + 0.10vw, 0.8125rem);   /* 12.5 → 13 */
+  --fs-button:     clamp(0.80rem, 0.78rem + 0.10vw, 0.875rem);    /* 12.8 → 14 */
+
+  /* line-heights, named */
+  --lh-display: 0.94;
+  --lh-heading: 1.06;
+  --lh-snug:    var(--leading-snug);   /* 1.25 */
+  --lh-body:    var(--leading-body);   /* 1.65 */
+
+  /* ---------- 16. GRID SYSTEM ----------
+     12 desktop / 8 tablet / 4 mobile. Column count is a custom prop
+     so grid.css just flips it per breakpoint. */
+  --grid-cols:   12;
+  --grid-gutter: var(--gutter);
+  --bp-tablet:   1024px;   /* <= this -> 8 cols  (documentation only) */
+  --bp-mobile:   640px;    /* <= this -> 4 cols  (documentation only) */
+
+  /* ---------- 17. ELEVATION / LAYER DEPTH (image system) ----------
+     Consistent shadow depth so every collage object sits in the same
+     light. Higher layer = lifted further off the page. */
+  --elev-flat:   var(--shadow-soft);    /* documents lying flat        */
+  --elev-raised: var(--shadow-raise);   /* tags, badges                */
+  --elev-photo:  var(--shadow-photo);   /* polaroids (contact shadow)  */
+  --layer-1: 10;   /* back  — documents            */
+  --layer-2: 20;   /* mid   — polaroids            */
+  --layer-3: 30;   /* front — tags / speedometer   */
+  --layer-tape: 40;/* tape always on top of its host */
+}
+
+/* Respect reduced-motion globally */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --tilt-a: 0deg;
+    --tilt-b: 0deg;
+    --tilt-c: 0deg;
+  }
+}

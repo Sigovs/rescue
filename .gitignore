@@ -1,0 +1,9 @@
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+
+# Playwright / preview artifacts
+.playwright-mcp/
+scr-*.png

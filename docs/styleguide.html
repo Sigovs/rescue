@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports Car Rescue — Design System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Shadows+Into+Light+Two&family=Special+Elite&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" />
+
+  <!-- The system, in load order -->
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/typography.css" />
+  <link rel="stylesheet" href="../css/grid.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/layouts.css" />
+
+  <!-- Documentation chrome only (swatches, spec tables, labels) -->
+  <style>
+    .sg-top {
+      background: var(--paper-dark); color: var(--ink-on-dark);
+      padding: var(--space-8) 0 var(--space-7);
+    }
+    .sg-nav { display:flex; flex-wrap:wrap; gap: var(--space-4);
+      margin-top: var(--space-5); font-family: var(--font-doc);
+      font-size: var(--fs-caption); letter-spacing: .08em; text-transform: uppercase; }
+    .sg-nav a { color: color-mix(in srgb, var(--ink-on-dark) 75%, transparent); }
+    .sg-nav a:hover { color: var(--c-brass-light); }
+
+    .sg-section { padding-block: var(--space-8); border-top: 1px solid var(--border); }
+    .sg-section > .container > h2 { margin-bottom: var(--space-2); }
+    .sg-note { font-family: var(--font-doc); font-size: var(--fs-caption);
+      color: var(--ink-soft); letter-spacing: .04em; margin-bottom: var(--space-6);
+      max-width: 70ch; }
+    .sg-code { font-family: var(--font-doc); background: var(--paper-raised);
+      padding: 2px 6px; border-radius: var(--radius-xs); color: var(--accent); }
+
+    /* type specimen rows */
+    .sg-type { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+    .sg-type__row { border-bottom: 1px dashed var(--border); padding-bottom: var(--space-5); }
+    .sg-type__meta { font-family: var(--font-doc); font-size: var(--fs-caption);
+      color: var(--ink-soft); letter-spacing: .04em; margin-top: var(--space-3); }
+    .sg-type__meta b { color: var(--ink); }
+
+    /* font cards */
+    .sg-fonts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--space-5); }
+    .sg-font { background: var(--paper-light); border:1px solid var(--border);
+      padding: var(--space-5); box-shadow: var(--elev-flat); }
+    .sg-font__sample { font-size: 2.4rem; line-height: 1.1; }
+    .sg-font__name { font-family: var(--font-doc); font-size: var(--fs-caption);
+      text-transform: uppercase; letter-spacing:.08em; color: var(--ink-soft);
+      margin-top: var(--space-3); }
+
+    /* colour swatches */
+    .sg-swatches { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: var(--space-4); }
+    .sg-swatch__chip { height: 84px; border-radius: var(--radius-sm); border:1px solid var(--border); }
+    .sg-swatch__name { font-family: var(--font-doc); font-size: var(--fs-caption);
+      margin-top: var(--space-2); color: var(--ink); }
+    .sg-swatch__var { font-family: var(--font-doc); font-size: .72rem; color: var(--ink-soft); }
+
+    /* spacing scale */
+    .sg-space__row { display:flex; align-items:center; gap: var(--space-4); margin-bottom: var(--space-3); }
+    .sg-space__bar { height: 16px; background: var(--accent); border-radius: var(--radius-xs); }
+    .sg-space__label { font-family: var(--font-doc); font-size: var(--fs-caption); color: var(--ink-soft); }
+
+    /* layout template previews */
+    .sg-tmpl { border:1px dashed var(--border); background: var(--paper-light);
+      padding: var(--space-4); margin-bottom: var(--space-5); }
+    .sg-tmpl__title { font-family: var(--font-doc); font-size: var(--fs-caption);
+      text-transform: uppercase; letter-spacing:.08em; color: var(--ink-soft); margin-bottom: var(--space-3); }
+    .sg-box { background: color-mix(in srgb, var(--accent) 14%, var(--paper-raised));
+      border:1px solid var(--border); min-height: 64px; border-radius: var(--radius-xs);
+      display:flex; align-items:center; justify-content:center;
+      font-family: var(--font-doc); font-size: var(--fs-caption); color: var(--ink-soft); }
+    .sg-box--img { background: color-mix(in srgb, var(--c-brass) 22%, var(--paper-raised)); min-height: 120px; }
+
+    .sg-stage-demo { position: relative; min-height: 22rem; background: var(--paper-raised);
+      border:1px dashed var(--border); border-radius: var(--radius-sm); }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="sg-top">
+    <div class="container">
+      <p class="type-eyebrow on-dark">Sports Car Rescue · Internal</p>
+      <h1 class="type-display-lg on-dark">Design System</h1>
+      <p class="type-lead on-dark" style="margin-top:var(--space-3)">
+        One source of truth. Every page is assembled from these styles —
+        no new typography, spacing, buttons or layouts in sections.
+      </p>
+      <nav class="sg-nav" aria-label="Sections">
+        <a href="#fonts">Fonts</a>
+        <a href="#type">Type ramp</a>
+        <a href="#color">Color</a>
+        <a href="#space">Spacing</a>
+        <a href="#grid">Grid</a>
+        <a href="#buttons">Buttons</a>
+        <a href="#images">Image layers</a>
+        <a href="#templates">Layouts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ FONTS ============ -->
+  <section id="fonts" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Fonts</h2>
+      <p class="sg-note">
+        Four families, each with a job. Don't like one? Change it in ONE place —
+        <span class="sg-code">css/tokens.css</span> → the <span class="sg-code">--font-*</span>
+        variables — and the whole site follows. (Web fonts load from Google Fonts in each page's
+        <span class="sg-code">&lt;head&gt;</span>; swap the family name there too.)
+      </p>
+      <div class="sg-fonts">
+        <div class="sg-font">
+          <div class="sg-font__sample" style="font-family:var(--font-display);text-transform:uppercase;font-weight:700">Barn Find</div>
+          <div class="sg-font__name">--font-display · Oswald<br>headlines / signage</div>
+        </div>
+        <div class="sg-font">
+          <div class="sg-font__sample" style="font-family:var(--font-script);color:var(--accent)">Rescued&nbsp;1968</div>
+          <div class="sg-font__name">--font-script · Shadows Into Light Two<br>handwritten captions</div>
+        </div>
+        <div class="sg-font">
+          <div class="sg-font__sample" style="font-family:var(--font-doc);font-size:1.5rem">CERTIFICATE No. 0640882</div>
+          <div class="sg-font__name">--font-doc · Special Elite<br>typewriter labels / buttons</div>
+        </div>
+        <div class="sg-font">
+          <div class="sg-font__sample" style="font-family:var(--font-body)">Dust to driver.</div>
+          <div class="sg-font__name">--font-body · Spectral<br>serif body copy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPE RAMP ============ -->
+  <section id="type" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Type ramp</h2>
+      <p class="sg-note">The complete set. Sections use ONLY these classes — no custom sizes.</p>
+      <div class="sg-type">
+        <div class="sg-type__row">
+          <div class="type-display-xl">Rescued from a barn</div>
+          <p class="sg-type__meta"><b>.type-display-xl</b> · Oswald · 44→96px · lh .94 · track −.02em · 700</p>
+        </div>
+        <div class="sg-type__row">
+          <div class="type-display-lg">Automotive archaeology</div>
+          <p class="sg-type__meta"><b>.type-display-lg</b> · Oswald · 38→76px · lh .94 · track −.02em · 700</p>
+        </div>
+        <div class="sg-type__row">
+          <div class="type-display-md">Forgotten iron</div>
+          <p class="sg-type__meta"><b>.type-display-md</b> · Oswald · 34→60px · lh 1.06 · 700</p>
+        </div>
+        <div class="sg-type__row">
+          <h3 class="type-h1">Heading one</h3>
+          <p class="sg-type__meta"><b>.type-h1</b> · Oswald · 32→52px · lh 1.06 · 700</p>
+        </div>
+        <div class="sg-type__row">
+          <h3 class="type-h2">Heading two</h3>
+          <p class="sg-type__meta"><b>.type-h2</b> · Oswald · 27→40px · lh 1.06 · 700</p>
+        </div>
+        <div class="sg-type__row">
+          <h3 class="type-h3">Heading three</h3>
+          <p class="sg-type__meta"><b>.type-h3</b> · Oswald · 22→30px · lh 1.06 · 500</p>
+        </div>
+        <div class="sg-type__row">
+          <h3 class="type-h4">Heading four</h3>
+          <p class="sg-type__meta"><b>.type-h4</b> · Oswald · 19→24px · lh 1.25 · 500</p>
+        </div>
+        <div class="sg-type__row">
+          <p class="type-eyebrow">Barn-find · Tennessee · Est. dust</p>
+          <p class="sg-type__meta"><b>.type-eyebrow</b> · Special Elite · 11→12px · track .28em · UPPER</p>
+        </div>
+        <div class="sg-type__row">
+          <p class="type-script">Sleeping in a barn since '75</p>
+          <p class="sg-type__meta"><b>.type-script</b> · Caveat · 24→44px · accent color</p>
+        </div>
+        <div class="sg-type__row">
+          <p class="type-lead">We drag dust-buried classics into the light and document every turn of the wrench — from rust and ruin to running iron.</p>
+          <p class="sg-type__meta"><b>.type-lead</b> · Spectral · 18→22px · lh 1.45 · ink-soft</p>
+        </div>
+        <div class="sg-type__row">
+          <p class="type-body-lg">Body large — used for opening paragraphs and emphasis copy that still reads as running text rather than a lead.</p>
+          <p class="sg-type__meta"><b>.type-body-lg</b> · Spectral · 17→19px · lh 1.65</p>
+        </div>
+        <div class="sg-type__row">
+          <p class="type-body">Body default — the workhorse. Long-form archival notes, provenance, restoration logs and storytelling all set in Spectral for an old-print feel.</p>
+          <p class="sg-type__meta"><b>.type-body</b> · Spectral · 16→18px · lh 1.65</p>
+        </div>
+        <div class="sg-type__row">
+          <p class="type-body-sm">Body small — secondary details, metadata, fine print under documents.</p>
+          <p class="sg-type__meta"><b>.type-body-sm</b> · Spectral · 14→15px · lh 1.55 · ink-soft</p>
+        </div>
+        <div class="sg-type__row">
+          <p class="type-caption">CAPTION · FILE 0640882 · GEORGIA · 1967</p>
+          <p class="sg-type__meta"><b>.type-caption</b> · Special Elite · 12.5→13px · track .06em</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section id="color" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Color</h2>
+      <p class="sg-note">Semantic variables only. Components never hard-code a color.</p>
+      <div class="sg-swatches">
+        <div><div class="sg-swatch__chip" style="background:var(--paper)"></div><div class="sg-swatch__name">Paper</div><div class="sg-swatch__var">--paper</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--paper-light)"></div><div class="sg-swatch__name">Paper light</div><div class="sg-swatch__var">--paper-light</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--paper-raised)"></div><div class="sg-swatch__name">Paper raised</div><div class="sg-swatch__var">--paper-raised</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--paper-dark)"></div><div class="sg-swatch__name">Paper dark</div><div class="sg-swatch__var">--paper-dark</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--ink)"></div><div class="sg-swatch__name">Ink</div><div class="sg-swatch__var">--ink</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--ink-soft)"></div><div class="sg-swatch__name">Ink soft</div><div class="sg-swatch__var">--ink-soft</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--accent)"></div><div class="sg-swatch__name">Accent (rust)</div><div class="sg-swatch__var">--accent</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--accent-hover)"></div><div class="sg-swatch__name">Accent hover</div><div class="sg-swatch__var">--accent-hover</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--accent-2)"></div><div class="sg-swatch__name">Brass</div><div class="sg-swatch__var">--accent-2</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--accent-3)"></div><div class="sg-swatch__name">Sage / patina</div><div class="sg-swatch__var">--accent-3 · #6E715D</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--surface-stone)"></div><div class="sg-swatch__name">Stone (taupe)</div><div class="sg-swatch__var">--surface-stone · #5D544B</div></div>
+        <div><div class="sg-swatch__chip" style="background:var(--border)"></div><div class="sg-swatch__name">Border</div><div class="sg-swatch__var">--border</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPACING ============ -->
+  <section id="space" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Spacing</h2>
+      <p class="sg-note">8px-based scale. All margins/paddings use it — no arbitrary values.</p>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:4px"></div>   <span class="sg-space__label">4 · --space-1</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:8px"></div>   <span class="sg-space__label">8 · --space-2</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:12px"></div>  <span class="sg-space__label">12 · --space-3</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:16px"></div>  <span class="sg-space__label">16 · --space-4</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:24px"></div>  <span class="sg-space__label">24 · --space-5</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:32px"></div>  <span class="sg-space__label">32 · --space-6</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:48px"></div>  <span class="sg-space__label">48 · --space-7</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:64px"></div>  <span class="sg-space__label">64 · --space-8</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:96px"></div>  <span class="sg-space__label">96 · --space-9</span></div>
+      <div class="sg-space__row"><div class="sg-space__bar" style="width:128px"></div> <span class="sg-space__label">128 · --space-10</span></div>
+    </div>
+  </section>
+
+  <!-- ============ GRID ============ -->
+  <section id="grid" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Grid</h2>
+      <p class="sg-note">12 desktop / 8 tablet / 4 mobile. Resize the window to watch it collapse.
+        Content stays aligned; only collage imagery breaks the grid on purpose.</p>
+      <div class="grid" style="margin-top:var(--space-5)">
+        <div class="sg-box col-span-2">2</div>
+        <div class="sg-box col-span-2">2</div>
+        <div class="sg-box col-span-4">4</div>
+        <div class="sg-box col-span-4">4</div>
+        <div class="sg-box col-span-7">7</div>
+        <div class="sg-box col-span-5">5</div>
+        <div class="sg-box col-span-12">12 (full)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUTTONS ============ -->
+  <section id="buttons" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Buttons</h2>
+      <p class="sg-note">Height 52px · typewriter label · states: hover lift, focus ring, active press.
+        Three only — no new button styles in sections.</p>
+      <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; align-items:center; margin-bottom:var(--space-6)">
+        <button class="btn btn--primary">Start a Rescue</button>
+        <button class="btn btn--secondary">See the Collection</button>
+        <a href="#buttons" class="btn-link">Read the file →</a>
+      </div>
+      <div class="section--dark" style="padding:var(--space-6); border-radius:var(--radius-sm)">
+        <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; align-items:center">
+          <button class="btn btn--primary">Start a Rescue</button>
+          <button class="btn btn--secondary">See the Collection</button>
+          <a href="#buttons" class="btn-link" style="color:var(--c-brass-light)">Read the file →</a>
+        </div>
+        <p class="type-caption on-dark" style="margin-top:var(--space-4)">On dark surfaces</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMAGE LAYERS ============ -->
+  <section id="images" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Image layers</h2>
+      <p class="sg-note">Each collage object is an independent, interactive-ready layer
+        (hover any below). Consistent elevation keeps them in one light. Real artwork drops in
+        as transparent PNGs later.</p>
+      <div style="display:flex; gap:var(--space-7); flex-wrap:wrap; align-items:flex-end; margin-top:var(--space-5)">
+        <figure class="polaroid is-interactive" style="width:230px">
+          <img src="../assets/img/refs/ChatGPT Image Jun 18, 2026, 02_53_12 PM.png" alt="Barn-find polaroid" />
+          <figcaption class="polaroid__caption">Sitting since '67<br>Georgia</figcaption>
+        </figure>
+
+        <div class="document is-interactive" style="width:260px">
+          <div class="document__label">Texas Certificate of Title</div>
+          <div class="document__row">No. 0640882</div>
+          <div class="document__row">Make · Chevrolet</div>
+          <div class="document__row">Year · 1967</div>
+        </div>
+
+        <div class="tag is-interactive">
+          <div class="tag__title">Parts Box</div>
+          <div class="tag__list">✓ gauges<br>✓ emblems<br>✓ trim<br>✓ ???</div>
+        </div>
+
+        <div class="speedo is-interactive"><span class="speedo__needle"></span></div>
+
+        <div class="badge is-interactive">327 · Turbo-Fire</div>
+      </div>
+
+      <p class="sg-note" style="margin-top:var(--space-6)">Tape element (sits on top of a host):</p>
+      <div style="position:relative; width:230px; height:60px">
+        <span class="tape tape--tl"></span>
+        <span class="tape tape--tr"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAYOUT TEMPLATES ============ -->
+  <section id="templates" class="sg-section">
+    <div class="container">
+      <h2 class="type-h2">Layout templates</h2>
+      <p class="sg-note">Every page is assembled from these. Schematic previews:</p>
+
+      <div class="sg-tmpl">
+        <div class="sg-tmpl__title">Hero — content + collage stage (off-centre)</div>
+        <div class="grid">
+          <div class="sg-box col-span-6">content 1–6</div>
+          <div class="sg-box sg-box--img col-span-7" style="margin-left:-12%">collage stage 6–12 (overlaps)</div>
+        </div>
+      </div>
+
+      <div class="sg-tmpl">
+        <div class="sg-tmpl__title">Split — content left / image right (+ reverse)</div>
+        <div class="grid">
+          <div class="sg-box col-span-5">content</div>
+          <div class="sg-box sg-box--img col-span-6 col-start-7">image</div>
+        </div>
+      </div>
+
+      <div class="sg-tmpl">
+        <div class="sg-tmpl__title">Editorial — indented story column + margin note</div>
+        <div class="grid">
+          <div class="sg-box col-span-7 col-start-3">story column 3–9</div>
+          <div class="sg-box col-span-3">aside</div>
+        </div>
+      </div>
+
+      <div class="sg-tmpl">
+        <div class="sg-tmpl__title">Collection — archival wall (staggered 3-up)</div>
+        <div class="grid">
+          <div class="sg-box sg-box--img col-span-4">rescue</div>
+          <div class="sg-box sg-box--img col-span-4" style="margin-top:var(--space-6)">rescue (offset)</div>
+          <div class="sg-box sg-box--img col-span-4">rescue</div>
+        </div>
+      </div>
+
+      <div class="sg-tmpl">
+        <div class="sg-tmpl__title">CTA — full-bleed dark</div>
+        <div class="grid">
+          <div class="sg-box col-span-8 col-start-2">call to action 2–10</div>
+        </div>
+      </div>
+
+      <div class="sg-tmpl">
+        <div class="sg-tmpl__title">Contact — intro + panel</div>
+        <div class="grid">
+          <div class="sg-box col-span-5">intro</div>
+          <div class="sg-box col-span-6 col-start-7">form / details</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section--dark" style="padding-block:var(--space-7)">
+    <div class="container">
+      <p class="type-caption on-dark">Sports Car Rescue — Design System · single source of truth</p>
+    </div>
+  </footer>
+
+</body>
+</html>

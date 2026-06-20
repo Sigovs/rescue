@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports Car Rescue — Barn-Find Restoration</title>
+  <meta name="description"
+        content="Sports Car Rescue pulls forgotten classics out of barns and brings them back to life. Documented, dust-to-driver restorations." />
+
+  <!-- Fonts: display / script / typewriter / serif body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Shadows+Into+Light+Two&family=Special+Elite&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" />
+
+  <!-- Styles — load order: tokens -> base -> typography -> grid
+       -> components -> layouts -> (page/section styles) -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/grid.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layouts.css" />
+  <!-- section-specific styles, after the system -->
+  <link rel="stylesheet" href="css/hero.css" />
+</head>
+<body id="top">
+
+  <!-- Skip link for keyboard users -->
+  <a href="#main" class="btn visually-hidden">Skip to content</a>
+
+  <!-- HEADER (injected from partials/header.html) -->
+  <div data-partial="header"></div>
+
+  <main id="main">
+
+    <!-- ===== HERO — collage stage (polaroids placed; title/speedo/tag/badge to come) ===== -->
+    <section class="hero tmpl-hero section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="grid">
+
+          <!-- LEFT: content column -->
+          <div class="tmpl-hero__content" data-reveal>
+            <p class="type-eyebrow hero__eyebrow">We find value where others see junk.</p>
+            <h1 id="hero-title" class="type-display-xl hero__title">
+              Before you sell it, scrap it, or clean it out,
+              <span class="type-script hero__script">let&rsquo;s talk.</span>
+            </h1>
+            <hr class="hero__rule" />
+            <p class="type-body-lg hero__body">
+              We are passionate automotive enthusiasts actively seeking collector
+              vehicles, project cars, barn finds and vintage parts.
+              If it has history, <strong>we want to hear about it.</strong>
+            </p>
+            <div class="hero__actions">
+              <a href="#contact" class="btn btn--primary">Tell us what you found</a>
+              <a href="#rescues" class="btn btn--secondary">See cars we&rsquo;ve rescued</a>
+            </div>
+          </div>
+
+          <!-- RIGHT: collage stage -->
+          <div class="tmpl-hero__stage hero__stage" data-reveal aria-hidden="true">
+            <figure class="hero__doc is-interactive">
+              <img src="assets/img/hero/title.png" alt="" loading="eager" />
+            </figure>
+            <figure class="hero__poly hero__poly--1 is-interactive">
+              <img src="assets/img/hero/polaroid-2.png" alt="" loading="eager" />
+            </figure>
+            <figure class="hero__poly hero__poly--2 is-interactive">
+              <img src="assets/img/hero/polaroid-1.png" alt="" loading="eager" />
+            </figure>
+            <figure class="hero__poly hero__poly--3 is-interactive">
+              <img src="assets/img/hero/polaroid-3.png" alt="" loading="eager" />
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section anchors (to be built out) ===== -->
+    <section id="rescues" class="section">
+      <div class="container" data-reveal>
+        <p class="eyebrow">The Collection</p>
+        <h2>Rescues</h2>
+      </div>
+    </section>
+
+    <section id="process" class="section section--dark">
+      <div class="container" data-reveal>
+        <p class="eyebrow">Dust to Driver</p>
+        <h2>The Process</h2>
+      </div>
+    </section>
+
+    <section id="story" class="section">
+      <div class="container" data-reveal>
+        <p class="eyebrow">Why We Do It</p>
+        <h2>The Story</h2>
+      </div>
+    </section>
+
+    <section id="contact" class="section section--dark">
+      <div class="container" data-reveal>
+        <p class="eyebrow">Found Something?</p>
+        <h2>Start a Rescue</h2>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (injected from partials/footer.html) -->
+  <div data-partial="footer"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

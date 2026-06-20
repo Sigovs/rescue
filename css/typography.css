@@ -1,0 +1,182 @@
+/* ============================================================
+   SPORTS CAR RESCUE — TYPOGRAPHY SYSTEM
+   ------------------------------------------------------------
+   The COMPLETE set of text styles. Sections must use ONLY these
+   classes — no custom heading sizes, no random font sizing.
+
+   FONT FAMILIES (change in tokens.css, whole site follows):
+     --font-display  Oswald         condensed signage headlines
+     --font-script   Caveat         handwritten captions / accents
+     --font-doc      Special Elite  typewriter eyebrows / labels / buttons
+     --font-body     Spectral       old-style serif body copy
+
+   Strict descending ladder (desktop max px in brackets):
+   STYLE              FAMILY    SIZE TOKEN       [max]  LINE   TRACK     WEIGHT
+   -----------------  --------  ---------------- -----  -----  --------  ------
+   .type-display-xl   display   --fs-display-xl  [96]   0.94   -0.02em   700 U
+   .type-display-lg   display   --fs-display-lg  [76]   0.94   -0.02em   700 U
+   .type-display-md   display   --fs-display-md  [60]   1.06   -0.01em   700 U
+   .type-h1           display   --fs-h1          [52]   1.06   -0.01em   700 U
+   .type-h2           display   --fs-h2          [40]   1.06   -0.01em   700 U
+   .type-h3           display   --fs-h3          [30]   1.06   -0.01em   500 U
+   .type-h4           display   --fs-h4          [24]   1.25    0.00em   500 U
+   .type-lead         body      --fs-lead        [22]   1.45    0.00em   400
+   .type-body-lg      body      --fs-body-lg     [19]   1.65    0.00em   400
+   .type-body         body      --fs-body        [18]   1.65    0.00em   400
+   .type-body-sm      body      --fs-body-sm     [15]   1.55    0.00em   400
+   .type-caption      doc       --fs-caption     [13]   1.40    0.06em   400
+   .type-eyebrow      doc       --fs-eyebrow     [12]   1.40    0.28em   400 U
+   .type-script       script    --fs-script      [44]   1.20    0.00em   500
+   .type-button       doc       --fs-button      [14]   1.00    0.04em   500 U
+   ============================================================ */
+
+/* ---------- DISPLAY ---------- */
+.type-display-xl,
+.type-display-lg,
+.type-display-md {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--ink);
+}
+.type-display-xl {
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-display);
+  letter-spacing: -0.02em;
+}
+.type-display-lg {
+  font-size: var(--fs-display-lg);
+  line-height: var(--lh-display);
+  letter-spacing: -0.02em;
+}
+.type-display-md {
+  font-size: var(--fs-display-md);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* ---------- HEADINGS ---------- */
+.type-h1, .type-h2, .type-h3, .type-h4 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--ink);
+}
+.type-h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--fw-bold);
+}
+.type-h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--fw-bold);
+}
+.type-h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--fw-medium);
+}
+.type-h4 {
+  font-size: var(--fs-h4);
+  line-height: var(--leading-snug);
+  letter-spacing: 0;
+  font-weight: var(--fw-medium);
+}
+
+/* ---------- EYEBROW / KICKER ---------- */
+.type-eyebrow {
+  font-family: var(--font-doc);
+  font-size: var(--fs-eyebrow);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  font-weight: var(--fw-regular);
+  color: var(--ink-soft);
+}
+
+/* ---------- BODY ---------- */
+.type-lead {
+  font-family: var(--font-body);
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  font-weight: var(--fw-regular);
+  color: var(--ink-soft);
+  max-width: var(--content-max);
+}
+.type-body-lg {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  max-width: var(--content-max);
+}
+.type-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  max-width: var(--content-max);
+}
+.type-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: var(--content-max);
+}
+
+/* ---------- CAPTION (typewriter file-label) ---------- */
+.type-caption {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+/* ---------- SCRIPT (handwritten accent) ---------- */
+.type-script {
+  font-family: var(--font-script);
+  font-size: var(--fs-script);
+  line-height: var(--leading-snug);
+  font-weight: var(--fw-regular);   /* Shadows Into Light Two ships 400 only */
+  color: var(--accent);
+}
+
+/* ---------- BUTTON LABEL (shared by .btn in components.css) ---------- */
+.type-button {
+  font-family: var(--font-doc);
+  font-size: var(--fs-button);
+  line-height: 1;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: var(--fw-medium);
+}
+
+/* ---------- COLOR MODIFIERS ---------- */
+.on-dark,
+.on-dark.type-h1, .on-dark.type-h2, .on-dark.type-h3, .on-dark.type-h4,
+.on-dark.type-display-xl, .on-dark.type-display-lg, .on-dark.type-display-md {
+  color: var(--ink-on-dark);
+}
+.on-dark.type-eyebrow,
+.on-dark.type-lead,
+.on-dark.type-body-sm,
+.on-dark.type-caption {
+  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
+}
+.text-accent { color: var(--accent); }
+.text-muted  { color: var(--ink-soft); }
+
+/* ---------- LEGACY ALIASES (older markup keeps working) ---------- */
+.eyebrow { font-family: var(--font-doc); font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow); text-transform: uppercase;
+  color: var(--ink-soft); }
+.script  { font-family: var(--font-script); font-size: var(--fs-script);
+  line-height: var(--leading-snug); color: var(--accent); }
+.lead    { font-size: var(--fs-lead); color: var(--ink-soft); }

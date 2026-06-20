@@ -1,0 +1,139 @@
+/* ============================================================
+   SPORTS CAR RESCUE — HERO (section-specific composition)
+   ------------------------------------------------------------
+   Builds on .tmpl-hero (layouts.css). Loaded LAST, after the
+   design system. Reuses system tokens/type/buttons only.
+
+   Stage holds the polaroid layers now; the right edge is kept
+   clear for the title / speedometer / tag / badge layers + the
+   wooden-texture background that arrive next.
+   ============================================================ */
+
+/* ---------- FOLD: fit the whole hero in the first screen ----------
+   Height = viewport minus the fixed header, content vertically centred,
+   with a little extra air at the bottom. Collage is sized in vh so it
+   shrinks on short laptops instead of spilling past the fold. */
+.hero.tmpl-hero {
+  min-height: calc(100svh - var(--header-h));
+  display: grid;
+  align-content: center;
+  padding-top: clamp(var(--space-5), 2.5vh, var(--space-7));
+  padding-bottom: clamp(var(--space-6), 5vh, var(--space-9));   /* air below */
+}
+
+/* ---------- LEFT: content column ---------- */
+.hero__eyebrow { margin-bottom: var(--space-4); }
+
+.hero__title {
+  /* display-xl from the system; script line drops onto its own row */
+  margin-bottom: var(--space-5);
+}
+.hero__script {
+  display: block;
+  margin-top: var(--space-2);
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.hero__rule {
+  width: clamp(180px, 22vw, 320px);
+  height: 1px;
+  border: 0;
+  background: var(--border);
+  margin: 0 0 var(--space-5);
+}
+
+.hero__body { margin-bottom: var(--space-6); }
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ---------- RIGHT: collage stage ---------- */
+.hero__stage {
+  min-height: clamp(26rem, 38vw, 40rem);
+}
+
+/* Shared polaroid layer. Position via transform so these can later
+   slide-in / slide-out and behave like buttons. Consistent shadow
+   keeps all three in the same light (PNGs ship without one). */
+.hero__poly {
+  position: absolute;
+  margin: 0;
+  width: clamp(15rem, 22vw, 23rem);
+}
+.hero__poly > img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 30px color-mix(in srgb, var(--shadow) 38%, transparent));
+}
+
+/* Certificate of title — document layer, top-right, behind the fan,
+   bleeds slightly off the right edge (stage has overflow:clip). */
+.hero__doc {
+  position: absolute;
+  margin: 0;
+  width: clamp(18rem, 30vw, 30rem);
+  top: -4%;
+  right: -8%;
+  rotate: -6deg;              /* right edge lifted, like the reference */
+  z-index: var(--layer-1);
+}
+.hero__doc > img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 14px 26px color-mix(in srgb, var(--shadow) 32%, transparent));
+}
+.hero__doc:hover { transform: translateY(-5px) rotate(-6deg) scale(1.01); }
+
+/* Fan: #3 Corvette front/main, #1 and #2 behind it. */
+.hero__poly--1 {        /* Mustang — back left */
+  top: 1%;
+  left: 4%;
+  rotate: -8deg;
+  z-index: var(--layer-2);   /* 20 */
+}
+.hero__poly--2 {        /* fastback — back right, lower */
+  top: 16%;
+  left: 44%;
+  rotate: 6deg;
+  z-index: calc(var(--layer-2) + 1);   /* 21 */
+}
+.hero__poly--3 {        /* Corvette — front centre, largest */
+  top: 30%;
+  left: 22%;
+  width: clamp(17rem, 25vw, 26rem);
+  rotate: -2deg;
+  z-index: calc(var(--layer-2) + 3);   /* 23 */
+}
+
+/* Hover lift is handled by .is-interactive (components.css); it sets
+   transform:translateY()… — pair it with our rotate via a wrapper-free
+   override so the tilt is preserved on hover. */
+.hero__poly--1:hover { transform: translateY(-6px) rotate(-8deg) scale(1.015); }
+.hero__poly--2:hover { transform: translateY(-6px) rotate(6deg)  scale(1.015); }
+.hero__poly--3:hover { transform: translateY(-6px) rotate(-2deg) scale(1.015); z-index: var(--layer-3); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .hero__stage { min-height: 30rem; margin-top: var(--space-7); }
+  .hero__poly   { width: clamp(13rem, 34vw, 19rem); }
+  .hero__poly--3 { width: clamp(15rem, 40vw, 22rem); }
+}
+
+@media (max-width: 640px) {
+  /* Simplify the fan into a tidy stagger so it never turns to mush. */
+  .hero__stage { min-height: 24rem; }
+  .hero__poly--1 { top: 0;   left: 2%;  width: 62%; rotate: -6deg; }
+  .hero__poly--2 { top: 12%; left: 36%; width: 60%; rotate: 5deg; }
+  .hero__poly--3 { top: 30%; left: 14%; width: 70%; rotate: -2deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__poly--1:hover,
+  .hero__poly--2:hover,
+  .hero__poly--3:hover { transform: none; }
+}
