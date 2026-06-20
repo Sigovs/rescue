@@ -19,6 +19,11 @@
   align-content: center;
   padding-top: clamp(var(--space-5), 2.5vh, var(--space-7));
   padding-bottom: clamp(var(--space-6), 5vh, var(--space-9));   /* air below */
+  /* full-bleed aged-paper texture behind the whole hero */
+  background-image: url("../assets/img/bg/hero-paper.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* ---------- LEFT: content column ---------- */
@@ -64,11 +69,19 @@
   position: absolute;
   margin: 0;
   width: clamp(15rem, 22vw, 23rem);
+  /* smooth, unhurried ease — the lift settles rather than snaps */
+  transition: transform 520ms var(--ease-out);
+  will-change: transform;
 }
 .hero__poly > img {
   width: 100%;
   height: auto;
   filter: drop-shadow(0 18px 30px color-mix(in srgb, var(--shadow) 38%, transparent));
+  transition: filter 520ms var(--ease-out);
+}
+/* shadow deepens as the photo lifts off the page */
+.hero__poly:hover > img {
+  filter: drop-shadow(0 32px 48px color-mix(in srgb, var(--shadow) 50%, transparent));
 }
 
 /* Certificate of title — document layer, top-right, behind the fan,
@@ -85,9 +98,48 @@
 .hero__doc > img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 14px 26px color-mix(in srgb, var(--shadow) 32%, transparent));
 }
-.hero__doc:hover { transform: translateY(-5px) rotate(-6deg) scale(1.01); }
+/* Certificate is intentionally STATIC — it does not react to hover. */
+
+/* Speedometer — brass gauge, right edge, front layer, bleeds off-screen. */
+.hero__speedo {
+  position: absolute;
+  margin: 0;
+  width: clamp(8rem, 12vw, 13rem);
+  top: 4%;
+  right: -5%;
+  rotate: 6deg;
+  z-index: var(--layer-3);
+}
+.hero__speedo > img {
+  width: 100%;
+  height: auto;
+  /* sitting-on-a-desk: tight dark contact shadow + deeper soft ambient */
+  filter:
+    drop-shadow(0 4px 5px color-mix(in srgb, var(--shadow) 60%, transparent))
+    drop-shadow(0 16px 18px color-mix(in srgb, var(--shadow) 50%, transparent))
+    drop-shadow(0 30px 40px color-mix(in srgb, var(--shadow) 40%, transparent));
+}
+.hero__speedo:hover { transform: translateY(-5px) rotate(6deg) scale(1.03); }
+
+/* Parts tag — hang tag, bottom-right, front layer. */
+.hero__tag {
+  position: absolute;
+  margin: 0;
+  width: clamp(7rem, 11vw, 12rem);
+  bottom: 4%;
+  right: -10%;
+  rotate: 7deg;
+  z-index: var(--layer-1);   /* same level as certificate — behind the photos */
+  transition: transform 520ms var(--ease-out);
+  will-change: transform;
+}
+.hero__tag > img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 14px 22px color-mix(in srgb, var(--shadow) 40%, transparent));
+}
+.hero__tag:hover { transform: translateY(-12px) rotate(4deg) scale(1.04); }
 
 /* Fan: #3 Corvette front/main, #1 and #2 behind it. */
 .hero__poly--1 {        /* Mustang — back left */
@@ -113,9 +165,15 @@
 /* Hover lift is handled by .is-interactive (components.css); it sets
    transform:translateY()… — pair it with our rotate via a wrapper-free
    override so the tilt is preserved on hover. */
-.hero__poly--1:hover { transform: translateY(-6px) rotate(-8deg) scale(1.015); }
-.hero__poly--2:hover { transform: translateY(-6px) rotate(6deg)  scale(1.015); }
-.hero__poly--3:hover { transform: translateY(-6px) rotate(-2deg) scale(1.015); z-index: var(--layer-3); }
+/* On hover a polaroid lifts AND jumps to the very front of the collage
+   (above the other polaroids, the speedometer and the certificate). */
+.hero__poly--1:hover,
+.hero__poly--2:hover,
+.hero__poly--3:hover { z-index: var(--layer-tape); }   /* 40 — top of stack */
+/* lift higher AND straighten slightly — like picking the photo up */
+.hero__poly--1:hover { transform: translateY(-14px) rotate(-5deg) scale(1.04); }
+.hero__poly--2:hover { transform: translateY(-14px) rotate(3deg)  scale(1.04); }
+.hero__poly--3:hover { transform: translateY(-14px) rotate(-1deg) scale(1.04); }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {

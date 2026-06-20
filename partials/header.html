@@ -1,20 +1,56 @@
 <!-- ============================================================
      HEADER / NAV  — injected by js/main.js into [data-partial="header"]
+     Hybrid: a few key links inline + ☰ menu with the full 8-section index.
      ============================================================ -->
-<header class="site-header" data-reveal>
+<header class="site-header">
   <div class="container site-header__inner">
-    <a class="brand" href="#top" aria-label="Sports Car Rescue — home">
+    <a class="brand" href="#home" aria-label="Sports Car Rescue — home">
       <span class="brand__mark">SCR</span>
       <span class="brand__name">Sports&nbsp;Car&nbsp;Rescue</span>
     </a>
 
     <nav class="site-nav" aria-label="Primary">
-      <a href="#rescues">Rescues</a>
-      <a href="#process">The Process</a>
-      <a href="#story">Story</a>
-      <a href="#contact">Contact</a>
+      <a href="#cars-we-buy">Cars We Buy</a>
+      <a href="#vehicles-for-sale">Vehicles For Sale</a>
+      <a href="#cars-weve-purchased">Purchased</a>
+      <a href="#contact-us">Contact</a>
     </nav>
 
-    <a href="#contact" class="btn btn--secondary site-header__cta">Start a Rescue</a>
+    <div class="site-header__actions">
+      <a href="#cars-were-looking-for" class="btn btn--secondary site-header__cta">Tell us what you found</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-toggle__label">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
+
+<!-- ===== Slide-in archival INDEX drawer (all 8 sections) ===== -->
+<div class="site-menu" id="site-menu" aria-hidden="true">
+  <div class="site-menu__backdrop" data-menu-close></div>
+
+  <aside class="site-menu__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="site-menu__bar">
+      <span class="brand__mark">SCR</span>
+      <button class="site-menu__close" type="button" aria-label="Close menu">
+        Close <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <nav class="site-menu__inner" aria-label="All sections">
+      <p class="type-eyebrow site-menu__eyebrow">The Index &mdash; every road we drive</p>
+      <ol class="menu-index" role="list">
+        <li><a href="#home"><span class="menu-index__no">01</span><span class="menu-index__label">Home</span></a></li>
+        <li><a href="#cars-were-looking-for"><span class="menu-index__no">02</span><span class="menu-index__label">Cars We&rsquo;re Looking For</span></a></li>
+        <li><a href="#cars-we-buy"><span class="menu-index__no">03</span><span class="menu-index__label">Cars We Buy</span></a></li>
+        <li><a href="#cars-weve-purchased"><span class="menu-index__no">04</span><span class="menu-index__label">Cars We&rsquo;ve Purchased</span></a></li>
+        <li><a href="#vehicles-for-sale"><span class="menu-index__no">05</span><span class="menu-index__label">Vehicles For Sale</span></a></li>
+        <li><a href="#estate-collection-assistance"><span class="menu-index__no">06</span><span class="menu-index__label">Estate &amp; Collection Assistance</span></a></li>
+        <li><a href="#about-us"><span class="menu-index__no">07</span><span class="menu-index__label">About Us</span></a></li>
+        <li><a href="#contact-us"><span class="menu-index__no">08</span><span class="menu-index__label">Contact Us</span></a></li>
+      </ol>
+      <p class="script site-menu__note">Found something in a barn? &mdash; we want to hear about it.</p>
+    </nav>
+  </aside>
+</div>

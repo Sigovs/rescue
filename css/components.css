@@ -163,12 +163,130 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-soft);
+  white-space: nowrap;
 }
 .site-nav a:hover { color: var(--accent); }
+.site-header__actions { display: flex; align-items: center; gap: var(--space-4); }
 .site-header__cta { min-height: 40px; padding-block: 0; }
 
-@media (max-width: 760px) {
-  .site-nav, .site-header__cta { display: none; }   /* simplified mobile bar */
+/* hamburger toggle */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast);
+}
+.nav-toggle__bars { position: relative; }
+.nav-toggle__bars::before { position: absolute; top: -7px; left: 0; }
+.nav-toggle__bars::after  { position: absolute; top:  7px; left: 0; }
+.nav-toggle:hover .nav-toggle__bars,
+.nav-toggle:hover .nav-toggle__bars::before,
+.nav-toggle:hover .nav-toggle__bars::after { background: var(--accent); }
+
+/* hide inline nav progressively; hamburger + CTA carry the rest */
+@media (max-width: 1180px) { .site-nav { display: none; } }
+@media (max-width: 760px)  { .site-header__cta { display: none; } }
+
+/* ---------- SLIDE-IN MENU DRAWER ---------- */
+.site-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  visibility: hidden;
+  pointer-events: none;
+}
+.site-menu.is-open { visibility: visible; pointer-events: auto; }
+
+.site-menu__backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--c-espresso) 60%, transparent);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.site-menu.is-open .site-menu__backdrop { opacity: 1; }
+
+.site-menu__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(440px, 88vw);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-7) var(--space-7);
+  background: var(--paper-dark);
+  color: var(--ink-on-dark);
+  border-left: 1px solid color-mix(in srgb, var(--c-brass) 35%, transparent);
+  box-shadow: -24px 0 60px color-mix(in srgb, var(--c-espresso) 45%, transparent);
+  transform: translateX(100%);
+  transition: transform var(--dur-base) var(--ease-fluid);
+  overflow-y: auto;
+}
+.site-menu.is-open .site-menu__panel { transform: translateX(0); }
+
+.site-menu__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+.site-menu__bar .brand__mark { font-size: 1.4rem; color: var(--c-brass-light); }
+.site-menu__close {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink-on-dark) 75%, transparent);
+}
+.site-menu__close:hover { color: var(--c-brass-light); }
+.site-menu__close span { font-size: 1.2em; }
+
+.site-menu__eyebrow { color: color-mix(in srgb, var(--ink-on-dark) 60%, transparent); margin-bottom: var(--space-5); }
+
+.menu-index { list-style: none; padding: 0; counter-reset: none; }
+.menu-index li + li { border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 14%, transparent); }
+.menu-index a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  color: var(--ink-on-dark);
+  transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur-fast) var(--ease-out);
+}
+.menu-index a:hover { color: var(--c-brass-light); padding-left: var(--space-3); }
+.menu-index__no {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  color: var(--accent);
+  min-width: 1.8rem;
+}
+.menu-index__label {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h4);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+.site-menu__note { margin-top: var(--space-6); color: var(--c-brass-light); }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu__panel, .site-menu__backdrop { transition: none; }
 }
 
 .site-footer { padding-block: var(--space-7); }
