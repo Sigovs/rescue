@@ -172,6 +172,7 @@
   --fs-body-lg:    clamp(1.0625rem, 1.02rem + 0.25vw, 1.1875rem); /* 17 → 19 */
   --fs-caption:    clamp(0.78rem, 0.76rem + 0.10vw, 0.8125rem);   /* 12.5 → 13 */
   --fs-button:     clamp(0.80rem, 0.78rem + 0.10vw, 0.875rem);    /* 12.8 → 14 */
+  --fs-nav:        1rem;                                          /* 16 — header nav links */
 
   /* line-heights, named */
   --lh-display: 0.94;

@@ -26,6 +26,26 @@
   background-repeat: no-repeat;
 }
 
+/* ---------- WOOD PANEL — torn-edge planks behind the right collage ----------
+   Transparent torn left edge blends into the paper; the collage sits on top.
+   Behind the content/collage (z-index 0); content lifted to z-index 1. */
+.hero__wood {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(64vw, 1080px);
+  z-index: 0;
+  pointer-events: none;
+  background: url("../assets/img/hero/woodenbackground.png") right center / cover no-repeat;
+}
+.hero > .container { position: relative; z-index: 1; }
+
+@media (max-width: 768px) {
+  /* collage stacks below on small screens — drop the wood strip */
+  .hero__wood { display: none; }
+}
+
 /* ---------- LEFT: content column ---------- */
 .hero__eyebrow { margin-bottom: var(--space-4); }
 
