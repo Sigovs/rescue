@@ -18,7 +18,6 @@ collector who rescues automotive history.
 - Default LLM / "Claude" design language
 - SaaS or startup landing-page layouts
 - Centered marketing pages, centered hero + two-button CTA
-- Feature cards, 3-up symmetric card grids, dashboard grids
 - Rounded modern UI, clean tech-company look, agency templates
 - Generic "website sections", symmetrical layouts
 - Anything that reads as a "modern dealership website"
@@ -29,6 +28,9 @@ collector who rescues automotive history.
 - Paper textures, aged documents, handwritten notes, film grain
 - Visual storytelling — every section = part of an ongoing search for
   forgotten collector cars
+- Card grids ARE allowed when they serve a comprehensive "lists everyone"
+  catalogue (à la the client-liked Gullwing sell page) — but style them
+  archival (paper, tags, typewriter labels), never as SaaS/dealer tiles
 
 **Inspiration:** editorial magazine spreads, museum exhibits, archival
 photography, collector notebooks, old vehicle title documents, automotive

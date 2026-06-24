@@ -24,6 +24,9 @@
   <!-- section-specific styles, after the system -->
   <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/buy.css" />
+  <link rel="stylesheet" href="css/why.css" />
+  <link rel="stylesheet" href="css/wanted.css" />
+  <link rel="stylesheet" href="css/estate.css" />
 </head>
 <body id="top">
 
@@ -87,7 +90,7 @@
     </section>
 
     <!-- ===== CARS WE BUY — "What we buy" ===== -->
-    <section id="cars-we-buy" class="buy section" aria-labelledby="buy-title">
+    <section id="what-we-buy" class="buy section" aria-labelledby="buy-title">
       <div class="container">
         <header class="buy__head center" data-reveal>
           <p class="type-eyebrow buy__eyebrow">What We Buy</p>
@@ -106,7 +109,7 @@
             <span class="buy-col__line" aria-hidden="true"></span>
             <p class="buy-col__desc type-body-sm">Dusty storage buildings, forgotten sheds and decades-old project cars.</p>
             <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Barn_Finds.png" alt="A barn-find sports car under dust covers" loading="lazy" /></figure>
-            <a href="#cars-were-looking-for" class="btn-link buy-col__more">Open the doors</a>
+            <a href="#cars-we-buy" class="btn-link buy-col__more">Open the doors</a>
           </article>
 
           <article class="buy-col col-span-3" data-reveal>
@@ -115,7 +118,7 @@
             <span class="buy-col__line" aria-hidden="true"></span>
             <p class="buy-col__desc type-body-sm">Cars that lost momentum and deserve another chapter.</p>
             <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Unfinished_Projects.png" alt="An unfinished project car mid-restoration" loading="lazy" /></figure>
-            <a href="#cars-were-looking-for" class="btn-link buy-col__more">Another chapter</a>
+            <a href="#cars-we-buy" class="btn-link buy-col__more">Another chapter</a>
           </article>
 
           <article class="buy-col col-span-3" data-reveal>
@@ -139,18 +142,214 @@
       </div>
     </section>
 
-    <!-- ===== Remaining brief sections (stubs — to be built) ===== -->
-    <section id="cars-were-looking-for" class="section">
-      <div class="container" data-reveal><p class="type-eyebrow">Wanted</p><h2 class="type-h2">Cars We&rsquo;re Looking For</h2></div>
+    <!-- ===== WHY SPORTS CAR RESCUE — manifesto + three reasons ===== -->
+    <section id="why-sports-car-rescue" class="why section" aria-labelledby="why-title">
+      <div class="why__bg" aria-hidden="true"></div>
+
+      <!-- A — open album + manifesto -->
+      <div class="container why__intro">
+        <div class="grid why__intro-grid">
+          <figure class="why__book col-span-6 col-t-8" data-reveal>
+            <img src="assets/img/why/book_why.png"
+                 alt="An open photo album of rescued classic cars with handwritten field notes" loading="lazy" />
+          </figure>
+
+          <div class="why__lead col-span-6 col-t-8" data-reveal>
+            <p class="type-eyebrow why__eyebrow">Why Sports Car Rescue</p>
+            <h2 id="why-title" class="why__title">Most People See Clutter. We See History.</h2>
+            <span class="why__rule" aria-hidden="true"></span>
+            <p class="type-body why__copy">
+              What looks like a forgotten garage to most people often contains a story worth preserving.
+            </p>
+            <p class="type-body why__copy">
+              Sports Car Rescue was built by an enthusiast and collector &mdash; not a dealership. We look beyond
+              the dust, the paperwork, and the years of storage to uncover vehicles, parts, and collections that
+              still have value.
+            </p>
+            <div class="why__actions">
+              <a href="#contact-us" class="btn btn--primary">Tell us what you have</a>
+              <a href="#about-us" class="btn btn--secondary">How it works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B — private collector, not a dealership -->
+      <div class="container why__reasons">
+        <header class="why__reasons-head" data-reveal>
+          <p class="type-eyebrow why__eyebrow">Why Owners Choose Us</p>
+          <h3 class="why__subtitle">Private collector, not a dealership.</h3>
+        </header>
+
+        <ol class="grid why__list" role="list">
+          <li class="why-card col-span-4 col-t-4" data-reveal>
+            <span class="why-card__no">01</span>
+            <h4 class="why-card__title">Private Buyer</h4>
+            <p class="why-card__desc type-body-sm">
+              Work directly with the buyer. No auctions, wholesalers, or unnecessary middlemen.
+            </p>
+          </li>
+          <li class="why-card col-span-4 col-t-4" data-reveal>
+            <span class="why-card__no">02</span>
+            <h4 class="why-card__title">Fast Evaluation</h4>
+            <p class="why-card__desc type-body-sm">
+              Send a few photos and basic information. Most opportunities can be reviewed quickly and discreetly.
+            </p>
+          </li>
+          <li class="why-card col-span-4 col-t-8" data-reveal>
+            <span class="why-card__no">03</span>
+            <h4 class="why-card__title">Collector Knowledge</h4>
+            <p class="why-card__desc type-body-sm">
+              Years of experience around classic cars, muscle cars, vintage imports, and automotive memorabilia.
+            </p>
+          </li>
+        </ol>
+      </div>
     </section>
+
+    <!-- ===== CARS WE'RE LOOKING FOR — "The Want List" =====
+         Two layout variants stacked for review (A: field-journal checklist +
+         polaroids · B: full-width WANTED poster). Keep one, delete the other. -->
+    <section id="cars-we-buy" class="wlf section" aria-labelledby="wlf-title">
+      <div class="container wlf__inner">
+
+        <!-- LEFT — editorial intro -->
+        <div class="wlf__intro" data-reveal>
+          <p class="type-eyebrow wlf__eyebrow">Always buying</p>
+          <h2 id="wlf-title" class="wlf__title">Cars We Buy.</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="wlf__script script">If you have one of these (or something similar), we want to hear about it.</p>
+          <p class="wlf__body">
+            We are always on the hunt for classic American sports cars, muscle cars, and vintage
+            imports. Running or not, show quality or barn find &mdash; <b>every car has a story.</b>
+          </p>
+          <a href="#contact-us" class="btn btn--primary wlf__cta">Tell us what you have</a>
+        </div>
+
+<!-- RIGHT — the want grid -->
+        <ul class="wlf__grid" role="list">
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1964&ndash;1973</p>
+            <h3 class="wlf-card__name">Ford Mustang</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/ford-mustang.png" alt="Ford Mustang" loading="lazy" />
+            <p class="wlf-card__note">Any model, any condition. Fastbacks especially.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1963&ndash;1972</p>
+            <h3 class="wlf-card__name">Chevrolet Corvette</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/chevrolet-corvette.png" alt="Chevrolet Corvette" loading="lazy" />
+            <p class="wlf-card__note">Coupe or convertible, big block or small block.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1967&ndash;1969</p>
+            <h3 class="wlf-card__name">Chevrolet Camaro</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/chevrolet-camaro.png" alt="Chevrolet Camaro" loading="lazy" />
+            <p class="wlf-card__note">SS, RS, Z/28 and more. Projects welcome.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1964&ndash;1970</p>
+            <h3 class="wlf-card__name">Pontiac GTO</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/pontiac-gto.png" alt="Pontiac GTO" loading="lazy" />
+            <p class="wlf-card__note">Original and numbers-matching preferred.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1968&ndash;1970</p>
+            <h3 class="wlf-card__name">Dodge Charger</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/dodge-charger.png" alt="Dodge Charger" loading="lazy" />
+            <p class="wlf-card__note">Big-block cars are always in demand.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1955&ndash;1972</p>
+            <h3 class="wlf-card__name">Chevrolet Pickups</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/chevrolet-pickups.png" alt="Chevrolet Pickup" loading="lazy" />
+            <p class="wlf-card__note">Short bed, long bed, stepside or fleetside.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1948&ndash;1965</p>
+            <h3 class="wlf-card__name">Porsche 356</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/porsche-356.png" alt="Porsche 356" loading="lazy" />
+            <p class="wlf-card__note">All models and years. Any condition.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+          <li class="wlf-card" data-reveal>
+            <p class="wlf-card__years">1965&ndash;1998</p>
+            <h3 class="wlf-card__name">Porsche 911</h3>
+            <img class="wlf-card__ph" src="assets/img/carswebuy/porsche-911.png" alt="Porsche 911" loading="lazy" />
+            <p class="wlf-card__note">Air-cooled. Coupes, Targas and Cabrios.</p>
+            <span class="wlf-card__rule" aria-hidden="true"></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== ESTATE & COLLECTION ASSISTANCE ===== -->
+    <section id="estate-collection-assistance" class="estate section" aria-labelledby="estate-title">
+      <div class="container">
+        <div class="grid estate__grid">
+
+          <!-- LEFT — empathetic intro + how we help -->
+          <div class="estate__intro col-span-7 col-t-8" data-reveal>
+            <p class="type-eyebrow estate__eyebrow">Estate &amp; Collection Assistance</p>
+            <h2 id="estate-title" class="type-display-md estate__title">Inherited a collection?<br />Don&rsquo;t clear it out yet.</h2>
+            <span class="rule" aria-hidden="true"></span>
+            <p class="type-lead estate__lead">
+              Settling a lifetime of cars and parts is overwhelming &mdash; and easy to undervalue. We help
+              families see what it&rsquo;s worth, and where it should go.
+            </p>
+
+            <ul class="estate-cards" role="list">
+              <li class="estate-card">
+                <h3 class="estate-card__title">We take a full inventory</h3>
+                <p class="estate-card__desc type-body-sm">Cars, parts and paperwork &mdash; on site or from your photos.</p>
+              </li>
+              <li class="estate-card">
+                <h3 class="estate-card__title">We identify &amp; value it all</h3>
+                <p class="estate-card__desc type-body-sm">Decades of knowledge across classics, muscle and rare parts.</p>
+              </li>
+              <li class="estate-card">
+                <h3 class="estate-card__title">Fair, honest guidance</h3>
+                <p class="estate-card__desc type-body-sm">We buy what fits and advise you plainly on the rest.</p>
+              </li>
+            </ul>
+
+            <a href="#contact-us" class="btn btn--primary estate__cta">Talk to us first</a>
+          </div>
+
+          <!-- RIGHT — taped field note, a plate tucked behind it, a ring of keys on top -->
+          <div class="estate__aside col-span-5 col-t-8">
+            <img class="estate__plate" src="assets/img/why/lic_plate.png" alt="" aria-hidden="true" loading="lazy" data-reveal />
+            <aside class="estate__note" data-reveal>
+            <p class="estate-note__kicker script">Before the dumpster &mdash;</p>
+            <h3 class="estate-note__title">Don&rsquo;t throw this away</h3>
+            <span class="rule" aria-hidden="true"></span>
+            <ul class="estate-note__list" role="list">
+              <li>Vintage &amp; N.O.S. parts inventory</li>
+              <li>Owner&rsquo;s manuals &amp; sales brochures</li>
+              <li>Dealer signs &amp; showroom items</li>
+              <li>Titles, build sheets &amp; documentation</li>
+              <li>Restoration components &amp; hardware</li>
+              <li>Trophies, badges &amp; memorabilia</li>
+            </ul>
+            <p class="estate-note__foot type-body-sm">Old paper and parts carry real value. When in doubt, ask before it&rsquo;s gone.</p>
+            </aside>
+            <img class="estate__keys" src="assets/img/why/key.png" alt="" aria-hidden="true" loading="lazy" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section id="cars-weve-purchased" class="section section--dark">
       <div class="container" data-reveal><p class="type-eyebrow on-dark">The Archive</p><h2 class="type-h2">Cars We&rsquo;ve Purchased</h2></div>
     </section>
     <section id="vehicles-for-sale" class="section">
       <div class="container" data-reveal><p class="type-eyebrow">For Sale</p><h2 class="type-h2">Vehicles For Sale</h2></div>
-    </section>
-    <section id="estate-collection-assistance" class="section">
-      <div class="container" data-reveal><p class="type-eyebrow">We Help</p><h2 class="type-h2">Estate &amp; Collection Assistance</h2></div>
     </section>
     <section id="about-us" class="section section--dark">
       <div class="container" data-reveal><p class="type-eyebrow on-dark">Who We Are</p><h2 class="type-h2">About Us</h2></div>

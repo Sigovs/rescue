@@ -126,6 +126,26 @@
    with --primary or --secondary. */
 
 /* ============================================================
+   RULE — short accent divider.
+   CONVENTION (one rule per section block):
+     • a rule sits BETWEEN a section title and its paragraph — and
+       ONLY there. Do NOT also underline the eyebrow; that doubles up.
+     • exactly one rule per title/paragraph pair.
+   Reuse this instead of bespoke per-section rules:
+     <span class="rule" aria-hidden="true"></span>
+   Add .rule--center to centre it under a centred heading.
+   ============================================================ */
+.rule {
+  display: block;
+  width: 56px;
+  height: 2px;
+  border: 0;
+  background: var(--accent);
+  margin-block: var(--space-5);
+}
+.rule--center { margin-inline: auto; }
+
+/* ============================================================
    SITE CHROME — header / footer (global)
    ============================================================ */
 .site-header {
@@ -145,7 +165,11 @@
   gap: var(--space-5);
   width: 100%;
 }
-.brand { display: inline-flex; align-items: baseline; gap: var(--space-3); color: var(--ink); }
+.brand { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--ink); }
+/* SVG wordmark logos (header / menu drawer / footer) */
+.brand__logo { display: block; height: clamp(34px, 3.2vw, 42px); width: auto; }
+.site-menu__logo { display: block; height: 46px; width: auto; }
+.site-footer__logo { display: block; height: 48px; width: auto; }
 .brand__mark {
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
@@ -374,6 +398,15 @@
 .site-footer__nav a { font-family: var(--font-doc); font-size: var(--fs-caption); letter-spacing: .1em; text-transform: uppercase; color: color-mix(in srgb, var(--ink-on-dark) 70%, transparent); }
 .site-footer__nav a:hover { color: var(--c-brass-light); }
 .site-footer .brand__mark { font-size: 1.5rem; }
+.site-footer__contact {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
+}
+.site-footer__contact a { color: var(--c-brass-light); }
+.site-footer__contact a:hover { color: var(--ink-on-dark); }
 
 /* ============================================================
    2. IMAGE SYSTEM — independent collage layers
