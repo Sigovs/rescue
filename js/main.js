@@ -17,7 +17,7 @@ async function loadPartials() {
     [...slots].map(async (slot) => {
       const name = slot.dataset.partial;
       try {
-        const res = await fetch(`partials/${name}.html`);
+        const res = await fetch(`partials/${name}.html`, { cache: "no-cache" });
         if (!res.ok) throw new Error(`${res.status}`);
         slot.outerHTML = await res.text();
       } catch (err) {
@@ -102,11 +102,93 @@ function stampYear() {
   });
 }
 
+/* ---------- 5. INVENTORY CAROUSEL ----------
+   Drag-to-scroll + side arrows + snap. Markup: [data-inv-viewport]. */
+function initInventory() {
+  document.querySelectorAll("[data-inv-viewport]").forEach((vp) => {
+    const shell = vp.closest(".inv__carousel");
+    const prev = shell?.querySelector(".inv__arrow--prev");
+    const next = shell?.querySelector(".inv__arrow--next");
+    const track = vp.querySelector(".inv__track");
+
+    const step = () => {
+      const card = vp.querySelector(".inv-card");
+      const gap = track ? parseFloat(getComputedStyle(track).columnGap) || 0 : 0;
+      return card ? card.getBoundingClientRect().width + gap : vp.clientWidth * 0.8;
+    };
+
+    const update = () => {
+      if (!prev || !next) return;
+      prev.disabled = vp.scrollLeft <= 2;
+      next.disabled = vp.scrollLeft + vp.clientWidth >= vp.scrollWidth - 2;
+    };
+
+    next?.addEventListener("click", () => vp.scrollBy({ left: step(), behavior: "smooth" }));
+    prev?.addEventListener("click", () => vp.scrollBy({ left: -step(), behavior: "smooth" }));
+    vp.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+
+    /* drag to scroll (mouse / pen); native touch scroll handles touch */
+    let down = false, startX = 0, startLeft = 0, moved = false;
+    vp.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "touch") return;
+      down = true; moved = false;
+      startX = e.clientX; startLeft = vp.scrollLeft;
+      vp.classList.add("is-dragging");
+      vp.setPointerCapture(e.pointerId);
+    });
+    vp.addEventListener("pointermove", (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      vp.scrollLeft = startLeft - dx;
+    });
+    const end = () => {
+      if (!down) return;
+      down = false;
+      vp.classList.remove("is-dragging");
+      update();
+    };
+    vp.addEventListener("pointerup", end);
+    vp.addEventListener("pointercancel", end);
+    /* swallow the click that follows a real drag so cards don't navigate */
+    vp.addEventListener("click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  });
+}
+
+/* ---------- 6. DRAG-SCROLL (generic) ----------
+   Pointer drag-to-scroll any horizontal strip: [data-drag-scroll]. */
+function initDragScroll() {
+  document.querySelectorAll("[data-drag-scroll]").forEach((el) => {
+    let down = false, startX = 0, startLeft = 0, moved = false;
+    el.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "touch") return;
+      down = true; moved = false;
+      startX = e.clientX; startLeft = el.scrollLeft;
+      el.classList.add("is-dragging");
+      el.setPointerCapture(e.pointerId);
+    });
+    el.addEventListener("pointermove", (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      el.scrollLeft = startLeft - dx;
+    });
+    const end = () => { if (!down) return; down = false; el.classList.remove("is-dragging"); };
+    el.addEventListener("pointerup", end);
+    el.addEventListener("pointercancel", end);
+    el.addEventListener("click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  });
+}
+
 /* ---------- BOOT ---------- */
 async function boot() {
   await loadPartials(); // inject header/footer first…
   initNav();            // wire the slide-in menu (needs injected header)
   initReveal();         // …then wire reveal over the full DOM
+  initInventory();      // inventory carousel drag + arrows
+  initDragScroll();     // generic drag strips (Instagram feed)
   stampYear();
 }
 

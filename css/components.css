@@ -155,8 +155,11 @@
   height: var(--header-h);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-page);
+  /* stronger, always-distinct bar — lighter paper + soft cast so it never
+     blends into the section scrolling underneath it */
+  background: var(--paper-light);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--shadow) 14%, transparent);
 }
 .site-header__inner {
   display: flex;
@@ -167,7 +170,7 @@
 }
 .brand { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--ink); }
 /* SVG wordmark logos (header / menu drawer / footer) */
-.brand__logo { display: block; height: clamp(34px, 3.2vw, 42px); width: auto; }
+.brand__logo { display: block; height: clamp(42px, 4.2vw, 54px); width: auto; }
 .site-menu__logo { display: block; height: 46px; width: auto; }
 .site-footer__logo { display: block; height: 48px; width: auto; }
 .brand__mark {
@@ -184,16 +187,33 @@
   text-transform: uppercase;
   color: var(--ink);
 }
-.site-nav { display: flex; gap: var(--space-5); }
+.site-nav { display: flex; gap: var(--space-6); }
 .site-nav a {
+  position: relative;
   font-family: var(--font-doc);
   font-size: var(--fs-nav);     /* 16px */
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-soft);
   white-space: nowrap;
+  padding-block: var(--space-2);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+/* chunky underline bar that grows on hover */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-out);
 }
 .site-nav a:hover { color: var(--accent); }
+.site-nav a:hover::after { transform: scaleX(1); }
 .site-header__actions { display: flex; align-items: center; gap: var(--space-4); }
 .site-header__cta { min-height: 40px; padding-block: 0; }
 
@@ -392,9 +412,38 @@
   .site-menu__eyebrow, .menu-index li, .site-menu__note { opacity: 1; transform: none; }
 }
 
-.site-footer { padding-block: var(--space-7); }
-.site-footer__inner { display: flex; flex-wrap: wrap; gap: var(--space-6); justify-content: space-between; align-items: end; }
-.site-footer__nav { display: flex; gap: var(--space-5); }
+.site-footer { padding-block: var(--space-8); }
+/* heavier base — deeper than the espresso section above (beats .section--dark) */
+footer.site-footer {
+  /* subtle warm radial glow at the BOTTOM — darker toward the top */
+  background:
+    radial-gradient(130% 90% at 50% 100%,
+      color-mix(in srgb, var(--c-coffee) 38%, transparent),
+      transparent 60%),
+    color-mix(in srgb, var(--c-espresso) 55%, #000);
+  border-top: 1px solid color-mix(in srgb, var(--c-brass) 16%, transparent);
+}
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.1fr;
+  gap: var(--space-7) var(--space-8);
+  align-items: start;
+}
+.site-footer__meta {
+  grid-column: 1 / -1;
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 12%, transparent);
+}
+@media (max-width: 760px) {
+  .site-footer__inner { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 460px) {
+  .site-footer__inner { grid-template-columns: 1fr; }
+}
+.site-footer__nav { display: flex; flex-direction: column; gap: var(--space-2); }
+.site-footer__nav .eyebrow { margin-bottom: var(--space-1); }
 .site-footer__nav a { font-family: var(--font-doc); font-size: var(--fs-caption); letter-spacing: .1em; text-transform: uppercase; color: color-mix(in srgb, var(--ink-on-dark) 70%, transparent); }
 .site-footer__nav a:hover { color: var(--c-brass-light); }
 .site-footer .brand__mark { font-size: 1.5rem; }
@@ -407,6 +456,21 @@
 }
 .site-footer__contact a { color: var(--c-brass-light); }
 .site-footer__contact a:hover { color: var(--ink-on-dark); }
+.site-footer__placeholder {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-style: italic;
+  font-size: var(--fs-caption);
+  color: color-mix(in srgb, var(--accent) 70%, var(--ink-on-dark));
+}
+.site-footer__social { display: flex; gap: var(--space-4); margin-top: var(--space-2); }
+.site-footer__social a {
+  display: inline-flex;
+  color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent);
+  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.site-footer__social a:hover { color: var(--c-brass-light); transform: translateY(-2px); }
+.site-footer__social svg { width: 22px; height: 22px; display: block; }
 
 /* ============================================================
    2. IMAGE SYSTEM — independent collage layers

@@ -120,7 +120,7 @@
   --container-max: 1240px;
   --content-max:   68ch;     /* readable paragraph measure        */
   --gutter:        clamp(1rem, 0.5rem + 3vw, 2.5rem);
-  --header-h:      clamp(64px, 5vw, 76px);   /* fixed nav height — hero fits below */
+  --header-h:      clamp(72px, 5.4vw, 88px);   /* fixed nav height — hero fits below */
 
   /* ---------- 10. RADII (vintage = nearly sharp) ---------- */
   --radius-xs: 2px;

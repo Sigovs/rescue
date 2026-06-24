@@ -1,0 +1,169 @@
+/* ============================================================
+   SPORTS CAR RESCUE — "CARS FOR SALE" (inventory carousel)
+   Showroom feel, our archival palette: 3 cards in view, arrows on the
+   sides, drag-to-scroll with snap. Per-card mileage + price (price can be
+   a figure or "Call for price"). "View all inventory" CTA below.
+   Carousel behaviour wired in js/main.js (data-inv-viewport).
+   ============================================================ */
+.inv {
+  background-color: var(--paper-raised);
+  overflow: hidden;
+  padding-block: clamp(var(--space-6), 4.5vw, var(--space-8));
+}
+
+.inv__head { max-width: 60ch; margin: 0 auto var(--space-6); text-align: center; }
+.inv__eyebrow { color: var(--accent); margin-bottom: var(--space-4); }
+.inv__title { color: var(--ink); }
+.inv__head .rule { margin-inline: auto; }
+.inv__lead { color: var(--ink-soft); max-width: 54ch; margin-inline: auto; }
+
+/* ---------- carousel shell ---------- */
+.inv__carousel { display: flex; align-items: center; gap: var(--space-3); }
+.inv__viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+  /* overflow-x clips vertically too — pad so the hover lift + shadow show */
+  padding-block: var(--space-6);
+  margin-block: calc(-1 * var(--space-6));
+}
+.inv__viewport::-webkit-scrollbar { display: none; }
+.inv__viewport.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.inv__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-5);
+}
+
+/* ---------- car tile ---------- */
+.inv-card {
+  flex: 0 0 calc((100% - 2 * var(--space-5)) / 3);   /* 3 in view */
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--elev-flat);
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+.inv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--shadow) 22%, transparent);
+}
+
+.inv-card__media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+.inv-card__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.inv-card:hover .inv-card__media img { transform: scale(1.05); }
+.inv-card__tag {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-on-dark);
+  background: var(--accent);
+  padding: 0.2rem var(--space-3);
+  border-radius: var(--radius-xs);
+}
+
+.inv-card__body { display: flex; flex-direction: column; flex: 1; padding: var(--space-4); }
+.inv-card__year {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-1);
+}
+.inv-card__name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: var(--space-3);
+}
+.inv-card__specs {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-4);
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding-top: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.inv-card__spec dt {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-1);
+}
+.inv-card__spec dd { font-family: var(--font-body); font-size: var(--fs-body); color: var(--ink); }
+.inv-card__spec--price { text-align: right; }
+.inv-card__price {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  color: var(--accent);
+}
+.inv-card__price--call {
+  font-family: var(--font-doc);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.inv-card__cta { margin-top: auto; align-self: flex-start; }
+
+/* ---------- arrows ---------- */
+.inv__arrow {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--c-paper-4);
+  background: var(--paper-light);
+  color: var(--ink);
+  font-size: 2rem;
+  line-height: 0;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.inv__arrow:hover { background: var(--accent); border-color: var(--accent); color: var(--ink-on-dark); }
+.inv__arrow:active { transform: scale(0.94); }
+.inv__arrow:disabled { opacity: 0.3; cursor: default; background: var(--paper-light); border-color: var(--c-paper-4); color: var(--ink); }
+
+/* ---------- CTA ---------- */
+.inv__cta { margin-top: var(--space-6); text-align: center; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .inv-card { flex-basis: calc((100% - var(--space-5)) / 2); }   /* 2 in view */
+}
+@media (max-width: 640px) {
+  .inv__arrow { display: none; }                                  /* swipe/drag only */
+  .inv-card { flex-basis: 84%; }                                  /* 1 + peek */
+}

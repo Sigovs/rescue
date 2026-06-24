@@ -1,0 +1,305 @@
+/* ============================================================
+   SPORTS CAR RESCUE — "CONTACT" (the close)
+   Calm dark finale: a hook line, a short pitch, three real ways to
+   reach out (email / phone / Dropbox), and the Instagram handle sitting
+   just above the footer. No form — the site is static, so every action
+   is a working mailto/tel/link. Built on tokens + type.
+   ============================================================ */
+.contact { position: relative; }
+.contact__grid { align-items: start; gap: var(--space-8) var(--grid-gutter); }
+.contact__intro { max-width: 60ch; }
+
+.contact__eyebrow { color: var(--accent); margin-bottom: var(--space-4); }
+
+.contact__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display-md);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink-on-dark);
+  max-width: 18ch;
+}
+.contact__script {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--accent);
+}
+
+.contact__lead {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent);
+  max-width: 52ch;
+}
+
+/* ---------- three ways to reach out ---------- */
+.contact__methods {
+  list-style: none;
+  margin: var(--space-7) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+.contact-method {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background: color-mix(in srgb, #000 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 16%, transparent);
+  border-radius: var(--radius-md);
+  transition: border-color var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out);
+}
+.contact-method:hover {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: color-mix(in srgb, #000 24%, transparent);
+}
+.contact-method__label {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-brass-light);
+}
+.contact-method__value {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h4);
+  letter-spacing: 0.01em;
+  color: var(--ink-on-dark);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.contact-method__value:hover { color: var(--accent); }
+
+/* ---------- Instagram, sitting just above the footer ---------- */
+.contact__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-doc);
+  font-size: var(--fs-button);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink-on-dark) 80%, transparent);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.contact__ig:hover { color: var(--c-brass-light); }
+.contact__ig-mark {
+  width: 22px;
+  height: 22px;
+  border: 2px solid currentColor;
+  border-radius: 7px;
+  position: relative;
+  flex: none;
+}
+.contact__ig-mark::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.contact__ig-mark::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- intake form — boxed fields, compact (wire action to a form service) ---------- */
+/* light paper card — pops off the dark contact section */
+.contact-form {
+  background: var(--paper-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--elev-photo);
+}
+.contact-form__head {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+}
+.field { display: block; margin-bottom: var(--space-3); }
+.field__label {
+  display: block;
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-1);
+}
+.field__opt { text-transform: none; letter-spacing: 0; opacity: 0.7; }
+/* full boxed input */
+.field__input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out);
+}
+.field__input::placeholder { color: color-mix(in srgb, var(--ink) 40%, transparent); }
+.field__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--paper-light);
+}
+textarea.field__input { resize: vertical; min-height: 4.5em; }
+.field-row { display: flex; gap: var(--space-3); }
+.field-row .field { flex: 1; }
+.contact-form__submit { margin-top: var(--space-4); width: 100%; }
+.contact-form__note {
+  margin-top: var(--space-3);
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ============================================================
+   INSTAGRAM FEED — full-bleed strip above the footer (placeholders)
+   ============================================================ */
+.ig-feed { background: var(--paper-dark); padding-bottom: var(--space-7); }
+.ig-feed__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+.ig-feed__eyebrow { color: var(--accent); }
+.ig-feed__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display-md);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink-on-dark);
+}
+.ig-feed__follow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-doc);
+  font-size: var(--fs-button);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-brass-light);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.ig-feed__follow:hover { color: var(--ink-on-dark); }
+
+.ig-feed__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.ig-feed__grid::-webkit-scrollbar { display: none; }
+.ig-feed__grid.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.ig-tile {
+  position: relative;
+  flex: 0 0 clamp(180px, 15.5vw, 260px);
+  aspect-ratio: 1;
+  scroll-snap-align: start;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--ink-on-dark) 6%, transparent);
+}
+.ig-tile a { display: block; width: 100%; height: 100%; }
+.ig-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+.ig-tile:hover img { filter: brightness(1.12); transform: scale(1.05); }
+/* subtle hover scrim */
+.ig-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: color-mix(in srgb, #000 24%, transparent);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+  pointer-events: none;
+}
+.ig-tile:hover::before { opacity: 1; }
+/* Instagram logo on every image (top-right) */
+.ig-tile::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='5'/%3E%3Ccircle cx='12' cy='12' r='4.5'/%3E%3Ccircle cx='17.5' cy='6.5' r='1.3' fill='white' stroke='none'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+/* placeholder IG camera glyph */
+.ig-tile__glyph {
+  width: 34px;
+  height: 34px;
+  position: relative;
+  color: color-mix(in srgb, var(--c-brass-light) 55%, transparent);
+  border: 2px solid currentColor;
+  border-radius: 9px;
+}
+.ig-tile__glyph::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.ig-tile__glyph::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 640px) {
+  .contact__methods { grid-template-columns: 1fr; }
+  .field-row { flex-direction: column; gap: 0; }
+  .ig-feed__follow { margin-left: 0; }
+}
