@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/layouts.css" />
   <!-- section-specific styles, after the system -->
   <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/buy.css" />
 </head>
 <body id="top">
 
@@ -60,7 +61,7 @@
           </div>
 
           <!-- RIGHT: collage stage -->
-          <div class="tmpl-hero__stage hero__stage" data-reveal aria-hidden="true">
+          <div class="tmpl-hero__stage hero__stage" aria-hidden="true">
             <figure class="hero__doc">
               <img src="assets/img/hero/title.png" alt="" loading="eager" />
             </figure>
@@ -85,33 +86,77 @@
       </div>
     </section>
 
-    <!-- ===== Section anchors (to be built out) ===== -->
-    <section id="rescues" class="section">
-      <div class="container" data-reveal>
-        <p class="eyebrow">The Collection</p>
-        <h2>Rescues</h2>
+    <!-- ===== CARS WE BUY — "What we buy" ===== -->
+    <section id="cars-we-buy" class="buy section" aria-labelledby="buy-title">
+      <div class="container">
+        <header class="buy__head center" data-reveal>
+          <p class="type-eyebrow buy__eyebrow">What We Buy</p>
+          <h2 id="buy-title" class="type-display-md">We buy stories, not just cars.</h2>
+          <span class="buy__rule" aria-hidden="true"></span>
+          <p class="type-lead buy__lead">
+            We are looking for vehicles and collections with history.
+            If it has a past, <strong>we want to hear about it.</strong>
+          </p>
+        </header>
+
+        <div class="grid buy__grid">
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Barn%20Finds.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Barn Finds</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Dusty storage buildings, forgotten sheds and decades-old project cars.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Barn_Finds.png" alt="A barn-find sports car under dust covers" loading="lazy" /></figure>
+            <a href="#cars-were-looking-for" class="btn-link buy-col__more">Open the doors</a>
+          </article>
+
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Unfinished%20Projects.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Unfinished Projects</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Cars that lost momentum and deserve another chapter.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Unfinished_Projects.png" alt="An unfinished project car mid-restoration" loading="lazy" /></figure>
+            <a href="#cars-were-looking-for" class="btn-link buy-col__more">Another chapter</a>
+          </article>
+
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Estate%20Collections.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Estate Collections</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Vehicles discovered through inheritance, property sales and family collections.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Estate_Collections.png" alt="Classic cars from an estate collection" loading="lazy" /></figure>
+            <a href="#estate-collection-assistance" class="btn-link buy-col__more">Settle an estate</a>
+          </article>
+
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Parts%20%26%20Memorabilia.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Parts &amp; Memorabilia</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Rare parts inventories, dealer items, manuals and automotive artifacts.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Parts_Memorabilia.png" alt="Vintage parts and automotive memorabilia" loading="lazy" /></figure>
+            <a href="#contact-us" class="btn-link buy-col__more">The shelves</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="process" class="section section--dark">
-      <div class="container" data-reveal>
-        <p class="eyebrow">Dust to Driver</p>
-        <h2>The Process</h2>
-      </div>
+    <!-- ===== Remaining brief sections (stubs — to be built) ===== -->
+    <section id="cars-were-looking-for" class="section">
+      <div class="container" data-reveal><p class="type-eyebrow">Wanted</p><h2 class="type-h2">Cars We&rsquo;re Looking For</h2></div>
     </section>
-
-    <section id="story" class="section">
-      <div class="container" data-reveal>
-        <p class="eyebrow">Why We Do It</p>
-        <h2>The Story</h2>
-      </div>
+    <section id="cars-weve-purchased" class="section section--dark">
+      <div class="container" data-reveal><p class="type-eyebrow on-dark">The Archive</p><h2 class="type-h2">Cars We&rsquo;ve Purchased</h2></div>
     </section>
-
-    <section id="contact" class="section section--dark">
-      <div class="container" data-reveal>
-        <p class="eyebrow">Found Something?</p>
-        <h2>Start a Rescue</h2>
-      </div>
+    <section id="vehicles-for-sale" class="section">
+      <div class="container" data-reveal><p class="type-eyebrow">For Sale</p><h2 class="type-h2">Vehicles For Sale</h2></div>
+    </section>
+    <section id="estate-collection-assistance" class="section">
+      <div class="container" data-reveal><p class="type-eyebrow">We Help</p><h2 class="type-h2">Estate &amp; Collection Assistance</h2></div>
+    </section>
+    <section id="about-us" class="section section--dark">
+      <div class="container" data-reveal><p class="type-eyebrow on-dark">Who We Are</p><h2 class="type-h2">About Us</h2></div>
+    </section>
+    <section id="contact-us" class="section">
+      <div class="container" data-reveal><p class="type-eyebrow">Get In Touch</p><h2 class="type-h2">Contact Us</h2></div>
     </section>
 
   </main>

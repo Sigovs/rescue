@@ -129,10 +129,14 @@
    SITE CHROME — header / footer (global)
    ============================================================ */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
   height: var(--header-h);
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--border);
+  background: var(--bg-page);
 }
 .site-header__inner {
   display: flex;
@@ -296,17 +300,11 @@
   padding: var(--space-4) 0;
   color: var(--ink-on-dark);
 }
-.menu-index__no {
-  font-family: var(--font-doc);
-  font-size: var(--fs-caption);
-  color: var(--accent);
-  min-width: 2rem;
-  transition: color var(--dur-base) var(--ease-out);
-}
+.menu-index__no { display: none; }
 .menu-index__label {
   font-family: var(--font-display);
   font-weight: var(--fw-medium);
-  font-size: var(--fs-h3);
+  font-size: var(--fs-h4);
   text-transform: uppercase;
   letter-spacing: 0.005em;
   line-height: 1.05;
@@ -317,7 +315,12 @@
 .menu-index a:hover .menu-index__label { transform: translateX(10px); color: var(--c-brass-light); }
 .menu-index a:hover .menu-index__no { color: var(--c-brass-light); }
 
-.site-menu__note { margin-top: var(--space-7); color: var(--c-brass-light); }
+.site-menu__note {
+  margin-top: var(--space-5);
+  font-size: var(--fs-lead);
+  line-height: 1.2;
+  color: var(--c-brass-light);
+}
 
 /* staggered reveal — each line settles up in sequence when the drawer opens */
 .site-menu__eyebrow,
@@ -354,9 +357,9 @@
   }
   .site-menu__bar { margin-bottom: var(--space-6); }
   .menu-index a { gap: var(--space-3); padding: var(--space-4) 0; }
-  .menu-index__label { font-size: var(--fs-h4); }
-  .menu-index__no { min-width: 1.6rem; }
-  .site-menu__note { margin-top: var(--space-6); font-size: 1.05rem; line-height: 1.3; }
+  .menu-index__label { font-size: var(--fs-lead); }
+  .menu-index__no { display: none; }
+  .site-menu__note { margin-top: var(--space-5); font-size: var(--fs-body); line-height: 1.25; }
 }
 
 @media (prefers-reduced-motion: reduce) {

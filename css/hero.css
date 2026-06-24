@@ -159,7 +159,11 @@
   height: auto;
   filter: drop-shadow(0 14px 22px color-mix(in srgb, var(--shadow) 40%, transparent));
 }
-.hero__tag:hover { transform: translateY(-12px) rotate(4deg) scale(1.04); }
+/* on hover the tag lifts AND jumps above the photos (like the polaroids do) */
+.hero__tag:hover {
+  z-index: var(--layer-tape);   /* 40 — top of the collage stack */
+  transform: translateY(-12px) rotate(4deg) scale(1.04);
+}
 
 /* Fan: #3 Corvette front/main, #1 and #2 behind it. */
 .hero__poly--1 {        /* Mustang — back left */
@@ -194,6 +198,38 @@
 .hero__poly--1:hover { transform: translateY(-14px) rotate(-5deg) scale(1.04); }
 .hero__poly--2:hover { transform: translateY(-14px) rotate(3deg)  scale(1.04); }
 .hero__poly--3:hover { transform: translateY(-14px) rotate(-1deg) scale(1.04); }
+
+/* ============================================================
+   PAGE-LOAD ENTRANCE — the collage flies in from the right, one by one.
+   Order: wood → certificate → red Porsche → tag → green → speedo → blue.
+   `backwards` fill shows the start state during each delay, then reverts
+   to the base styles when done, so hover transforms keep working. The
+   stage's overflow:clip hides each piece while it's still off-screen. */
+@keyframes hero-fly-in {
+  from { opacity: 0; transform: translateX(120px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.hero__wood,
+.hero__doc,
+.hero__tag,
+.hero__speedo,
+.hero__poly--1,
+.hero__poly--2,
+.hero__poly--3 {
+  animation: hero-fly-in 700ms var(--ease-out) backwards;
+}
+.hero__wood    { animation-delay: 0ms;    }   /* 1. wood, arrives first */
+.hero__doc     { animation-delay: 220ms;  }   /* 2. certificate         */
+.hero__poly--1 { animation-delay: 440ms;  }   /* 3. red Porsche         */
+.hero__tag     { animation-delay: 660ms;  }   /* 4. parts tag           */
+.hero__poly--2 { animation-delay: 880ms;  }   /* 5. green Mustang       */
+.hero__speedo  { animation-delay: 1100ms; }   /* 6. speedometer         */
+.hero__poly--3 { animation-delay: 1320ms; }   /* 7. blue Firebird       */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__wood, .hero__doc, .hero__tag, .hero__speedo,
+  .hero__poly--1, .hero__poly--2, .hero__poly--3 { animation: none; }
+}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
