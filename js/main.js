@@ -182,6 +182,42 @@ function initDragScroll() {
   });
 }
 
+/* ---------- 7. SCROLL-DRIVEN CAR ----------
+   Drives the silver classic (.wlf__corner-car) across the Cars We Buy
+   corner from scroll position (reliable everywhere). */
+function initScrollCars() {
+  const silver = document.querySelector(".wlf__corner-car");
+  if (!silver) return;
+
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduce) {
+    silver.style.opacity = "0.9";
+    silver.style.transform = "translate(45%,120%) rotate(195deg)";
+    return;
+  }
+
+  const silverSec = silver.closest(".wlf");
+
+  function update() {
+    const vh = window.innerHeight;
+    const r = silverSec.getBoundingClientRect();
+    const p = clamp((vh - r.top) / (r.height + vh), 0, 1);   // 0 enters bottom → 1 exits top
+    const x = lerp(-30, 130, p);
+    const y = lerp(-80, 380, p);
+    let op = 0.95;
+    if (p < 0.15) op = lerp(0, 0.95, p / 0.15);
+    else if (p > 0.85) op = lerp(0.95, 0, (p - 0.85) / 0.15);
+    silver.style.transform = `translate(${x}%, ${y}%) rotate(195deg)`;
+    silver.style.opacity = op.toFixed(3);
+  }
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+}
+
 /* ---------- BOOT ---------- */
 async function boot() {
   await loadPartials(); // inject header/footer first…
@@ -189,6 +225,7 @@ async function boot() {
   initReveal();         // …then wire reveal over the full DOM
   initInventory();      // inventory carousel drag + arrows
   initDragScroll();     // generic drag strips (Instagram feed)
+  initScrollCars();     // decorative cars driven by scroll position
   stampYear();
 }
 
