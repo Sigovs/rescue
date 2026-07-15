@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cars We Buy — Sports Car Rescue</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The marques we actively buy — American muscle and select imports. Pick a make to see the models we're looking for." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Shadows+Into+Light+Two&family=Special+Elite&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" />
+  <link rel="stylesheet" href="css2/tokens.css" />
+  <link rel="stylesheet" href="css2/base.css" />
+  <link rel="stylesheet" href="css2/typography.css" />
+  <link rel="stylesheet" href="css2/grid.css" />
+  <link rel="stylesheet" href="css2/components.css" />
+  <link rel="stylesheet" href="css2/layouts.css" />
+  <link rel="stylesheet" href="css2/hero.css" />
+  <link rel="stylesheet" href="css2/buy.css" />
+  <link rel="stylesheet" href="css2/why.css" />
+  <link rel="stylesheet" href="css2/wanted.css" />
+  <link rel="stylesheet" href="css2/estate.css" />
+  <link rel="stylesheet" href="css2/inventory.css" />
+  <link rel="stylesheet" href="css2/contact.css" />
+  <link rel="stylesheet" href="css2/support.css" />
+  <link rel="stylesheet" href="css2/marques.css" />
+</head>
+<body id="top">
+  <a href="#main" class="btn visually-hidden">Skip to content</a>
+
+  <!-- HEADER (injected from partials2/header.html) -->
+  <div data-partial="header"></div>
+
+  <main id="main">
+    <!-- ===== PAGE HEAD ===== -->
+    <section class="page-head">
+      <div class="container">
+        <p class="type-eyebrow">Always buying</p>
+        <h1 class="type-display-md">Cars we buy</h1>
+        <p class="type-lead">The marques we actively hunt &mdash; American muscle and select imports,
+          in any condition. Pick a make to see the models we&rsquo;re looking for.</p>
+      </div>
+    </section>
+
+    <!-- ===== MARQUES GRID (text only) =====
+         Logos to come. To add one later, drop it at the top of a tile:
+         <a class="marque"><img class="marque__logo" src="…" alt="Porsche">
+            <span class="marque__name">…</span> … </a> -->
+    <section class="marques">
+      <div class="container">
+        <ul class="marques__grid" role="list">
+          <li><a class="marque" href="#"><span class="marque__name">Porsche</span><span class="marque__models">356 &middot; 911 &middot; 912 &middot; 930</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Ferrari</span><span class="marque__models">250 &middot; 275 &middot; 308 &middot; Dino</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Lamborghini</span><span class="marque__models">Miura &middot; Espada &middot; Countach</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Aston Martin</span><span class="marque__models">DB4 &middot; DB5 &middot; DB6 &middot; V8</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Jaguar</span><span class="marque__models">E-Type &middot; XK &middot; XKE</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Corvette</span><span class="marque__models">C1 &middot; C2 &middot; C3</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Acura NSX</span><span class="marque__models">NA1 &middot; NA2</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Shelby</span><span class="marque__models">Cobra &middot; GT350 &middot; GT500</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Ford</span><span class="marque__models">Mustang &middot; GT40 &middot; Bronco</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Chevrolet</span><span class="marque__models">Camaro &middot; Chevelle &middot; Nova</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Dodge</span><span class="marque__models">Charger &middot; Challenger &middot; Coronet</span></a></li>
+          <li><a class="marque" href="#"><span class="marque__name">Pontiac</span><span class="marque__models">GTO &middot; Firebird &middot; Trans Am</span></a></li>
+        </ul>
+
+        <div class="marques__cta">
+          <p>Don&rsquo;t see your make? We buy well beyond this list.</p>
+          <a href="contact.html" class="btn btn--primary">Tell us what you have</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (injected from partials2/footer.html) -->
+  <div data-partial="footer"></div>
+
+  <script type="module" src="js/main2.js?v=1"></script>
+</body>
+</html>

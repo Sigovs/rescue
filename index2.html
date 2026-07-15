@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports Car Rescue — Barn-Find Restoration</title>
+  <meta name="description"
+        content="Sports Car Rescue pulls forgotten classics out of barns and brings them back to life. Documented, dust-to-driver restorations." />
+
+  <!-- Fonts: display / script / typewriter / serif body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Shadows+Into+Light+Two&family=Special+Elite&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" />
+
+  <!-- Styles — load order: tokens -> base -> typography -> grid
+       -> components -> layouts -> (page/section styles) -->
+  <link rel="stylesheet" href="css2/tokens.css" />
+  <link rel="stylesheet" href="css2/base.css" />
+  <link rel="stylesheet" href="css2/typography.css" />
+  <link rel="stylesheet" href="css2/grid.css" />
+  <link rel="stylesheet" href="css2/components.css" />
+  <link rel="stylesheet" href="css2/layouts.css" />
+  <!-- section-specific styles, after the system -->
+  <link rel="stylesheet" href="css2/hero.css" />
+  <link rel="stylesheet" href="css2/buy.css" />
+  <link rel="stylesheet" href="css2/why.css" />
+  <link rel="stylesheet" href="css2/wanted.css" />
+  <link rel="stylesheet" href="css2/estate.css" />
+  <link rel="stylesheet" href="css2/inventory.css" />
+  <link rel="stylesheet" href="css2/contact.css" />
+  <link rel="stylesheet" href="css2/support.css" />
+  <link rel="stylesheet" href="css2/marques.css" />
+</head>
+<body id="top">
+
+  <!-- Skip link for keyboard users -->
+  <a href="#main" class="btn visually-hidden">Skip to content</a>
+
+  <!-- HEADER (injected from partials2/header.html) -->
+  <div data-partial="header"></div>
+
+  <main id="main">
+
+    <!-- ===== HERO — cinematic photo + overlaid copy (simplified) ===== -->
+    <section class="hero hero--photo" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <img src="assets/img/hero/hero_update.jpg" alt="" fetchpriority="high" />
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero__content" data-reveal>
+          <p class="type-eyebrow hero__eyebrow">Sports &middot; Classic &middot; Muscle</p>
+          <h1 id="hero-title" class="type-display-xl hero__title">
+            Private Collection Seeking Sports Cars, Classic Cars, and Muscle Cars.
+            <span class="type-script hero__script">Let&rsquo;s talk.</span>
+          </h1>
+          <p class="type-body-lg hero__body">
+            Discreetly buying Porsche, Ferrari, Lamborghini, Shelby and other sports and
+            muscle cars directly from private owners who value privacy and a respectful
+            transaction. Cars in any condition wanted, single cars or whole collections
+            &mdash; we make it easy and pick up anywhere.
+          </p>
+          <p class="hero__support">
+            Your car deserves more than a public listing or a quick dealer offer. It
+            deserves a thoughtful new home in a curated private collection. If you have
+            something to sell, please give us a call.
+          </p>
+          <div class="hero__actions">
+            <a href="#cars-we-buy" class="btn btn--primary">Cars we are looking for</a>
+            <a href="#why-sports-car-rescue" class="btn btn--secondary">About Us</a>
+          </div>
+          <a href="tel:+19048744877" class="hero__phone">Or call 904&middot;874&middot;4877</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CARS WE BUY — "What we buy" ===== -->
+    <section id="what-we-buy" class="buy section" aria-labelledby="buy-title">
+      <div class="container">
+        <header class="buy__head center" data-reveal>
+          <p class="type-eyebrow buy__eyebrow">What We Buy</p>
+          <h2 id="buy-title" class="type-display-md">We buy stories, not just cars.</h2>
+          <span class="buy__rule" aria-hidden="true"></span>
+          <p class="type-lead buy__lead">
+            We are looking for vehicles and collections with history.
+            If it has a past, <strong>we want to hear about it.</strong>
+          </p>
+        </header>
+
+        <div class="grid buy__grid">
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Barn%20Finds.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Barn Finds</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Dusty storage buildings, forgotten sheds and decades-old project cars.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Barn_Finds.png" alt="A barn-find sports car under dust covers" loading="lazy" /></figure>
+            <a href="#cars-we-buy" class="btn-link buy-col__more">Open the doors</a>
+          </article>
+
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Unfinished%20Projects.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Unfinished Projects</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Cars that lost momentum and deserve another chapter.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Unfinished_Projects.png" alt="An unfinished project car mid-restoration" loading="lazy" /></figure>
+            <a href="#cars-we-buy" class="btn-link buy-col__more">Another chapter</a>
+          </article>
+
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Estate%20Collections.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Estate Collections</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Vehicles discovered through inheritance, property sales and family collections.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Estate_Collections.png" alt="Classic cars from an estate collection" loading="lazy" /></figure>
+            <a href="#estate-collection-assistance" class="btn-link buy-col__more">Settle an estate</a>
+          </article>
+
+          <article class="buy-col col-span-3" data-reveal>
+            <img class="buy-col__ill" src="assets/img/buy/Parts%20%26%20Memorabilia.png" alt="" loading="lazy" />
+            <h3 class="buy-col__title">Parts &amp; Memorabilia</h3>
+            <span class="buy-col__line" aria-hidden="true"></span>
+            <p class="buy-col__desc type-body-sm">Rare parts inventories, dealer items, manuals and automotive artifacts.</p>
+            <figure class="buy-col__photo"><img class="buy-col__ph" src="assets/img/buy/img_Parts_Memorabilia.png" alt="Vintage parts and automotive memorabilia" loading="lazy" /></figure>
+            <a href="#contact-us" class="btn-link buy-col__more">The shelves</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY SPORTS CAR RESCUE — manifesto + three reasons ===== -->
+    <section id="why-sports-car-rescue" class="why section" aria-labelledby="why-title">
+      <div class="why__bg" aria-hidden="true"></div>
+      <img class="why__seal" src="assets/img/supportimages/z67support.png" alt="" aria-hidden="true" loading="lazy" />
+
+      <!-- A — open album + manifesto -->
+      <div class="container why__intro">
+        <div class="grid why__intro-grid">
+          <figure class="why__book col-span-6 col-t-8" data-reveal>
+            <img src="assets/img/why/book_why.png"
+                 alt="An open photo album of rescued classic cars with handwritten field notes" loading="lazy" />
+          </figure>
+
+          <div class="why__lead col-span-6 col-t-8" data-reveal>
+            <p class="type-eyebrow why__eyebrow">Why Sports Car Rescue</p>
+            <h2 id="why-title" class="why__title">Most People See Clutter. We See History.</h2>
+            <span class="why__rule" aria-hidden="true"></span>
+            <p class="type-body why__copy">
+              What looks like a forgotten garage to most people often contains a story worth preserving.
+            </p>
+            <p class="type-body why__copy">
+              Sports Car Rescue was built by an enthusiast and collector &mdash; not a dealership. We look beyond
+              the dust, the paperwork, and the years of storage to uncover vehicles, parts, and collections that
+              still have value.
+            </p>
+            <div class="why__actions">
+              <a href="#contact-us" class="btn btn--primary">Tell us what you have</a>
+              <a href="#about-us" class="btn btn--secondary">How it works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B — private collector, not a dealership -->
+      <div class="container why__reasons">
+        <header class="why__reasons-head" data-reveal>
+          <p class="type-eyebrow why__eyebrow">Why Owners Choose Us</p>
+          <h3 class="why__subtitle">Private collector, not a dealership.</h3>
+        </header>
+
+        <ol class="grid why__list" role="list">
+          <li class="why-card col-span-4 col-t-4" data-reveal>
+            <span class="why-card__no">01</span>
+            <h4 class="why-card__title">Private Buyer</h4>
+            <p class="why-card__desc type-body-sm">
+              Work directly with the buyer. No auctions, wholesalers, or unnecessary middlemen.
+            </p>
+          </li>
+          <li class="why-card col-span-4 col-t-4" data-reveal>
+            <span class="why-card__no">02</span>
+            <h4 class="why-card__title">Fast Evaluation</h4>
+            <p class="why-card__desc type-body-sm">
+              Send a few photos and basic information. Most opportunities can be reviewed quickly and discreetly.
+            </p>
+          </li>
+          <li class="why-card col-span-4 col-t-8" data-reveal>
+            <span class="why-card__no">03</span>
+            <h4 class="why-card__title">Collector Knowledge</h4>
+            <p class="why-card__desc type-body-sm">
+              Years of experience around classic cars, muscle cars, vintage imports, and automotive memorabilia.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== CARS WE'RE LOOKING FOR — "The Want List" =====
+         Two layout variants stacked for review (A: field-journal checklist +
+         polaroids · B: full-width WANTED poster). Keep one, delete the other. -->
+    <section id="cars-we-buy" class="wlf section" aria-labelledby="wlf-title">
+      <div class="container">
+        <header class="marques__head center" data-reveal>
+          <p class="type-eyebrow wlf__eyebrow">Always buying</p>
+          <h2 id="wlf-title" class="wlf__title">Cars We Buy.</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="wlf__script script">If you have one of these (or something similar), we want to hear about it.</p>
+          <p class="wlf__body">
+            We are always on the hunt for classic American sports cars, muscle cars, and select
+            imports &mdash; running or not, show quality or barn find. <b>Every car has a story.</b>
+          </p>
+        </header>
+
+        <!-- Marque list — TEXT for now; logos to come. To add a logo later:
+             <a class="marque"><img class="marque__logo" src="…" alt="Porsche"><span class="marque__name">…</span> … -->
+        <ul class="marques__grid" role="list">
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Porsche</span><span class="marque__models">356 &middot; 911 &middot; 912 &middot; 930</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Ferrari</span><span class="marque__models">250 &middot; 275 &middot; 308 &middot; Dino</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Lamborghini</span><span class="marque__models">Miura &middot; Espada &middot; Countach</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Aston Martin</span><span class="marque__models">DB4 &middot; DB5 &middot; DB6 &middot; V8</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Jaguar</span><span class="marque__models">E-Type &middot; XK &middot; XKE</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Corvette</span><span class="marque__models">C1 &middot; C2 &middot; C3</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Acura NSX</span><span class="marque__models">NA1 &middot; NA2</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Shelby</span><span class="marque__models">Cobra &middot; GT350 &middot; GT500</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Ford</span><span class="marque__models">Mustang &middot; GT40 &middot; Bronco</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Chevrolet</span><span class="marque__models">Camaro &middot; Chevelle &middot; Nova</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Dodge</span><span class="marque__models">Charger &middot; Challenger &middot; Coronet</span></a></li>
+          <li><a class="marque" href="#contact-us"><span class="marque__name">Pontiac</span><span class="marque__models">GTO &middot; Firebird &middot; Trans Am</span></a></li>
+        </ul>
+
+        <div class="marques__cta">
+          <p>Don&rsquo;t see your make? We buy well beyond this list.</p>
+          <a href="#contact-us" class="btn btn--primary">Tell us what you have</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ESTATE & COLLECTION ASSISTANCE ===== -->
+    <section id="estate-collection-assistance" class="estate section" aria-labelledby="estate-title">
+      <div class="container">
+        <div class="grid estate__grid">
+
+          <!-- LEFT — empathetic intro + how we help -->
+          <div class="estate__intro col-span-7 col-t-8" data-reveal>
+            <p class="type-eyebrow estate__eyebrow">Estate &amp; Collection Assistance</p>
+            <h2 id="estate-title" class="type-display-md estate__title">Inherited a collection?<br />Don&rsquo;t clear it out yet.</h2>
+            <span class="rule" aria-hidden="true"></span>
+            <p class="type-lead estate__lead">
+              Settling a lifetime of cars and parts is overwhelming &mdash; and easy to undervalue. We help
+              families quietly understand what it&rsquo;s worth, and find the right, respectful home for every piece.
+            </p>
+
+            <ul class="estate-cards" role="list">
+              <li class="estate-card">
+                <h3 class="estate-card__title">We take a full inventory</h3>
+                <p class="estate-card__desc type-body-sm">Cars, parts and paperwork &mdash; on site or from your photos.</p>
+              </li>
+              <li class="estate-card">
+                <h3 class="estate-card__title">We identify &amp; value it all</h3>
+                <p class="estate-card__desc type-body-sm">Decades of knowledge across classics, muscle and rare parts.</p>
+              </li>
+              <li class="estate-card">
+                <h3 class="estate-card__title">Fair, honest guidance</h3>
+                <p class="estate-card__desc type-body-sm">We buy what fits and advise you plainly on the rest.</p>
+              </li>
+            </ul>
+
+            <a href="#contact-us" class="btn btn--primary estate__cta">Talk to us first</a>
+          </div>
+
+          <!-- RIGHT — taped field note, a plate tucked behind it, a ring of keys on top -->
+          <div class="estate__aside col-span-5 col-t-8">
+            <img class="estate__plate" src="assets/img/why/lic_plate.png" alt="" aria-hidden="true" loading="lazy" data-reveal />
+            <aside class="estate__note" data-reveal>
+            <p class="estate-note__kicker script">Before the dumpster &mdash;</p>
+            <h3 class="estate-note__title">Don&rsquo;t throw this away</h3>
+            <span class="rule" aria-hidden="true"></span>
+            <ul class="estate-note__list" role="list">
+              <li>Vintage &amp; N.O.S. parts inventory</li>
+              <li>Owner&rsquo;s manuals &amp; sales brochures</li>
+              <li>Dealer signs &amp; showroom items</li>
+              <li>Titles, build sheets &amp; documentation</li>
+              <li>Restoration components &amp; hardware</li>
+              <li>Trophies, badges &amp; memorabilia</li>
+            </ul>
+            <p class="estate-note__foot type-body-sm">Old paper and parts carry real value. When in doubt, ask before it&rsquo;s gone.</p>
+            </aside>
+            <img class="estate__keys" src="assets/img/why/key.png" alt="" aria-hidden="true" loading="lazy" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT — the close ===== -->
+    <section id="contact-us" class="contact section section--dark" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="grid contact__grid">
+
+          <!-- LEFT — the hook + direct ways to reach us -->
+          <div class="contact__intro col-span-6 col-t-8" data-reveal>
+            <p class="type-eyebrow contact__eyebrow">More collector than dealer</p>
+            <h2 id="contact-title" class="contact__title">
+              Found something worth saving?
+              <span class="contact__script script">Let&rsquo;s talk.</span>
+            </h2>
+            <span class="rule" aria-hidden="true"></span>
+            <p class="contact__lead">
+              Send a few photos and the basics &mdash; a barn find, a project, an estate, or a box of
+              vintage parts. We&rsquo;ll tell you honestly what it&rsquo;s worth and where it should go.
+            </p>
+
+            <ul class="contact__methods" role="list">
+              <li class="contact-method">
+                <span class="contact-method__label">Write us</span>
+                <a class="contact-method__value" href="mailto:hello@example.com">hello@sportscarrescue.com</a>
+              </li>
+              <li class="contact-method">
+                <span class="contact-method__label">Call or text</span>
+                <a class="contact-method__value" href="tel:+19048744877">904&middot;874&middot;4877</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- RIGHT — archival intake form
+               NOTE: static site — wire `action` to a form service
+               (Formspree / Netlify Forms / Basin). Replace the placeholder. -->
+          <div class="contact__form-wrap col-span-6 col-t-8" data-reveal>
+            <form class="contact-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+              <p class="contact-form__head">Tell us what you found</p>
+
+              <label class="field">
+                <span class="field__label">Your name</span>
+                <input class="field__input" type="text" name="name" autocomplete="name" required />
+              </label>
+
+              <div class="field-row">
+                <label class="field">
+                  <span class="field__label">Email</span>
+                  <input class="field__input" type="email" name="email" autocomplete="email" required />
+                </label>
+                <label class="field">
+                  <span class="field__label">Phone <span class="field__opt">(optional)</span></span>
+                  <input class="field__input" type="tel" name="phone" autocomplete="tel" />
+                </label>
+              </div>
+
+              <label class="field">
+                <span class="field__label">What is it?</span>
+                <input class="field__input" type="text" name="vehicle" placeholder="Year, make &amp; model — or the parts you have" required />
+              </label>
+
+              <div class="field-row">
+                <label class="field">
+                  <span class="field__label">Condition</span>
+                  <input class="field__input" type="text" name="condition" placeholder="Running, project, barn-find…" />
+                </label>
+                <label class="field">
+                  <span class="field__label">Location</span>
+                  <input class="field__input" type="text" name="location" placeholder="City, State" />
+                </label>
+              </div>
+
+              <label class="field">
+                <span class="field__label">The story so far <span class="field__opt">(optional)</span></span>
+                <textarea class="field__input" name="story" rows="3" placeholder="How long it&rsquo;s been sitting, what you know about it…"></textarea>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Photos <span class="field__opt">(Dropbox / Drive link)</span></span>
+                <input class="field__input" type="url" name="photos" placeholder="Paste a link, or send them after you hit go." />
+              </label>
+
+              <button class="btn btn--primary contact-form__submit" type="submit">Send it over</button>
+              <p class="contact-form__note">No obligation. We read every one personally.</p>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- How It Works — simple & confidential (from the brief) -->
+        <div class="contact-how" data-reveal>
+          <p class="type-eyebrow contact-how__eyebrow">How it works &mdash; simple &amp; confidential</p>
+          <ol class="contact-how__steps" role="list">
+            <li class="how-step">
+              <span class="how-step__no">1</span>
+              <h3 class="how-step__title">Reach out privately</h3>
+              <p class="how-step__body">Use the form, email, or phone. Share the basics &mdash; year, make, model, general condition, and location. Photos help, but aren&rsquo;t required to start.</p>
+            </li>
+            <li class="how-step">
+              <span class="how-step__no">2</span>
+              <h3 class="how-step__title">A prompt, no-obligation offer</h3>
+              <p class="how-step__body">You&rsquo;ll hear back quickly with a fair offer based on current market conditions and the specifics of your vehicle.</p>
+            </li>
+            <li class="how-step">
+              <span class="how-step__no">3</span>
+              <h3 class="how-step__title">Seamless &amp; discreet completion</h3>
+              <p class="how-step__body">If we agree on terms, we handle secure transport and all paperwork. Payment is prompt and everything stays confidential.</p>
+            </li>
+          </ol>
+          <p class="contact-how__foot">We arrange transport from anywhere in the United States.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INSTAGRAM FEED — above the footer (brief) =====
+         Placeholders. Wire to a real feed later (Behold / LightWidget /
+         Elfsight) or drop in latest-post images. -->
+    <section class="ig-feed" id="cars-weve-purchased" aria-labelledby="ig-title">
+      <div class="container ig-feed__head" data-reveal>
+        <p class="type-eyebrow ig-feed__eyebrow">Recently rescued</p>
+        <h2 id="ig-title" class="ig-feed__title">Cars We Purchased</h2>
+        <a class="ig-feed__follow" href="#" data-placeholder="instagram">
+          <span class="contact__ig-mark" aria-hidden="true"></span>
+          <span>@sportscarrescue</span>
+        </a>
+      </div>
+      <ul class="ig-feed__grid" role="list" data-drag-scroll tabindex="0">
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig2.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig3.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig4.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig5.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig6.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig7.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+        <li class="ig-tile"><a href="#" data-placeholder="instagram"><img src="assets/img/instagram/ig8.jpg" alt="Rescued classic car" loading="lazy" /></a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (injected from partials2/footer.html) -->
+  <div data-partial="footer"></div>
+
+  <script type="module" src="js/main2.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+/* ============================================================
+   SPORTS CAR RESCUE — COMPONENTS
+   ------------------------------------------------------------
+   1. BUTTON SYSTEM   primary / secondary / text-link + states
+   2. IMAGE SYSTEM    polaroid / document / parts-tag / speedometer / tape
+                      — independent, interactive-ready layers
+   Do not create new button or layer styles in sections — reuse these.
+   ============================================================ */
+
+/* ============================================================
+   1. BUTTON SYSTEM
+   ------------------------------------------------------------
+   Spec (all buttons share these):
+     height       : 52px  (--btn-h)
+     padding-x    : 28px  (--space-5 + 4)
+     label        : .type-button (typewriter, uppercase, tracked)
+     radius       : --radius-sm (nearly sharp, vintage)
+     transition   : transform + colors, --dur-fast
+     states       : :hover  lift -2px + darken
+                    :focus-visible  rust outline, offset
+                    :active  press back to 0, deepen
+   ============================================================ */
+:root {
+  --btn-h: 52px;
+  --btn-px: 1.75rem;   /* 28px */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--btn-h);
+  padding: 0 var(--btn-px);
+  /* type */
+  font-family: var(--font-doc);
+  font-size: var(--fs-button);
+  line-height: 1;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: var(--fw-medium);
+  /* shape */
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  transition: transform var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---- Primary CTA — solid rust ---- */
+.btn--primary {
+  color: var(--ink-on-dark);
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-soft);
+}
+.btn--primary:hover {
+  color: var(--ink-on-dark);
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+.btn--primary:active {
+  transform: translateY(0);
+  background-color: var(--c-rust-deep);
+}
+
+/* ---- Secondary CTA — ink outline, ghost fill ---- */
+.btn--secondary {
+  color: var(--accent);
+  background-color: transparent;
+  border-color: var(--accent);
+}
+.btn--secondary:hover {
+  color: var(--ink-on-dark);
+  background-color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.btn--secondary:active {
+  transform: translateY(0);
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* On dark sections, secondary uses paper ink. */
+.section--dark .btn--secondary,
+.on-dark .btn--secondary {
+  color: var(--ink-on-dark);
+  border-color: color-mix(in srgb, var(--ink-on-dark) 55%, transparent);
+}
+.section--dark .btn--secondary:hover,
+.on-dark .btn--secondary:hover {
+  color: var(--paper-dark);
+  background-color: var(--ink-on-dark);
+  border-color: var(--ink-on-dark);
+}
+
+/* ---- Text Link — underlined inline action ---- */
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-doc);
+  font-size: var(--fs-button);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--accent);
+  background: none;
+  padding: var(--space-1) 0;
+  border-bottom: 1.5px solid currentColor;
+  transition: color var(--dur-fast) var(--ease-out),
+              gap var(--dur-fast) var(--ease-out);
+}
+.btn-link:hover { color: var(--accent-hover); gap: var(--space-3); }
+.btn-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* ONLY three button styles exist: .btn--primary, .btn--secondary, .btn-link.
+   Do not add Primary-Dark / Hero-Primary / Special-Primary etc.
+   A bare .btn with no modifier intentionally has no fill — always pair it
+   with --primary or --secondary. */
+
+/* ============================================================
+   RULE — short accent divider.
+   CONVENTION (one rule per section block):
+     • a rule sits BETWEEN a section title and its paragraph — and
+       ONLY there. Do NOT also underline the eyebrow; that doubles up.
+     • exactly one rule per title/paragraph pair.
+   Reuse this instead of bespoke per-section rules:
+     <span class="rule" aria-hidden="true"></span>
+   Add .rule--center to centre it under a centred heading.
+   ============================================================ */
+.rule {
+  display: block;
+  width: 56px;
+  height: 2px;
+  border: 0;
+  background: var(--accent);
+  margin-block: var(--space-5);
+}
+.rule--center { margin-inline: auto; }
+
+/* ============================================================
+   SITE CHROME — header / footer (global)
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  /* stronger, always-distinct bar — lighter paper + soft cast so it never
+     blends into the section scrolling underneath it */
+  background: var(--paper-light);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--shadow) 14%, transparent);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+}
+/* logo must never shrink — it's a flex item whose replaced child can collapse */
+.brand { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--ink); flex: 0 0 auto; }
+/* SVG wordmark logos (header / menu drawer / footer) */
+.brand__logo { display: block; height: clamp(42px, 4.2vw, 54px); width: auto; max-width: none; }
+.site-menu__logo { display: block; height: 46px; width: auto; }
+.site-footer__logo { display: block; height: 48px; width: auto; }
+.brand__mark {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.brand__name {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.site-nav { display: flex; gap: var(--space-4); }
+.site-nav a {
+  position: relative;
+  font-family: var(--font-doc);
+  font-size: 0.9375rem;         /* 15px — 5 items now, keep the row tidy */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  padding-block: var(--space-2);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+/* chunky underline bar that grows on hover */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.site-nav a:hover { color: var(--accent); }
+.site-nav a:hover::after { transform: scaleX(1); }
+.site-header__actions { display: flex; align-items: center; gap: var(--space-3); }
+.site-header__cta { min-height: 38px; padding-inline: var(--space-3); font-size: 0.8125rem; letter-spacing: 0.04em; white-space: nowrap; }
+
+/* click-to-call in the header — typewriter, accent, never splits the number */
+.site-header__phone {
+  font-family: var(--font-doc);
+  font-size: var(--fs-nav);
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.site-header__phone:hover { color: var(--accent-2, var(--ink)); }
+
+/* hamburger toggle — brown square button that opens the drawer */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  background: var(--c-coffee);
+  border-radius: var(--radius-sm);
+  color: var(--paper-light);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.nav-toggle:hover { background: var(--c-espresso); }
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--paper-light);
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast);
+}
+.nav-toggle__bars { position: relative; }
+.nav-toggle__bars::before { position: absolute; top: -6px; left: 0; }
+.nav-toggle__bars::after  { position: absolute; top:  6px; left: 0; }
+
+/* hide inline nav progressively; hamburger + CTA carry the rest */
+@media (max-width: 1180px) { .site-nav { display: none; } }
+@media (max-width: 760px)  { .site-header__cta { display: none; } }
+
+/* ---------- SLIDE-IN MENU DRAWER — collector's ledger index ---------- */
+.site-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  visibility: hidden;
+  pointer-events: none;
+}
+.site-menu.is-open { visibility: visible; pointer-events: auto; }
+
+.site-menu__backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--c-espresso) 64%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.site-menu.is-open .site-menu__backdrop { opacity: 1; }
+
+.site-menu__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(460px, 90vw);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-7) var(--space-8);
+  color: var(--ink-on-dark);
+  /* layered espresso with a warm corner glow — not a flat panel */
+  background:
+    radial-gradient(130% 80% at 100% 0%,
+      color-mix(in srgb, var(--c-bark) 60%, transparent), transparent 58%),
+    var(--paper-dark);
+  /* brass "binding" spine on the left + soft inner highlight — no generic border */
+  box-shadow:
+    inset 3px 0 0 0 color-mix(in srgb, var(--c-brass) 50%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 7%, transparent),
+    -30px 0 80px color-mix(in srgb, var(--c-espresso) 55%, transparent);
+  transform: translateX(100%);
+  transition: transform 720ms var(--ease-fluid);
+  overflow-y: auto;
+}
+.site-menu.is-open .site-menu__panel { transform: translateX(0); }
+/* film grain on the panel — pointer-safe, sits under the content */
+.site-menu__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+}
+.site-menu__panel > * { position: relative; z-index: 1; }
+
+.site-menu__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-7);
+}
+.site-menu__bar .brand__mark { font-size: 1.4rem; color: var(--c-brass-light); letter-spacing: 0.08em; }
+.site-menu__close {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink-on-dark) 70%, transparent);
+  transition: color var(--dur-fast) var(--ease-out),
+              letter-spacing var(--dur-fast) var(--ease-out);
+}
+.site-menu__close:hover { color: var(--c-brass-light); letter-spacing: 0.2em; }
+.site-menu__close span { font-size: 1.3em; line-height: 1; }
+
+.site-menu__eyebrow {
+  color: color-mix(in srgb, var(--ink-on-dark) 55%, transparent);
+  margin-bottom: var(--space-6);
+}
+
+.menu-index { list-style: none; padding: 0; }
+.menu-index li { border-top: 1px solid color-mix(in srgb, var(--c-brass) 16%, transparent); }
+.menu-index li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--c-brass) 16%, transparent); }
+.menu-index a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  color: var(--ink-on-dark);
+}
+.menu-index__no { display: none; }
+.menu-index__label {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h4);
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 1.05;
+  transition: transform 560ms var(--ease-fluid), color 320ms var(--ease-out);
+  will-change: transform;
+}
+/* magnetic hover: label glides right, numbers turn brass */
+.menu-index a:hover .menu-index__label { transform: translateX(10px); color: var(--c-brass-light); }
+.menu-index a:hover .menu-index__no { color: var(--c-brass-light); }
+
+.site-menu__note {
+  margin-top: var(--space-5);
+  font-size: var(--fs-lead);
+  line-height: 1.2;
+  color: var(--c-brass-light);
+}
+
+/* staggered reveal — each line settles up in sequence when the drawer opens */
+.site-menu__eyebrow,
+.menu-index li,
+.site-menu__note {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.site-menu.is-open .site-menu__eyebrow,
+.site-menu.is-open .menu-index li,
+.site-menu.is-open .site-menu__note { opacity: 1; transform: none; }
+.site-menu.is-open .site-menu__eyebrow            { transition-delay: 130ms; }
+.site-menu.is-open .menu-index li:nth-child(1)    { transition-delay: 190ms; }
+.site-menu.is-open .menu-index li:nth-child(2)    { transition-delay: 245ms; }
+.site-menu.is-open .menu-index li:nth-child(3)    { transition-delay: 300ms; }
+.site-menu.is-open .menu-index li:nth-child(4)    { transition-delay: 355ms; }
+.site-menu.is-open .menu-index li:nth-child(5)    { transition-delay: 410ms; }
+.site-menu.is-open .menu-index li:nth-child(6)    { transition-delay: 465ms; }
+.site-menu.is-open .menu-index li:nth-child(7)    { transition-delay: 520ms; }
+.site-menu.is-open .menu-index li:nth-child(8)    { transition-delay: 575ms; }
+.site-menu.is-open .site-menu__note               { transition-delay: 650ms; }
+
+/* hamburger morphs into an X while the drawer is open */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { transform: translateY(-7px) rotate(-45deg); }
+
+/* mobile: full-width panel, calmer padding, labels sized to fit cleanly */
+@media (max-width: 640px) {
+  .site-menu__panel {
+    width: 100vw;
+    padding: var(--space-6) var(--space-6) var(--space-7);
+  }
+  .site-menu__bar { margin-bottom: var(--space-6); }
+  .menu-index a { gap: var(--space-3); padding: var(--space-4) 0; }
+  .menu-index__label { font-size: var(--fs-lead); }
+  .menu-index__no { display: none; }
+  .site-menu__note { margin-top: var(--space-5); font-size: var(--fs-body); line-height: 1.25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu__panel, .site-menu__backdrop,
+  .site-menu__eyebrow, .menu-index li, .site-menu__note { transition: none; }
+  .site-menu__eyebrow, .menu-index li, .site-menu__note { opacity: 1; transform: none; }
+}
+
+.site-footer { padding-block: var(--space-8); }
+/* heavier base — deeper than the espresso section above (beats .section--dark) */
+footer.site-footer {
+  /* subtle warm radial glow at the BOTTOM — darker toward the top */
+  background:
+    radial-gradient(130% 90% at 50% 100%,
+      color-mix(in srgb, var(--c-coffee) 38%, transparent),
+      transparent 60%),
+    color-mix(in srgb, var(--c-espresso) 55%, #000);
+  border-top: 1px solid color-mix(in srgb, var(--c-brass) 16%, transparent);
+}
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.1fr;
+  gap: var(--space-7) var(--space-8);
+  align-items: start;
+}
+.site-footer__meta {
+  grid-column: 1 / -1;
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 12%, transparent);
+}
+@media (max-width: 760px) {
+  .site-footer__inner { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 460px) {
+  .site-footer__inner { grid-template-columns: 1fr; }
+}
+.site-footer__nav { display: flex; flex-direction: column; gap: var(--space-2); }
+.site-footer__nav .eyebrow { margin-bottom: var(--space-1); }
+.site-footer__nav a { font-family: var(--font-doc); font-size: var(--fs-caption); letter-spacing: .1em; text-transform: uppercase; color: color-mix(in srgb, var(--ink-on-dark) 70%, transparent); }
+.site-footer__nav a:hover { color: var(--c-brass-light); }
+.site-footer .brand__mark { font-size: 1.5rem; }
+.site-footer__contact {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
+}
+.site-footer__contact a { color: var(--c-brass-light); }
+.site-footer__contact a:hover { color: var(--ink-on-dark); }
+.site-footer__placeholder {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-style: italic;
+  font-size: var(--fs-caption);
+  color: color-mix(in srgb, var(--accent) 70%, var(--ink-on-dark));
+}
+.site-footer__social { display: flex; gap: var(--space-4); margin-top: var(--space-2); }
+.site-footer__social a {
+  display: inline-flex;
+  color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent);
+  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.site-footer__social a:hover { color: var(--c-brass-light); transform: translateY(-2px); }
+.site-footer__social svg { width: 22px; height: 22px; display: block; }
+
+/* ============================================================
+   2. IMAGE SYSTEM — independent collage layers
+   ------------------------------------------------------------
+   Each object is a self-contained component, positioned with
+   `transform` (translate/rotate) so it can later slide-in / slide-out
+   or behave like a button. Consistent elevation tokens keep every
+   object in the same light:
+     documents  -> --elev-flat   (--layer-1)
+     polaroids  -> --elev-photo  (--layer-2)
+     tags/gauge -> --elev-raised (--layer-3)
+     tape       -> on top of its host (--layer-tape)
+
+   Shared interaction hook: add `.is-interactive` to lift on hover.
+   ============================================================ */
+
+/* Generic lift behaviour for any interactive layer. */
+.is-interactive {
+  cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-fluid),
+              box-shadow var(--dur-base) var(--ease-fluid),
+              filter var(--dur-base) var(--ease-fluid);
+  will-change: transform;
+}
+.is-interactive:hover {
+  transform: translateY(-6px) rotate(0deg) scale(1.015);
+  filter: brightness(1.03);
+}
+.is-interactive:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-interactive { transition: none; }
+  .is-interactive:hover { transform: none; }
+}
+
+/* ---------- POLAROID ---------- */
+.polaroid {
+  --tilt: var(--tilt-a);
+  position: relative;
+  display: inline-block;
+  padding: var(--space-3) var(--space-3) var(--space-6);
+  background: var(--paper-light);
+  box-shadow: var(--elev-photo);
+  rotate: var(--tilt);
+  z-index: var(--layer-2);
+}
+.polaroid > img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--c-coffee);
+}
+.polaroid--wide > img { aspect-ratio: 4 / 3; }
+.polaroid__caption {
+  margin-top: var(--space-3);
+  font-family: var(--font-script);
+  font-size: var(--fs-script);
+  line-height: 1.1;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+/* ---------- DOCUMENT (title / certificate / typed sheet) ---------- */
+.document {
+  --tilt: var(--tilt-c);
+  position: relative;
+  padding: var(--space-5);
+  background: var(--paper-light);
+  border: 1px solid var(--border);
+  box-shadow: var(--elev-flat);
+  rotate: var(--tilt);
+  z-index: var(--layer-1);
+}
+.document__label {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.document__row {
+  font-family: var(--font-doc);
+  font-size: var(--fs-body-sm);
+  color: var(--ink);
+  padding-block: var(--space-1);
+  border-bottom: 1px dashed color-mix(in srgb, var(--ink) 18%, transparent);
+}
+
+/* ---------- PARTS TAG (hang tag with string hole) ---------- */
+.tag {
+  --tilt: var(--tilt-b);
+  position: relative;
+  display: inline-block;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  min-width: 9rem;
+  background: var(--c-paper-2);
+  /* clipped top corner = classic shipping tag */
+  clip-path: polygon(0 14%, 50% 0, 100% 14%, 100% 100%, 0 100%);
+  box-shadow: var(--elev-raised);
+  rotate: var(--tilt);
+  z-index: var(--layer-3);
+}
+.tag::before { /* string hole */
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: 12px; height: 12px;
+  translate: -50% 0;
+  border-radius: var(--radius-pill);
+  background: var(--paper-dark);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--brass, var(--c-brass)) 60%, transparent);
+}
+.tag__title {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+.tag__list { font-family: var(--font-script); color: var(--ink-soft); line-height: 1.5; }
+
+/* ---------- SPEEDOMETER (brass gauge — placeholder ring) ----------
+   Real artwork drops in as a PNG layer; this gives structure + glow. */
+.speedo {
+  position: relative;
+  width: 9rem; aspect-ratio: 1;
+  border-radius: var(--radius-pill);
+  background:
+    radial-gradient(circle at 50% 42%,
+      var(--c-bark) 0 58%,
+      var(--c-espresso) 59% 100%);
+  box-shadow: var(--elev-raised),
+              inset 0 0 0 6px color-mix(in srgb, var(--c-brass) 70%, transparent),
+              inset 0 6px 18px rgba(0,0,0,0.55);
+  z-index: var(--layer-3);
+}
+.speedo__needle {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 2px; height: 38%;
+  background: var(--c-brass-light);
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(38deg);
+  border-radius: var(--radius-pill);
+}
+
+/* ---------- TAPE (washi strip — sits over its host) ---------- */
+.tape {
+  position: absolute;
+  width: 5.5rem; height: 1.7rem;
+  background: color-mix(in srgb, var(--c-brass-light) 50%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-bark) 12%, transparent);
+  rotate: -4deg;
+  z-index: var(--layer-tape);
+  pointer-events: none;
+}
+.tape::after { /* torn translucency lines */
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg,
+    transparent 0 6px,
+    color-mix(in srgb, #fff 10%, transparent) 6px 7px);
+}
+.tape--tl { top: -0.6rem; left: 8%; }
+.tape--tr { top: -0.6rem; right: 8%; rotate: 5deg; }
+.tape--top { top: -0.85rem; left: 50%; translate: -50% 0; rotate: -1.5deg; }
+
+/* ---------- BADGE (emblem like "327 TURBO-FIRE") ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-brass-light);
+  background: linear-gradient(180deg, var(--c-bark), var(--c-espresso));
+  border: 1px solid color-mix(in srgb, var(--c-brass) 50%, transparent);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--elev-raised), var(--shadow-inset-hi);
+  z-index: var(--layer-3);
+}
