@@ -6,6 +6,18 @@
    is a working mailto/tel/link. Built on tokens + type.
    ============================================================ */
 .contact { position: relative; }
+
+/* two soft radial washes over the dark base for depth */
+.contact.section--dark {
+  background:
+    radial-gradient(70% 60% at 16% 12%,
+      color-mix(in srgb, var(--c-coffee) 62%, transparent) 0%, transparent 58%),
+    radial-gradient(66% 66% at 86% 92%,
+      color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 60%),
+    var(--paper-dark);
+  padding-bottom: var(--space-9);
+}
+
 .contact__grid { align-items: start; gap: var(--space-8) var(--grid-gutter); }
 .contact__intro { max-width: 60ch; }
 
@@ -182,7 +194,7 @@ textarea.field__input { resize: vertical; min-height: 4.5em; }
 /* ============================================================
    INSTAGRAM FEED — full-bleed strip above the footer (placeholders)
    ============================================================ */
-.ig-feed { background: var(--paper-dark); padding-bottom: var(--space-7); }
+.ig-feed { background: var(--paper-dark); padding-block: var(--space-8) var(--space-7); }
 .ig-feed__head {
   display: flex;
   flex-direction: column;
@@ -310,14 +322,20 @@ textarea.field__input { resize: vertical; min-height: 4.5em; }
   padding-top: var(--space-7);
   border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 16%, transparent);
 }
-.contact-how__eyebrow { color: var(--c-brass-light); margin-bottom: var(--space-6); }
+.contact-how__eyebrow { color: var(--c-brass-light); margin: 0 auto var(--space-6); text-align: center; }
 .contact-how__steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
+  gap: var(--space-5) var(--space-7);
   list-style: none;
   margin: 0;
   padding: 0;
+}
+.how-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .how-step__no {
   display: inline-flex;
@@ -343,13 +361,15 @@ textarea.field__input { resize: vertical; min-height: 4.5em; }
   color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent);
   font-size: 0.95rem;
   line-height: 1.6;
-  margin: 0;
+  max-width: 30ch;
+  margin: 0 auto;
 }
 .contact-how__foot {
-  margin: var(--space-6) 0 0;
+  margin: var(--space-6) auto 0;
   color: var(--c-brass-light);
   font-family: var(--font-doc);
   letter-spacing: 0.02em;
+  text-align: center;
 }
 @media (max-width: 760px) {
   .contact-how__steps { grid-template-columns: 1fr; gap: var(--space-5); }

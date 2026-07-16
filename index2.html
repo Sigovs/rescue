@@ -31,6 +31,9 @@
   <link rel="stylesheet" href="css2/contact.css" />
   <link rel="stylesheet" href="css2/support.css" />
   <link rel="stylesheet" href="css2/marques.css" />
+  <link rel="stylesheet" href="css2/lost.css" />
+  <link rel="stylesheet" href="css2/rescued.css" />
+  <link rel="stylesheet" href="css2/motion.css" />
 </head>
 <body id="top">
 
@@ -51,10 +54,8 @@
 
       <div class="container">
         <div class="hero__content" data-reveal>
-          <p class="type-eyebrow hero__eyebrow">Sports &middot; Classic &middot; Muscle</p>
           <h1 id="hero-title" class="type-display-xl hero__title">
             Private Collection Seeking Sports Cars, Classic Cars, and Muscle Cars.
-            <span class="type-script hero__script">Let&rsquo;s talk.</span>
           </h1>
           <p class="type-body-lg hero__body">
             Discreetly buying Porsche, Ferrari, Lamborghini, Shelby and other sports and
@@ -62,11 +63,11 @@
             transaction. Cars in any condition wanted, single cars or whole collections
             &mdash; we make it easy and pick up anywhere.
           </p>
-          <p class="hero__support">
-            Your car deserves more than a public listing or a quick dealer offer. It
+          <aside class="hero__note">
+            <p>Your car deserves more than a public listing or a quick dealer offer. It
             deserves a thoughtful new home in a curated private collection. If you have
-            something to sell, please give us a call.
-          </p>
+            something to sell, please give us a call.</p>
+          </aside>
           <div class="hero__actions">
             <a href="#cars-we-buy" class="btn btn--primary">Cars we are looking for</a>
             <a href="#why-sports-car-rescue" class="btn btn--secondary">About Us</a>
@@ -214,23 +215,163 @@
         <!-- Marque list — TEXT for now; logos to come. To add a logo later:
              <a class="marque"><img class="marque__logo" src="…" alt="Porsche"><span class="marque__name">…</span> … -->
         <ul class="marques__grid" role="list">
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Porsche</span><span class="marque__models">356 &middot; 911 &middot; 912 &middot; 930</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Ferrari</span><span class="marque__models">250 &middot; 275 &middot; 308 &middot; Dino</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Lamborghini</span><span class="marque__models">Miura &middot; Espada &middot; Countach</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Aston Martin</span><span class="marque__models">DB4 &middot; DB5 &middot; DB6 &middot; V8</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Jaguar</span><span class="marque__models">E-Type &middot; XK &middot; XKE</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Corvette</span><span class="marque__models">C1 &middot; C2 &middot; C3</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Acura NSX</span><span class="marque__models">NA1 &middot; NA2</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Shelby</span><span class="marque__models">Cobra &middot; GT350 &middot; GT500</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Ford</span><span class="marque__models">Mustang &middot; GT40 &middot; Bronco</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Chevrolet</span><span class="marque__models">Camaro &middot; Chevelle &middot; Nova</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Dodge</span><span class="marque__models">Charger &middot; Challenger &middot; Coronet</span></a></li>
-          <li><a class="marque" href="#contact-us"><span class="marque__name">Pontiac</span><span class="marque__models">GTO &middot; Firebird &middot; Trans Am</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/porsche.svg" alt="Porsche" loading="lazy" /><span class="marque__name">Porsche</span><span class="marque__models">356 &middot; 911 &middot; 912 &middot; 930</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/ferrari.svg" alt="Ferrari" loading="lazy" /><span class="marque__name">Ferrari</span><span class="marque__models">250 &middot; 275 &middot; 308 &middot; Dino</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/lamborghini.svg" alt="Lamborghini" loading="lazy" /><span class="marque__name">Lamborghini</span><span class="marque__models">Miura &middot; Espada &middot; Countach</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/aston-martin.svg" alt="Aston Martin" loading="lazy" /><span class="marque__name">Aston Martin</span><span class="marque__models">DB4 &middot; DB5 &middot; DB6 &middot; V8</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/maserati.svg" alt="Maserati" loading="lazy" /><span class="marque__name">Maserati</span><span class="marque__models">Ghibli &middot; Mistral &middot; Bora</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/jaguar.svg" alt="Jaguar" loading="lazy" /><span class="marque__name">Jaguar</span><span class="marque__models">E-Type &middot; XK &middot; XKE</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/bentley.svg" alt="Bentley" loading="lazy" /><span class="marque__name">Bentley</span><span class="marque__models">R-Type &middot; S-Series &middot; Continental</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/rolls-royce.svg" alt="Rolls-Royce" loading="lazy" /><span class="marque__name">Rolls-Royce</span><span class="marque__models">Silver Cloud &middot; Corniche &middot; Phantom</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/bugatti.svg" alt="Bugatti" loading="lazy" /><span class="marque__name">Bugatti</span><span class="marque__models">Type 35 &middot; Type 57 &middot; EB110</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/alfa-romeo.svg" alt="Alfa Romeo" loading="lazy" /><span class="marque__name">Alfa Romeo</span><span class="marque__models">Giulia &middot; Spider &middot; GTV</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/corvette.svg" alt="Corvette" loading="lazy" /><span class="marque__name">Corvette</span><span class="marque__models">C1 &middot; C2 &middot; C3</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/mustang.svg" alt="Mustang" loading="lazy" /><span class="marque__name">Mustang</span><span class="marque__models">Fastback &middot; Boss &middot; Shelby GT</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/cadillac.svg" alt="Cadillac" loading="lazy" /><span class="marque__name">Cadillac</span><span class="marque__models">V16 &middot; Eldorado &middot; Series 62</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/lincoln.svg" alt="Lincoln" loading="lazy" /><span class="marque__name">Lincoln</span><span class="marque__models">Continental &middot; Mark Series</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/buick.svg" alt="Buick" loading="lazy" /><span class="marque__name">Buick</span><span class="marque__models">Riviera &middot; GS &middot; Skylark</span></a></li>
+          <li><a class="marque" href="#contact-us" data-reveal><img class="marque__logo" src="assets/img/carswebuy/logos/gmc.svg" alt="GMC" loading="lazy" /><span class="marque__name">GMC</span><span class="marque__models">Classic pickups &amp; haulers</span></a></li>
         </ul>
 
         <div class="marques__cta">
           <p>Don&rsquo;t see your make? We buy well beyond this list.</p>
           <a href="#contact-us" class="btn btn--primary">Tell us what you have</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOST CARS — the collector's "still looking for" ledger ===== -->
+    <section id="lost-cars" class="lost section" aria-labelledby="lost-title">
+      <div class="container">
+        <header class="lost__head center" data-reveal>
+          <p class="type-eyebrow">Still searching</p>
+          <h2 id="lost-title" class="type-display-md">Lost Cars</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="type-lead lost__lead">Specific cars we&rsquo;re hunting right now. Know where one is &mdash;
+            running, parked, or long forgotten? We want to hear from you.</p>
+        </header>
+
+        <!-- Growing list — client adds real cars over time. Thumb: assets/img/carswebuy/*.png -->
+        <ul class="lost__list" role="list">
+          <li class="lost-item" data-reveal>
+            <span class="lost-item__thumb"><img src="assets/img/carswebuy/ford-mustang.png" alt="1969 Ford Mustang Boss 429" loading="lazy" /></span>
+            <div class="lost-item__body">
+              <h3 class="lost-item__name">1969 Ford Mustang Boss 429</h3>
+              <p class="lost-item__note">Any color. Numbers-matching preferred; a genuine project considered.</p>
+            </div>
+            <span class="lost-item__tag">Still looking</span>
+          </li>
+          <li class="lost-item" data-reveal>
+            <span class="lost-item__thumb"><img src="assets/img/carswebuy/chevrolet-corvette.png" alt="1963 Chevrolet Corvette Split-Window" loading="lazy" /></span>
+            <div class="lost-item__body">
+              <h3 class="lost-item__name">1963 Corvette Split-Window</h3>
+              <p class="lost-item__note">Coupe, fuel-injected. Any condition, any story.</p>
+            </div>
+            <span class="lost-item__tag">Still looking</span>
+          </li>
+          <li class="lost-item" data-reveal>
+            <span class="lost-item__thumb"><img src="assets/img/carswebuy/chevrolet-camaro.png" alt="1969 Chevrolet Camaro ZL1" loading="lazy" /></span>
+            <div class="lost-item__body">
+              <h3 class="lost-item__name">1969 Chevrolet Camaro ZL1</h3>
+              <p class="lost-item__note">COPO cars especially. Original documentation a plus.</p>
+            </div>
+            <span class="lost-item__tag">Still looking</span>
+          </li>
+          <li class="lost-item" data-reveal>
+            <span class="lost-item__thumb"><img src="assets/img/carswebuy/pontiac-gto.png" alt="1964 Pontiac GTO" loading="lazy" /></span>
+            <div class="lost-item__body">
+              <h3 class="lost-item__name">1964 Pontiac GTO</h3>
+              <p class="lost-item__note">Tri-power and original drivetrain preferred.</p>
+            </div>
+            <span class="lost-item__tag">Still looking</span>
+          </li>
+          <li class="lost-item" data-reveal>
+            <span class="lost-item__thumb"><img src="assets/img/carswebuy/dodge-charger.png" alt="1969 Dodge Charger Daytona" loading="lazy" /></span>
+            <div class="lost-item__body">
+              <h3 class="lost-item__name">1969 Dodge Charger Daytona</h3>
+              <p class="lost-item__note">Winged cars wanted. Barn finds welcome.</p>
+            </div>
+            <span class="lost-item__tag">Still looking</span>
+          </li>
+          <li class="lost-item" data-reveal>
+            <span class="lost-item__thumb"><img src="assets/img/carswebuy/porsche-911.png" alt="1973 Porsche 911 Carrera RS" loading="lazy" /></span>
+            <div class="lost-item__body">
+              <h3 class="lost-item__name">1973 Porsche 911 Carrera RS</h3>
+              <p class="lost-item__note">Lightweight or Touring &mdash; any condition, any history.</p>
+            </div>
+            <span class="lost-item__tag">Still looking</span>
+          </li>
+        </ul>
+
+        <p class="lost__foot center" data-reveal>This list grows over time. Seen one of these? <a href="#contact-us">Tell us.</a></p>
+      </div>
+    </section>
+
+    <!-- ===== CARS WE'VE RESCUED — purchased cars, photo + name + short story ===== -->
+    <section id="cars-weve-rescued" class="rescued section" aria-labelledby="rescued-title">
+      <div class="container">
+        <header class="rescued__head center" data-reveal>
+          <p class="type-eyebrow">Recently rescued</p>
+          <h2 id="rescued-title" class="type-display-md">Cars We&rsquo;ve Rescued</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="type-lead rescued__lead">A few of the cars we&rsquo;ve pulled out of the dark and given a new home.
+            Each one has a story &mdash; open it to read ours.</p>
+        </header>
+
+        <!-- Each card links to that car's own page (built later). Photos: assets/img/finalinvenotry/*.webp -->
+        <ul class="rescued__grid" role="list">
+          <li><article class="rescued-card" data-reveal>
+            <a class="rescued-card__media" href="#"><img src="assets/img/finalinvenotry/1932-cadillac-v16.webp" alt="1932 Cadillac V16" loading="lazy" /></a>
+            <div class="rescued-card__body">
+              <h3 class="rescued-card__name">1932 Cadillac V16</h3>
+              <p class="rescued-card__desc">A true sixteen-cylinder classic &mdash; found in a private estate, largely original.</p>
+              <a class="rescued-card__more" href="#">Read its story &rarr;</a>
+            </div>
+          </article></li>
+          <li><article class="rescued-card" data-reveal>
+            <a class="rescued-card__media" href="#"><img src="assets/img/finalinvenotry/1947-delahaye-135m.webp" alt="1947 Delahaye 135M" loading="lazy" /></a>
+            <div class="rescued-card__body">
+              <h3 class="rescued-card__name">1947 Delahaye 135M</h3>
+              <p class="rescued-card__desc">Coachbuilt French elegance, rescued from a decades-long slumber.</p>
+              <a class="rescued-card__more" href="#">Read its story &rarr;</a>
+            </div>
+          </article></li>
+          <li><article class="rescued-card" data-reveal>
+            <a class="rescued-card__media" href="#"><img src="assets/img/finalinvenotry/1953-bentley-r-type.webp" alt="1953 Bentley R-Type" loading="lazy" /></a>
+            <div class="rescued-card__body">
+              <h3 class="rescued-card__name">1953 Bentley R-Type</h3>
+              <p class="rescued-card__desc">Grand touring at its finest, with complete history from new.</p>
+              <a class="rescued-card__more" href="#">Read its story &rarr;</a>
+            </div>
+          </article></li>
+          <li><article class="rescued-card" data-reveal>
+            <a class="rescued-card__media" href="#"><img src="assets/img/finalinvenotry/1962-chevrolet-bel-air.webp" alt="1962 Chevrolet Bel Air" loading="lazy" /></a>
+            <div class="rescued-card__body">
+              <h3 class="rescued-card__name">1962 Chevrolet Bel Air</h3>
+              <p class="rescued-card__desc">An honest survivor, bought directly from the original family.</p>
+              <a class="rescued-card__more" href="#">Read its story &rarr;</a>
+            </div>
+          </article></li>
+          <li><article class="rescued-card" data-reveal>
+            <a class="rescued-card__media" href="#"><img src="assets/img/finalinvenotry/1971-dodge-charger.webp" alt="1971 Dodge Charger" loading="lazy" /></a>
+            <div class="rescued-card__body">
+              <h3 class="rescued-card__name">1971 Dodge Charger</h3>
+              <p class="rescued-card__desc">Big-block muscle, matching numbers &mdash; saved before the crusher.</p>
+              <a class="rescued-card__more" href="#">Read its story &rarr;</a>
+            </div>
+          </article></li>
+          <li><article class="rescued-card" data-reveal>
+            <a class="rescued-card__media" href="#"><img src="assets/img/finalinvenotry/1972-bmw-30cs.webp" alt="1972 BMW 3.0 CS" loading="lazy" /></a>
+            <div class="rescued-card__body">
+              <h3 class="rescued-card__name">1972 BMW 3.0 CS</h3>
+              <p class="rescued-card__desc">The elegant coupe, pulled from a barn and brought back to life.</p>
+              <a class="rescued-card__more" href="#">Read its story &rarr;</a>
+            </div>
+          </article></li>
+        </ul>
+
+        <div class="rescued__cta center" data-reveal>
+          <a href="#" class="btn btn--secondary">View all rescued cars</a>
         </div>
       </div>
     </section>
@@ -408,8 +549,8 @@
          Elfsight) or drop in latest-post images. -->
     <section class="ig-feed" id="cars-weve-purchased" aria-labelledby="ig-title">
       <div class="container ig-feed__head" data-reveal>
-        <p class="type-eyebrow ig-feed__eyebrow">Recently rescued</p>
-        <h2 id="ig-title" class="ig-feed__title">Cars We Purchased</h2>
+        <p class="type-eyebrow ig-feed__eyebrow">On Instagram</p>
+        <h2 id="ig-title" class="ig-feed__title">Follow the Rescue</h2>
         <a class="ig-feed__follow" href="#" data-placeholder="instagram">
           <span class="contact__ig-mark" aria-hidden="true"></span>
           <span>@sportscarrescue</span>

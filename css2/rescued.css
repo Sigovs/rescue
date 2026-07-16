@@ -1,0 +1,83 @@
+/* ============================================================
+   SPORTS CAR RESCUE — CARS WE'VE RESCUED
+   Cars we've purchased. Each card = photo + name (title) + a
+   short line about what's special. The card links to that car's
+   own page (built later); for now it points at a placeholder.
+   ============================================================ */
+
+.rescued { padding-block: clamp(var(--space-8), 9vw, var(--space-10)); }
+.rescued__head { max-width: 60ch; margin: 0 auto var(--space-8); }
+.rescued__head .rule { margin-inline: auto; }
+.rescued__lead { max-width: 54ch; margin-inline: auto; }
+
+.rescued__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rescued-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+.rescued-card:hover { transform: translateY(-4px); box-shadow: var(--elev-photo); }
+
+.rescued-card__media {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--paper-raised);
+}
+.rescued-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease-out);
+}
+.rescued-card:hover .rescued-card__media img { transform: scale(1.04); }
+
+.rescued-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+}
+.rescued-card__name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  color: var(--ink);
+  margin: 0;
+}
+.rescued-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.rescued-card__more {
+  margin-top: var(--space-1);
+  font-family: var(--font-doc);
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+.rescued-card__more:hover { text-decoration: underline; }
+
+.rescued__cta { margin-top: var(--space-7); text-align: center; }
+
+@media (max-width: 900px) { .rescued__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .rescued__grid { grid-template-columns: 1fr; } }

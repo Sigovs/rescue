@@ -1,0 +1,73 @@
+/* ============================================================
+   SPORTS CAR RESCUE — LOST CARS
+   A collector's "still looking for" ledger: a simple, growing
+   list of specific cars we're hunting. Small thumbnail + note.
+   Client adds real entries over time.
+   ============================================================ */
+
+.lost { padding-block: clamp(var(--space-8), 9vw, var(--space-10)); }
+.lost__head { max-width: 60ch; margin: 0 auto var(--space-8); }
+.lost__head .rule { margin-inline: auto; }
+.lost__lead { max-width: 52ch; margin-inline: auto; }
+
+.lost__list {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-3);
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.lost-item:hover { background: color-mix(in srgb, var(--paper-raised) 50%, transparent); }
+
+.lost-item__thumb {
+  display: grid;
+  place-items: center;
+  width: clamp(76px, 8vw, 100px);
+  aspect-ratio: 4 / 3;
+  background: var(--paper-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.lost-item__thumb img { width: 92%; height: 92%; object-fit: contain; }
+
+.lost-item__name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  color: var(--ink);
+  margin: 0 0 2px;
+}
+.lost-item__note { font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+
+.lost-item__tag {
+  font-family: var(--font-doc);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: 100px;
+  padding: 0.32em 0.85em;
+}
+
+.lost__foot { margin: var(--space-7) auto 0; color: var(--ink-soft); }
+.lost__foot a { color: var(--accent); font-weight: var(--fw-medium); text-decoration: none; }
+.lost__foot a:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .lost-item { grid-template-columns: auto 1fr; gap: var(--space-4); }
+  .lost-item__tag { grid-column: 2; justify-self: start; margin-top: var(--space-2); }
+}

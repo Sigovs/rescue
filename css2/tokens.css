@@ -31,8 +31,8 @@
   --c-rust:        #A8472A; /* PRIMARY — CTA, links, accents   */
   --c-rust-deep:   #82331C; /* hover / pressed                 */
   --c-rust-tint:   #C9663F; /* light accent                    */
-  --c-brass:       #B68A3C; /* SECONDARY — gauges, gold detail */
-  --c-brass-light: #D8B25A; /* brass highlight                 */
+  --c-brass:       #B27C22; /* SECONDARY — warm antique brass / gold detail */
+  --c-brass-light: #D8A945; /* brass highlight                 */
   --c-sage:        #6E715D; /* muted olive-green — patina / barn foliage */
 
   /* ---------- 4. SEMANTIC ALIASES (use these in components) - */

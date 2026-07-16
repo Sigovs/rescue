@@ -56,18 +56,28 @@
 .btn--primary {
   color: var(--ink-on-dark);
   background-color: var(--accent);
+  /* light gradient — subtle top highlight into a touch darker foot */
+  background-image: linear-gradient(180deg,
+    color-mix(in srgb, var(--accent) 90%, #fff) 0%,
+    var(--accent) 55%,
+    color-mix(in srgb, var(--accent) 93%, #000) 100%);
   border-color: var(--accent);
   box-shadow: var(--shadow-soft);
 }
 .btn--primary:hover {
   color: var(--ink-on-dark);
   background-color: var(--accent-hover);
+  background-image: linear-gradient(180deg,
+    color-mix(in srgb, var(--accent-hover) 90%, #fff) 0%,
+    var(--accent-hover) 55%,
+    color-mix(in srgb, var(--accent-hover) 93%, #000) 100%);
   border-color: var(--accent-hover);
   transform: translateY(-2px);
 }
 .btn--primary:active {
   transform: translateY(0);
   background-color: var(--c-rust-deep);
+  background-image: none;
 }
 
 /* ---- Secondary CTA — ink outline, ghost fill ---- */

@@ -105,13 +105,15 @@ strong { font-weight: var(--fw-bold); }
 /* ---------- 4. SCROLL-REVEAL HOOK (toggled by js/main.js) ---------- */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(22px);
+  filter: blur(8px);
   transition: opacity var(--dur-slow) var(--ease-out),
-              transform var(--dur-slow) var(--ease-out);
+              transform var(--dur-slow) var(--ease-out),
+              filter var(--dur-slow) var(--ease-out);
 }
-[data-reveal].is-visible { opacity: 1; transform: none; }
+[data-reveal].is-visible { opacity: 1; transform: none; filter: blur(0); }
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; }
+  [data-reveal] { opacity: 1; transform: none; filter: none; }
 }
 
 /* ---------- 5. UTILITIES ---------- */
