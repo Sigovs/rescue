@@ -1,0 +1,144 @@
+/* ============================================================
+   SPORTS CAR RESCUE — "CARS WE'RE LOOKING FOR" (the Want grid)
+   Editorial intro on the left + a grid of model "want cards"
+   (year · make+model · photo · short note · rust rule) on the right,
+   with an aged handwritten note tucked into the corner.
+   Archival, built on tokens + type. (file: wanted.css)
+   ============================================================ */
+.wlf {
+  position: relative;
+  background-color: var(--paper);
+  overflow: hidden;
+}
+
+/* macro 2-column: narrow intro + wide grid */
+.wlf__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(300px, 26%) 1fr;
+  gap: var(--space-8) clamp(var(--space-7), 5vw, var(--space-9));
+  align-items: start;
+}
+
+/* ---------- LEFT — editorial intro ---------- */
+.wlf__intro { position: sticky; top: calc(var(--header-h) + var(--space-6)); }
+.wlf__eyebrow {
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+}
+.wlf__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display-md);        /* 34 → 60, system scale */
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent-2) 78%, var(--c-bark));   /* brass-brown */
+  margin-bottom: var(--space-5);
+}
+.wlf__script {
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+  line-height: 1.15;
+  color: var(--accent);
+  max-width: 22ch;
+  margin-bottom: var(--space-5);
+}
+.wlf__body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 36ch;
+}
+.wlf__body b { color: var(--ink); font-weight: var(--fw-bold); }
+.wlf__cta { margin-top: var(--space-6); }
+
+/* ---------- RIGHT — the want grid ---------- */
+.wlf__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+}
+.wlf-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-5) var(--space-4);
+  /* paper panel — same treatment as the What We Buy cards */
+  background: var(--paper-light);
+  border-radius: var(--radius-lg);
+  outline: 1px solid transparent;
+  transition: background-color var(--dur-base) var(--ease-out),
+              outline-color var(--dur-base) var(--ease-out);
+}
+.wlf-card:hover {
+  background-color: #f3ead6;
+  outline-color: color-mix(in srgb, #6B5640 35%, #f3ead6);
+}
+.wlf-card__years {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-1);
+}
+.wlf-card__name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: var(--space-4);
+  min-height: 2.1em;            /* keep photos aligned across 1- and 2-line names */
+}
+/* car cut-out photo — lifts + brightens on hover, like the buy polaroids */
+.wlf-card__ph {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  margin-bottom: var(--space-4);
+  filter: drop-shadow(0 0 0 transparent) brightness(1);
+  transform: translateY(0);
+  transition: filter var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+.wlf-card:hover .wlf-card__ph {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 14px 16px color-mix(in srgb, var(--c-espresso) 30%, transparent)) brightness(1.08);
+}
+.wlf-card__note {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 24ch;
+  margin-bottom: var(--space-4);
+}
+.wlf-card__rule {
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin-top: auto;
+  background: var(--accent);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .wlf__inner { grid-template-columns: 1fr; }
+  .wlf__intro { position: static; max-width: 60ch; }
+  .wlf__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .wlf__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 440px) {
+  .wlf__grid { grid-template-columns: 1fr; }
+  .wlf-card__name { min-height: 0; }
+}

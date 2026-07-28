@@ -1,0 +1,56 @@
+<!-- ============================================================
+     HEADER / NAV  (v2) — injected by js/main2.js into [data-partial="header"]
+     Hybrid: client's 5 top links inline + ☰ drawer with the full index.
+     Top-nav ⊂ drawer (same labels & hrefs). Extras (Home, About Us) live
+     in the drawer only. Multi-page: links point to page files.
+     ============================================================ -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="#top" aria-label="Sports Car Rescue — home">
+      <img class="brand__logo" src="assets/img/why/heaer_logo.svg" alt="Sports Car Rescue" />
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#cars-we-buy">Cars We Buy</a>
+      <a href="#lost-cars">Lost Cars</a>
+      <a href="#cars-weve-rescued">Cars We've Rescued</a>
+      <a href="#estate-collection-assistance">Estate</a>
+      <a href="#contact-us">Contact</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="site-header__phone" href="tel:+19048744877">904-874-4877</a>
+      <a href="#contact-us" class="btn btn--secondary site-header__cta">Tell us what you have</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Slide-in archival INDEX drawer (full site index) ===== -->
+<div class="site-menu" id="site-menu" aria-hidden="true">
+  <div class="site-menu__backdrop" data-menu-close></div>
+
+  <aside class="site-menu__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="site-menu__bar">
+      <img class="site-menu__logo" src="assets/img/why/footer_logo.svg" alt="Sports Car Rescue" />
+      <button class="site-menu__close" type="button" aria-label="Close menu">
+        Close <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <nav class="site-menu__inner" aria-label="All sections">
+      <ol class="menu-index" role="list">
+        <li><a href="#top"><span class="menu-index__no">01</span><span class="menu-index__label">Home</span></a></li>
+        <li><a href="#cars-we-buy"><span class="menu-index__no">02</span><span class="menu-index__label">Cars We Buy</span></a></li>
+        <li><a href="#lost-cars"><span class="menu-index__no">03</span><span class="menu-index__label">Lost Cars</span></a></li>
+        <li><a href="#cars-weve-rescued"><span class="menu-index__no">04</span><span class="menu-index__label">Cars We've Rescued</span></a></li>
+        <li><a href="#estate-collection-assistance"><span class="menu-index__no">05</span><span class="menu-index__label">Estate &amp; Collection</span></a></li>
+        <li><a href="#why-sports-car-rescue"><span class="menu-index__no">06</span><span class="menu-index__label">About Us</span></a></li>
+        <li><a href="#contact-us"><span class="menu-index__no">07</span><span class="menu-index__label">Contact</span></a></li>
+      </ol>
+      <p class="site-menu__note">We buy Sports cars, race cars, motorcycles and even parts and memorabilia &ndash; Have something you&rsquo;d like to sell? Give us a call <a href="tel:+19048744877">904-874-4877</a></p>
+    </nav>
+  </aside>
+</div>

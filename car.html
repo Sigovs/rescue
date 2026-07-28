@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: this is the per-car template. Fields marked {{ }} are what a
+       real car page would fill; the 1967 Porsche 911S is the worked example. -->
+  <title>1967 Porsche 911S — Rescued &amp; Preserved | Sports Car Rescue</title>
+  <meta name="description"
+        content="The rescue of a 1967 Porsche 911S — bought quietly from a family estate and returned to the road. Read its story, its provenance and how we found it." />
+  <link rel="canonical" href="https://sportscarrescue.com/rescued/1967-porsche-911s" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="1967 Porsche 911S — Rescued &amp; Preserved" />
+  <meta property="og:description" content="Bought quietly from a family estate and returned to the road. The story, provenance and rescue of an original 1967 Porsche 911S." />
+  <meta property="og:image" content="https://sportscarrescue.com/assets/img/rescued/porsche-911s-1967.jpg" />
+  <meta property="og:site_name" content="Sports Car Rescue" />
+
+  <!-- Structured data — breadcrumb + the car as a Vehicle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sportscarrescue.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Cars We've Rescued", "item": "https://sportscarrescue.com/#cars-weve-rescued" },
+          { "@type": "ListItem", "position": 3, "name": "1967 Porsche 911S" }
+        ]
+      },
+      {
+        "@type": "Vehicle",
+        "name": "1967 Porsche 911S",
+        "manufacturer": { "@type": "Organization", "name": "Porsche" },
+        "model": "911S",
+        "vehicleModelDate": "1967",
+        "bodyType": "Coupe",
+        "vehicleEngine": { "@type": "EngineSpecification", "engineType": "2.0 L air-cooled flat-six" },
+        "image": "https://sportscarrescue.com/assets/img/rescued/porsche-911s-1967.jpg",
+        "description": "An original 1967 Porsche 911S rescued from a family estate and preserved in a private collection."
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts: display / script / typewriter / serif body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Shadows+Into+Light+Two&family=Special+Elite&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" />
+
+  <!-- Styles — same system as index4, plus the car-page layer last -->
+  <link rel="stylesheet" href="css4/tokens.css" />
+  <link rel="stylesheet" href="css4/base.css" />
+  <link rel="stylesheet" href="css4/typography.css" />
+  <link rel="stylesheet" href="css4/grid.css" />
+  <link rel="stylesheet" href="css4/components.css" />
+  <link rel="stylesheet" href="css4/layouts.css" />
+  <link rel="stylesheet" href="css4/motion.css" />
+  <link rel="stylesheet" href="css4/car.css" />
+</head>
+<body id="top" data-subpage>
+
+  <a href="#main" class="btn visually-hidden">Skip to content</a>
+
+  <!-- HEADER (injected from partials4/header.html; links repointed to home on subpages) -->
+  <div data-partial="header"></div>
+
+  <main id="main">
+
+    <!-- ===== HERO — full-bleed photo reads as an object, text in a lower-left scrim ===== -->
+    <section class="car-hero" aria-labelledby="car-title">
+      <img class="car-hero__img"
+           src="assets/img/rescued/porsche-911s-1967.jpg"
+           alt="1967 Porsche 911S, rescued from a family estate" />
+      <div class="container">
+        <div class="car-hero__plate">
+          <p class="car-hero__eyebrow">Rescued &middot; Porsche</p>
+          <h1 class="car-hero__title" id="car-title">1967 Porsche 911S</h1>
+          <p class="car-hero__meta">Chassis 305####S &middot; found in a family estate, long-stored</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BODY — the story (dominant) + the record (support) ===== -->
+    <section class="car-body">
+      <div class="container">
+        <div class="car-body__grid">
+
+          <!-- STORY -->
+          <div class="car-story">
+            <p class="car-breadcrumb">
+              <a href="index4.html">Home</a> /
+              <a href="index4.html#cars-weve-rescued">Cars We&rsquo;ve Rescued</a> /
+              <span aria-current="page">1967 Porsche 911S</span>
+            </p>
+
+            <p class="car-story__eyebrow">The rescue</p>
+            <p class="car-story__lead">Part of her father&rsquo;s collection, she bought it from his estate and enjoyed it for more than a decade &mdash; then trusted us to find it a home that would keep it exactly as he&rsquo;d left it.</p>
+            <span class="car-story__rule" aria-hidden="true"></span>
+
+            <div class="car-story__body">
+              <p>The call came the way most of the good ones do &mdash; quietly, through someone who knew someone. A short-wheelbase 911S, one family since the late sixties, parked under a cover in a garage that hadn&rsquo;t changed since the man who bought it new stopped driving.</p>
+              <p>These early S cars are the ones enthusiasts chase: the 160-horsepower flat-six, the Fuchs wheels, the delicacy that Porsche engineered out of the car in the decades after. Original paint, original interior, and the sort of honest patina you cannot fake and should never restore away.</p>
+
+              <blockquote class="car-story__quote">&ldquo;She didn&rsquo;t want the highest offer. She wanted to know it would be looked after.&rdquo;</blockquote>
+
+              <p>We spent an afternoon with the paperwork spread across the kitchen table &mdash; the original bill of sale, service records in a man&rsquo;s careful handwriting, a folder of photographs going back fifty years. That archive travels with the car now; it is as much a part of it as the engine.</p>
+              <p>It sorts, it sits in the collection, and it gets driven the way it was meant to. That was the whole point &mdash; not to flip it, but to make sure the next fifty years look after it as well as the last fifty did.</p>
+            </div>
+          </div>
+
+          <!-- SPEC PLATE — facts as a record, hairlines, no box -->
+          <aside class="car-spec" aria-label="Specification">
+            <p class="car-spec__eyebrow">The record</p>
+            <dl class="car-spec__list">
+              <div class="car-spec__row"><dt class="car-spec__label">Year</dt><dd class="car-spec__value">1967</dd></div>
+              <div class="car-spec__row"><dt class="car-spec__label">Make</dt><dd class="car-spec__value">Porsche</dd></div>
+              <div class="car-spec__row"><dt class="car-spec__label">Model</dt><dd class="car-spec__value">911S (short-wheelbase)</dd></div>
+              <div class="car-spec__row"><dt class="car-spec__label">Engine</dt><dd class="car-spec__value">2.0&nbsp;L air-cooled flat-six</dd></div>
+              <div class="car-spec__row"><dt class="car-spec__label">Chassis</dt><dd class="car-spec__value">305####S</dd></div>
+              <div class="car-spec__row"><dt class="car-spec__label">Acquired</dt><dd class="car-spec__value">From a family estate</dd></div>
+              <div class="car-spec__row"><dt class="car-spec__label">Condition</dt><dd class="car-spec__value">Original, long-stored</dd></div>
+              <div class="car-spec__row"><dt class="car-spec__label">Status</dt><dd class="car-spec__value car-spec__value--status">In the collection</dd></div>
+            </dl>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY — controlled crops, generous air ===== -->
+    <section class="car-gallery">
+      <div class="container">
+        <p class="car-gallery__eyebrow">The car</p>
+        <div class="car-gallery__grid">
+          <figure class="car-gallery__fig car-gallery__fig--tall">
+            <img src="assets/img/rescued/porsche-911s-1967.jpg" alt="1967 Porsche 911S, three-quarter view" loading="lazy" />
+          </figure>
+          <figure class="car-gallery__fig">
+            <img src="assets/img/rescued/porsche-911s-1967.jpg" alt="1967 Porsche 911S, front detail" loading="lazy" style="object-position: left top;" />
+          </figure>
+          <figure class="car-gallery__fig">
+            <img src="assets/img/rescued/porsche-911s-1967.jpg" alt="1967 Porsche 911S, rear detail" loading="lazy" style="object-position: right bottom;" />
+          </figure>
+        </div>
+        <p class="car-gallery__cap">Placeholder crops &mdash; replace with the car&rsquo;s own gallery.</p>
+      </div>
+    </section>
+
+    <!-- ===== CTA — one solid, resolving gesture ===== -->
+    <section class="car-cta on-dark">
+      <div class="container">
+        <p class="car-cta__eyebrow">More collector than dealer</p>
+        <h2 class="car-cta__title">Have one like this?</h2>
+        <p class="car-cta__sub">A Porsche in the family, a project that stalled, a car that deserves the next fifty years. Send a few photos &mdash; we&rsquo;ll tell you honestly what it&rsquo;s worth and where it should go.</p>
+        <div class="car-cta__actions">
+          <a href="index4.html#contact-us" class="btn btn--primary">Tell us what you have</a>
+          <a href="tel:+19048744877" class="btn btn--secondary">Or call 904&middot;874&middot;4877</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MORE FROM THE COLLECTION — quiet strip ===== -->
+    <section class="car-more">
+      <div class="container">
+        <div class="car-more__head">
+          <p class="car-more__eyebrow">More from the collection</p>
+          <a class="car-more__all" href="index4.html#cars-weve-rescued">View all rescued &rarr;</a>
+        </div>
+        <ul class="car-more__grid">
+          <li>
+            <a class="car-more__card" href="#">
+              <span class="car-more__media"><img src="assets/img/rescued/ferrari-512bbi.jpg" alt="1982 Ferrari 512bbi" loading="lazy" /></span>
+              <span class="car-more__name">1982 Ferrari 512bbi</span>
+            </a>
+          </li>
+          <li>
+            <a class="car-more__card" href="#">
+              <span class="car-more__media"><img src="assets/img/rescued/lamborghini-countach.jpg" alt="1984 Lamborghini Countach" loading="lazy" /></span>
+              <span class="car-more__name">1984 Lamborghini Countach</span>
+            </a>
+          </li>
+          <li>
+            <a class="car-more__card" href="#">
+              <span class="car-more__media"><img src="assets/img/rescued/shelby-gt350.jpg" alt="1965 Shelby GT350" loading="lazy" /></span>
+              <span class="car-more__name">1965 Shelby GT350</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (injected from partials4/footer.html; links repointed to home on subpages) -->
+  <div data-partial="footer"></div>
+
+  <script type="module" src="js/main4.js?v=1"></script>
+</body>
+</html>

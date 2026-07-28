@@ -1,0 +1,40 @@
+/* ============================================================
+   SUPPORT COLLAGE ACCENTS — top-down cars + Z/28 seal
+   Decorative only (aria-hidden).
+     • .why__seal       — Z/28 chrome stamp on the manifesto
+     • .wlf__corner-car — silver classic, scroll-driven across the corner
+   ============================================================ */
+
+/* ---------- Z/28 chrome seal, stamped top-right of the dark manifesto ---------- */
+.why__seal {
+  position: absolute;
+  top: clamp(var(--space-7), 9vw, 7rem);
+  right: clamp(var(--space-5), 4vw, 4rem);
+  width: clamp(86px, 9vw, 140px);
+  height: auto;
+  z-index: 3;
+  rotate: 9deg;
+  filter: drop-shadow(0 12px 18px color-mix(in srgb, #000 55%, transparent));
+  pointer-events: none;
+}
+
+/* ---------- silver classic — JS drives it down a diagonal path on scroll ---------- */
+.wlf { position: relative; overflow: hidden; }
+.wlf > .container { position: relative; z-index: 1; }   /* copy stays above the car */
+.wlf__corner-car {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 4%;
+  width: clamp(150px, 16vw, 235px);
+  height: auto;
+  filter: drop-shadow(0 14px 22px color-mix(in srgb, var(--shadow) 26%, transparent));
+  pointer-events: none;
+  opacity: 0;                 /* JS sets transform + opacity per scroll */
+  will-change: transform, opacity;
+}
+
+@media (max-width: 760px) {
+  .why__seal { width: 74px; }
+  .wlf__corner-car { display: none; }
+}

@@ -1,0 +1,117 @@
+/* ============================================================
+   SPORTS CAR RESCUE — GRID SYSTEM
+   ------------------------------------------------------------
+   Desktop : 12 columns   (> 1024px)
+   Tablet  :  8 columns   (641–1024px)
+   Mobile  :  4 columns   (<= 640px)
+
+   Content containers stay disciplined and grid-aligned. Intentional
+   asymmetry is allowed ONLY for imagery / collage layers (which are
+   positioned absolutely on top — see components.css image system).
+
+   USAGE
+     <div class="container">            max-width gutter wrapper
+       <div class="grid">               the column grid
+         <div class="col-span-7">…</div>
+         <div class="col-span-5">…</div>
+       </div>
+     </div>
+   On tablet, spans are clamped to 8; on mobile, everything is full-width
+   (col-span-4) unless a col-t-* / col-m-* override is given.
+   ============================================================ */
+
+/* ---------- CONTAINER ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--grid-gutter);
+}
+.container--wide   { max-width: 1480px; }
+.container--narrow { max-width: 880px; }
+
+/* ---------- GRID ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+  gap: var(--grid-gutter);
+  align-items: start;
+}
+.grid--tight { gap: var(--space-4); }
+.grid--loose { gap: var(--space-7); }
+
+/* Column spans (desktop = 12). */
+.col-span-1  { grid-column: span 1; }
+.col-span-2  { grid-column: span 2; }
+.col-span-3  { grid-column: span 3; }
+.col-span-4  { grid-column: span 4; }
+.col-span-5  { grid-column: span 5; }
+.col-span-6  { grid-column: span 6; }
+.col-span-7  { grid-column: span 7; }
+.col-span-8  { grid-column: span 8; }
+.col-span-9  { grid-column: span 9; }
+.col-span-10 { grid-column: span 10; }
+.col-span-11 { grid-column: span 11; }
+.col-span-12 { grid-column: span 12; }
+
+/* Explicit start lines (for intentional off-axis placement). */
+.col-start-1 { grid-column-start: 1; }
+.col-start-2 { grid-column-start: 2; }
+.col-start-3 { grid-column-start: 3; }
+.col-start-4 { grid-column-start: 4; }
+.col-start-5 { grid-column-start: 5; }
+.col-start-6 { grid-column-start: 6; }
+.col-start-7 { grid-column-start: 7; }
+
+/* ---------- TABLET: 8 columns ---------- */
+@media (max-width: 1024px) {
+  :root { --grid-cols: 8; }
+
+  /* Desktop spans wider than 8 collapse to full width. */
+  .col-span-9, .col-span-10, .col-span-11, .col-span-12 { grid-column: span 8; }
+  /* Reset desktop starts that no longer make sense. */
+  .col-start-5, .col-start-6, .col-start-7 { grid-column-start: auto; }
+
+  /* Optional tablet overrides. */
+  .col-t-2 { grid-column: span 2; }
+  .col-t-3 { grid-column: span 3; }
+  .col-t-4 { grid-column: span 4; }
+  .col-t-5 { grid-column: span 5; }
+  .col-t-6 { grid-column: span 6; }
+  .col-t-8 { grid-column: span 8; }
+}
+
+/* ---------- MOBILE: 4 columns, mostly stacked ---------- */
+@media (max-width: 640px) {
+  :root { --grid-cols: 4; }
+
+  /* By default every grid child spans the full 4 cols (stacks). */
+  .grid > * { grid-column: 1 / -1; grid-column-start: auto; }
+
+  /* Opt back into partial widths on mobile when needed. */
+  .col-m-1 { grid-column: span 1; }
+  .col-m-2 { grid-column: span 2; }
+  .col-m-3 { grid-column: span 3; }
+  .col-m-4 { grid-column: span 4; }
+}
+
+/* ---------- GRID DEBUG OVERLAY (toggle via .show-grid on container) ----
+   Dev aid only — never ship enabled. */
+.show-grid { position: relative; }
+.show-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  padding-inline: var(--grid-gutter);
+  background:
+    repeating-linear-gradient(
+      to right,
+      color-mix(in srgb, var(--accent) 12%, transparent) 0,
+      color-mix(in srgb, var(--accent) 12%, transparent)
+        calc((100% - (var(--grid-cols) - 1) * var(--grid-gutter)) / var(--grid-cols)),
+      transparent 0,
+      transparent calc((100% - (var(--grid-cols) - 1) * var(--grid-gutter)) / var(--grid-cols) + var(--grid-gutter))
+    );
+}

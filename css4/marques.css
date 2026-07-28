@@ -1,0 +1,116 @@
+/* ============================================================
+   SPORTS CAR RESCUE — MARQUES GRID  ("Cars We Buy" page)
+   A tile per make (emblem + name + example models) linking to
+   that make's models page. Emblem is a placeholder monogram —
+   swap `.marque__emblem` for a <img> logo when the client sends them.
+   ============================================================ */
+
+.page-head { padding-block: clamp(var(--space-7), 8vw, var(--space-9)) var(--space-6); }
+.page-head .type-lead { max-width: 44ch; }
+
+/* section header above the marque grid (centered stack, no sticky/2-col baggage) */
+.marques__head { max-width: 64ch; margin: 0 auto var(--space-8); }
+.marques__head .wlf__eyebrow { margin: 0 auto var(--space-3); }
+.marques__head .wlf__title  { margin-bottom: var(--space-4); color: #3D2E1E; }
+.marques__head .rule        { margin-inline: auto; }
+.marques__head .wlf__script { max-width: none; margin: var(--space-5) auto var(--space-4); }
+.marques__head .wlf__body   { max-width: 54ch; margin-inline: auto; }
+
+.marques { padding-top: 0; padding-bottom: clamp(var(--space-8), 9vw, var(--space-10)); }
+
+.marques__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;              /* every card the same height */
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;      /* top-align so logos + titles line up */
+  text-align: center;
+  gap: var(--space-1);
+  min-height: 11rem;
+  padding: var(--space-6) var(--space-4);
+  background: var(--paper-light);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--shadow) 6%, transparent);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+.marque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--shadow) 12%, transparent);
+}
+
+/* emblem — placeholder monogram; replace with <img class="marque__logo"> */
+.marque__emblem {
+  display: grid;
+  place-items: center;
+  width: clamp(3.6rem, 5vw, 4.6rem);
+  aspect-ratio: 1;
+  margin-bottom: var(--space-2);
+  border-radius: 100px;
+  background: var(--paper-raised);
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1;
+}
+/* fixed-height logo slot so every title starts at the same line */
+.marque__logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(3.8rem, 5.6vw, 5.4rem);   /* dominant — logo leads the tile */
+  margin-bottom: var(--space-3);
+}
+.marque__logo {
+  max-height: 100%;
+  max-width: 92%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.marque__name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.3em;               /* reserve two lines so titles align */
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;       /* all caps */
+  letter-spacing: 0.06em;
+  font-size: 0.82rem;              /* small caption — logo leads */
+  line-height: 1.15;
+  color: var(--ink);
+}
+.marque:hover .marque__name { color: var(--accent); }
+.marque__models {
+  font-family: var(--font-doc);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  min-height: 2.9em;               /* reserve two lines so every card matches */
+}
+
+/* closing call-to-action strip */
+.marques__cta {
+  margin-top: var(--space-8);
+  text-align: center;
+}
+.marques__cta p { color: var(--ink-soft); margin: 0 auto var(--space-4); }
+
+@media (max-width: 1024px) { .marques__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .marques__grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); } }

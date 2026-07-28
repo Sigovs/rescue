@@ -1,0 +1,168 @@
+/* ============================================================
+   SPORTS CAR RESCUE — "ESTATE & COLLECTION ASSISTANCE"
+   Empathetic guidance for families/estates: left = intro + 3 steps,
+   right = a taped "don't throw this away" field note with a ring of
+   keys that slides in (like the hero) when the section reveals.
+   Built on tokens + grid + type. (file: estate.css)
+   ============================================================ */
+.estate {
+  position: relative;
+  background-color: var(--paper-raised);   /* warm desk tone */
+  overflow: hidden;
+  /* tighter than the default --section-y so the section stays compact */
+  padding-block: clamp(var(--space-6), 4.5vw, var(--space-8));
+}
+.estate__grid { align-items: center; gap: var(--space-6) var(--grid-gutter); }
+
+/* ---------- LEFT — intro + steps ---------- */
+.estate__eyebrow { color: var(--accent); margin-bottom: var(--space-4); }
+.estate__title { color: var(--ink); max-width: 26ch; }
+.estate__lead { color: var(--ink-soft); max-width: 52ch; margin-bottom: var(--space-5); }
+
+/* three equal-height cards, in a row, capped to the text-block width */
+.estate-cards {
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.estate-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;                 /* all three match the tallest */
+  padding: var(--space-5) var(--space-4);
+  background: var(--paper-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elev-flat); /* light shadow at rest */
+  transition: box-shadow var(--dur-base) var(--ease-out);
+}
+.estate-card:hover { box-shadow: none; }
+.estate-card__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 1.125rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+}
+.estate-card__desc { color: var(--ink-soft); }
+
+/* ---------- RIGHT — plate tucked behind, taped field note on top ---------- */
+.estate__aside { position: relative; }
+
+/* vintage Florida plate, slipped UNDER the paper; peeks out the RIGHT and bleeds off-edge */
+.estate__plate {
+  position: absolute;
+  z-index: 0;                 /* behind the note (which is z-index:1) */
+  right: -8rem;               /* bleeds past the right edge (section clips it) */
+  bottom: 14%;
+  width: clamp(12rem, 20vw, 17rem);
+  height: auto;
+  rotate: 8deg;
+  filter: drop-shadow(0 10px 16px color-mix(in srgb, var(--shadow) 40%, transparent));
+}
+
+.estate__note {
+  position: relative;
+  z-index: 1;                 /* sits on top of the plate */
+  background: var(--c-paper-3);   /* manila/kraft — distinct from the cream cards */
+  padding: var(--space-6) var(--space-6) var(--space-5);
+  box-shadow: none;           /* flat at rest — shadow only on hover */
+  rotate: var(--tilt-c);
+  transition: box-shadow var(--dur-base) var(--ease-out);
+}
+.estate__note:hover { box-shadow: var(--elev-photo); }
+/* strip of masking tape across the top */
+.estate__note::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 128px;
+  height: 26px;
+  background: color-mix(in srgb, var(--c-paper-3) 78%, transparent);
+  box-shadow: var(--elev-flat);
+  opacity: 0.9;
+}
+/* ring of keys, hung off the top-left corner; slides in on reveal */
+.estate__keys {
+  position: absolute;
+  top: -3.25rem;
+  left: -2.75rem;
+  z-index: 2;                 /* rests ON TOP of the note */
+  width: clamp(6.5rem, 10vw, 10rem);
+  height: auto;
+  rotate: -14deg;
+  filter: drop-shadow(0 12px 18px color-mix(in srgb, var(--shadow) 45%, transparent));
+  /* slide-in start state (revealed via .is-visible, like the hero fly-in) */
+  opacity: 0;
+  transform: translate(-60px, -14px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+.estate__note.is-visible ~ .estate__keys { opacity: 1; transform: none; }
+/* hover the note → keys slip UNDER the paper */
+.estate__note:hover ~ .estate__keys {
+  z-index: 0;
+  transform: translate(20px, 14px);
+}
+
+.estate-note__kicker {
+  color: var(--accent);
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+.estate-note__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h3);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.estate-note__list { list-style: none; margin: 0 0 var(--space-5); padding: 0; }
+.estate-note__list li {
+  position: relative;
+  font-family: var(--font-doc);
+  font-size: var(--fs-body-sm);
+  color: var(--ink);
+  padding: var(--space-3) 0 var(--space-3) var(--space-6);
+  border-bottom: 1px dashed color-mix(in srgb, var(--ink) 20%, transparent);
+}
+.estate-note__list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  font-family: var(--font-script);
+  font-size: 1.4em;
+  line-height: 1;
+  color: var(--accent);
+}
+.estate-note__foot { color: var(--ink-soft); font-style: italic; }
+
+/* reduced motion — show keys immediately */
+@media (prefers-reduced-motion: reduce) {
+  .estate__keys { opacity: 1; transform: none; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .estate__intro,
+  .estate__aside { grid-column: span 8; }
+  .estate__aside { margin-top: var(--space-8); }
+}
+@media (max-width: 640px) {
+  .estate__intro,
+  .estate__aside { grid-column: 1 / -1; }
+  .estate__keys { width: 6rem; top: -2.5rem; left: -1.5rem; }
+  .estate__plate { right: -3rem; width: 11rem; }
+  .estate-cards { grid-template-columns: 1fr; }
+}

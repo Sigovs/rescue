@@ -1,0 +1,300 @@
+/* ============================================================
+   SPORTS CAR RESCUE — CAR PAGE (rescued-car case file)
+   Template for one rescued car. Auction-editorial: a full-bleed
+   photo that reads as an object, the rescue as prose, the facts
+   as a hairline-ruled record. One committed gesture (the hero),
+   everything else quiet. Built on css4 tokens — no magic numbers.
+   ============================================================ */
+
+/* ---------- 1. HERO — full-bleed photo, lower-left scrim plate ---------- */
+.car-hero {
+  position: relative;
+  min-height: clamp(28rem, 72vh, 46rem);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--c-espresso);
+}
+.car-hero__img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+/* scrim does the legibility work — not a box, a directional wash */
+.car-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--c-espresso) 82%, transparent) 0%,
+      color-mix(in srgb, var(--c-espresso) 30%, transparent) 42%,
+      transparent 66%),
+    linear-gradient(0deg,
+      color-mix(in srgb, var(--c-espresso) 80%, transparent) 0%,
+      transparent 46%);
+}
+.car-hero > .container { width: 100%; }
+.car-hero__plate {
+  padding-block: var(--space-8);
+  max-width: 46rem;
+}
+.car-hero__eyebrow {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--c-brass-light);
+  margin: 0 0 var(--space-3);
+}
+.car-hero__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display-lg);
+  line-height: 0.98;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  color: var(--ink-on-dark);
+  margin: 0;
+}
+/* smallest register — the machine line: chassis · where found */
+.car-hero__meta {
+  font-family: var(--font-doc);
+  font-size: var(--fs-body-sm);
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent);
+  margin: var(--space-4) 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 2. BODY — story (dominant) + spec plate (support) ---------- */
+.car-body { padding-block: clamp(var(--space-8), 8vw, var(--space-10)); }
+.car-body__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(var(--space-7), 6vw, var(--space-10));
+  align-items: start;
+}
+
+/* breadcrumb + back — small mono, above the story */
+.car-breadcrumb {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 var(--space-6);
+}
+.car-breadcrumb a { color: var(--ink-soft); text-decoration: none; }
+.car-breadcrumb a:hover { color: var(--accent); }
+.car-breadcrumb span[aria-current] { color: var(--ink); }
+
+/* the story — one authoritative lead, then serif reading */
+.car-story__eyebrow {
+  font-family: var(--font-doc);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--space-3);
+}
+.car-story__lead {
+  font-family: var(--font-body);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 46ch;
+  margin: 0 0 var(--space-6);
+}
+.car-story__rule {
+  display: block;
+  width: 3.5rem;
+  height: 2px;
+  background: var(--accent);
+  margin: 0 0 var(--space-6);
+}
+.car-story__body { max-width: 62ch; }
+.car-story__body p {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.car-story__body p + p { margin-top: var(--space-4); }
+
+/* pull quote — one measured break in the reading rhythm */
+.car-story__quote {
+  margin: var(--space-7) 0;
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--fs-h4);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 34ch;
+}
+
+/* ---------- 3. SPEC PLATE — facts as a record, hairlines, no box ---------- */
+.car-spec { position: sticky; top: var(--space-7); }
+.car-spec__eyebrow {
+  font-family: var(--font-doc);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--ink);
+}
+.car-spec__list { margin: 0; }
+.car-spec__row {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.car-spec__label {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-brass);
+  margin: 0;
+}
+.car-spec__value {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.car-spec__value--status {
+  font-family: var(--font-doc);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+/* ---------- 4. GALLERY — controlled crops, active air ---------- */
+.car-gallery { padding-bottom: clamp(var(--space-8), 8vw, var(--space-10)); }
+.car-gallery__eyebrow {
+  font-family: var(--font-doc);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 var(--space-5);
+}
+.car-gallery__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: var(--space-4);
+}
+.car-gallery__fig { margin: 0; overflow: hidden; border-radius: var(--radius-md); background: var(--paper-raised); }
+.car-gallery__fig--tall { grid-row: span 2; }
+.car-gallery__fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.car-gallery__fig:hover img { transform: scale(1.03); }
+.car-gallery__cap {
+  margin: var(--space-4) 0 0;
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* ---------- 5. CTA — one solid, resolving gesture ---------- */
+.car-cta {
+  position: relative;
+  background: var(--c-espresso);
+  color: var(--ink-on-dark);
+  padding-block: clamp(var(--space-8), 9vw, var(--space-10));
+  text-align: center;
+}
+.car-cta__eyebrow {
+  font-family: var(--font-doc);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--c-brass-light);
+  margin: 0 auto var(--space-4);
+}
+.car-cta__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display-md);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  color: var(--ink-on-dark);
+  margin: 0 auto var(--space-5);
+  max-width: 20ch;
+}
+.car-cta__sub {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent);
+  max-width: 48ch;
+  margin: 0 auto var(--space-6);
+}
+.car-cta__actions { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; }
+
+/* ---------- 6. MORE FROM THE COLLECTION — quiet strip ---------- */
+.car-more { padding-block: clamp(var(--space-8), 8vw, var(--space-9)); }
+.car-more__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6); }
+.car-more__eyebrow {
+  font-family: var(--font-doc);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.car-more__all { font-family: var(--font-doc); font-size: var(--fs-caption); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+.car-more__all:hover { text-decoration: underline; }
+.car-more__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); list-style: none; margin: 0; padding: 0; }
+.car-more__card { display: block; text-decoration: none; color: inherit; }
+.car-more__media { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-md); background: var(--paper-raised); }
+.car-more__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+.car-more__card:hover .car-more__media img { transform: scale(1.03); }
+.car-more__name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: var(--fs-body);
+  color: var(--ink);
+  margin: var(--space-3) 0 0;
+}
+.car-more__card:hover .car-more__name { color: var(--accent); }
+
+/* ---------- responsive recomposition ---------- */
+@media (max-width: 900px) {
+  .car-body__grid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .car-spec { position: static; }
+  .car-gallery__grid { grid-template-columns: 1fr; }
+  .car-gallery__fig--tall { grid-row: auto; aspect-ratio: 16 / 10; }
+  .car-more__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+}
+@media (max-width: 560px) {
+  .car-hero__title { font-size: var(--fs-display-md); }
+}
