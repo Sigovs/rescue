@@ -1,0 +1,146 @@
+/* ============================================================
+   SPORTS CAR RESCUE — "WHY SPORTS CAR RESCUE"
+   Dark-wood manifesto: an oversized open album bleeding off the left,
+   a narrow collector's statement on the right, then three hairline-boxed
+   reasons. Sizes/colours mirror the Figma comp, on our tokens.
+   ============================================================ */
+.why {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--paper-dark);          /* fallback before the wood loads */
+  color: var(--ink-on-dark);
+  /* compact rhythm — the whole section is ~one screen */
+  padding-block: clamp(var(--space-7), 6vw, var(--space-9));
+  /* section-scoped accents, tokenised */
+  --why-head: #F3EAD6;  /* cream (was brass-brown #9B6D23) */
+  --why-copy: color-mix(in srgb, var(--ink-on-dark) 76%, transparent);  /* readable muted cream on dark wood */
+  --why-hairline: var(--ink-soft);
+}
+/* full-bleed dark-wood plank background */
+.why__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../assets/img/why/WHY SPORTS CAR RESCUE2_background.jpg") center / cover no-repeat;
+}
+.why > .container { position: relative; z-index: 1; }
+
+/* shared accent colours */
+.why__eyebrow { color: var(--accent); margin-bottom: var(--space-2); }
+.why__title,
+.why__subtitle,
+.why-card__title { color: var(--why-head); }
+
+/* ---------- A — album + manifesto ---------- */
+.why__intro-grid { align-items: center; }
+
+/* oversized catalogue, bled off the left edge and overlapping into the text */
+.why__book {
+  margin: 0;
+  position: relative;
+  z-index: 1;               /* sits behind the copy */
+}
+.why__book img {
+  display: block;
+  width: calc(100% + 13vw);
+  max-width: none;
+  height: auto;
+  margin-left: -11vw;       /* big left bleed; right edge laps ~2vw into the text col */
+  filter: drop-shadow(0 28px 56px color-mix(in srgb, #000 62%, transparent));
+}
+/* copy rides on top of the album, offset just enough to clear the lapped edge */
+.why__lead {
+  position: relative;
+  z-index: 2;
+  padding-left: clamp(0.5rem, 2vw, 2rem);
+}
+
+.why__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(2rem, 1.2rem + 2.4vw, 3.125rem);   /* 32 → 50 */
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+}
+.why__rule {
+  display: block;
+  width: 59px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: var(--space-4);
+}
+.why__copy { color: var(--why-copy); max-width: 56ch; }
+.why__copy + .why__copy { margin-top: var(--space-3); }
+
+/* two CTAs side by side */
+.why__actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+/* ---------- B — three reasons ---------- */
+.why__reasons { margin-top: var(--space-8); }
+.why__reasons-head { margin-bottom: var(--space-6); }
+.why__subtitle {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-top: var(--space-3);
+}
+.why__reasons-intro { margin-top: var(--space-4); max-width: 62ch; }
+
+.why__list { list-style: none; padding: 0; margin: 0; align-items: stretch; }
+.why-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;                 /* all three boxes match the tallest */
+  border: 1px solid var(--why-hairline);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  transition: border-color var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out);
+}
+.why-card:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 60%, transparent);
+  background: color-mix(in srgb, #000 22%, transparent);
+}
+.why-card__no {
+  display: block;
+  font-family: var(--font-doc);
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+}
+.why-card__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+.why-card__desc { color: var(--why-copy); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .why__book { grid-column: span 8; }
+  .why__book img { width: 100%; margin-left: 0; }   /* no bleed when stacked */
+  .why__lead { grid-column: span 8; margin-top: var(--space-7); padding-left: 0; }
+  .why-card { grid-column: span 4; }
+}
+@media (max-width: 640px) {
+  .why__book,
+  .why__lead,
+  .why-card { grid-column: 1 / -1; }
+  .why__actions { flex-wrap: wrap; }                 /* allow stacking when cramped */
+}

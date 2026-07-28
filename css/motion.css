@@ -1,0 +1,114 @@
+/* ============================================================
+   MOTION — section headers reveal STEPPED: eyebrow, then the title
+   (sliding in from the side), rule, then the lead (rising from the
+   bottom) — every piece resolving out of a soft blur.
+   Cards + standalone paragraphs keep the base [data-reveal]
+   (rise from bottom + blur). Driven by the existing observer
+   (.is-visible on [data-reveal]). Disabled for reduced motion.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* the header stops moving — it's only the trigger; its children animate */
+  .hero__content[data-reveal],
+  .buy__head[data-reveal],
+  .marques__head[data-reveal],
+  .lost__head[data-reveal],
+  .rescued__head[data-reveal],
+  .contact__intro[data-reveal],
+  .estate__intro[data-reveal],
+  .ig-feed__head[data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .hero__content > *,
+  .buy__head > *,
+  .marques__head > *,
+  .lost__head > *,
+  .rescued__head > *,
+  .contact__intro > *,
+  .estate__intro > *,
+  .ig-feed__head > * {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(9px);
+    transition: opacity 720ms var(--ease-out),
+                transform 720ms var(--ease-out),
+                filter 720ms var(--ease-out);
+    will-change: opacity, transform, filter;
+  }
+
+  /* titles slide in from the side instead of the bottom */
+  .hero__content > :is(h1, h2),
+  .buy__head > :is(h1, h2),
+  .marques__head > :is(h1, h2),
+  .lost__head > :is(h1, h2),
+  .rescued__head > :is(h1, h2),
+  .contact__intro > :is(h1, h2),
+  .estate__intro > :is(h1, h2),
+  .ig-feed__head > :is(h1, h2) {
+    transform: translateX(-48px);
+  }
+
+  /* revealed */
+  .hero__content.is-visible > *,
+  .buy__head.is-visible > *,
+  .marques__head.is-visible > *,
+  .lost__head.is-visible > *,
+  .rescued__head.is-visible > *,
+  .contact__intro.is-visible > *,
+  .estate__intro.is-visible > *,
+  .ig-feed__head.is-visible > * {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+
+  /* stepped — each child a beat after the previous */
+  .hero__content.is-visible > *:nth-child(1),
+  .buy__head.is-visible > *:nth-child(1),
+  .marques__head.is-visible > *:nth-child(1),
+  .lost__head.is-visible > *:nth-child(1),
+  .rescued__head.is-visible > *:nth-child(1),
+  .contact__intro.is-visible > *:nth-child(1),
+  .estate__intro.is-visible > *:nth-child(1),
+  .ig-feed__head.is-visible > *:nth-child(1) { transition-delay: 40ms; }
+
+  .hero__content.is-visible > *:nth-child(2),
+  .buy__head.is-visible > *:nth-child(2),
+  .marques__head.is-visible > *:nth-child(2),
+  .lost__head.is-visible > *:nth-child(2),
+  .rescued__head.is-visible > *:nth-child(2),
+  .contact__intro.is-visible > *:nth-child(2),
+  .estate__intro.is-visible > *:nth-child(2),
+  .ig-feed__head.is-visible > *:nth-child(2) { transition-delay: 150ms; }
+
+  .hero__content.is-visible > *:nth-child(3),
+  .buy__head.is-visible > *:nth-child(3),
+  .marques__head.is-visible > *:nth-child(3),
+  .lost__head.is-visible > *:nth-child(3),
+  .rescued__head.is-visible > *:nth-child(3),
+  .contact__intro.is-visible > *:nth-child(3),
+  .estate__intro.is-visible > *:nth-child(3),
+  .ig-feed__head.is-visible > *:nth-child(3) { transition-delay: 260ms; }
+
+  .hero__content.is-visible > *:nth-child(4),
+  .buy__head.is-visible > *:nth-child(4),
+  .marques__head.is-visible > *:nth-child(4),
+  .lost__head.is-visible > *:nth-child(4),
+  .rescued__head.is-visible > *:nth-child(4),
+  .contact__intro.is-visible > *:nth-child(4),
+  .estate__intro.is-visible > *:nth-child(4),
+  .ig-feed__head.is-visible > *:nth-child(4) { transition-delay: 370ms; }
+
+  .hero__content.is-visible > *:nth-child(n+5),
+  .buy__head.is-visible > *:nth-child(n+5),
+  .marques__head.is-visible > *:nth-child(n+5),
+  .lost__head.is-visible > *:nth-child(n+5),
+  .rescued__head.is-visible > *:nth-child(n+5),
+  .contact__intro.is-visible > *:nth-child(n+5),
+  .estate__intro.is-visible > *:nth-child(n+5),
+  .ig-feed__head.is-visible > *:nth-child(n+5) { transition-delay: 480ms; }
+}
