@@ -5,6 +5,19 @@ Vanilla **HTML / CSS / JS — no build step, no framework.**
 
 ---
 
+## Design DNA governs everything below
+
+**Before any visual work, invoke the `design-dna` skill.** It is installed
+globally and routes to the manifest at `design_dna/TASTE.md` — a symlink here to
+the live repository, so it is never a stale snapshot.
+
+The direction stated below is a **brief executed inside that system, not a
+replacement for it.** Its invariants — hierarchy, contrast, token discipline,
+composition, reduced-motion paths — never yield to a theme. Its dialect rules do
+yield to this brief, for a reason said out loud in the report.
+
+---
+
 ## ⛔ DESIGN DIRECTION — read before touching any markup or CSS
 
 This site must feel like a **collector's field journal / automotive archive /
