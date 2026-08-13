@@ -7,3 +7,11 @@
 # Playwright / preview artifacts
 .playwright-mcp/
 scr-*.png
+
+# A snapshot copy of the design_dna repository is never source, and never enters
+# git. The live route is the `design_dna` symlink beside this file, which resolves
+# to the working repository; a copied folder ages silently and then reads as
+# authoritative. One such copy sat here from 2026-08-05 to 2026-08-13 and had
+# already diverged across 107 files.
+design_dna.stale-copy-*/
+design_dna-copy*/
